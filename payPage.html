@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			p{font-size: 0.3rem;}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+	       <h1 class="mui-title">还款计划</h1>
+	       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+      </header>
+      <div class="mui-content">
+         <div class="aligncenter marginbtm paddingall" style="background: #fff;line-height: 1.8em;;">
+         	  <p>第一笔消费金额</p>
+			  <p class='money' id="REPAY_MONEY" style="font-size: 0.5rem;margin:0.2rem 0">0.00</p>
+			  <p>消费金额含手续费<span id="SERVICE_MONEY">0.00</span>元</p>
+         </div>
+         <div class="mui-input-row chooseCardbtn" style="background: #fff;">
+	       	   <label for="">支付方式:</label>
+	       	   <div style='height: 50px;line-height: 50px;text-indent: -15px;'><img src="image/bankicon/blanknl.png" class="bankimg" alt="" /><span class="choosedway">&nbsp;&nbsp;请选择支付方式&nbsp;&nbsp;</span></div>
+			   
+	       	   <span class="mui-icon mui-icon-arrowright"></span>
+	        </div>
+	        <p style="color: red;padding:0.2rem 0.3rem">注：还款计划制定成功后，不可修改、取消！还款计划完成后，可重新制定计划。</p>
+	      <button  class='newbtn'>确认支付</button>
+			<div class='choosecard mui-scroll-wrapper' style='display: none;'>
+				<div class="mui-scroll">
+					<p class='aligncenter'><span class='abvt' style="left:0.3rem;">取消</span>选择支付方式</p>
+					<div class="formbox" id="cardList">
+						
+					<!--<div>
+	                    <img src="img/icon_purse.png"  width="28" alt="" />
+	                    <label for="leftm">
+	                       <span sn="0">账户余额</span>
+	                       (可用<span id="amount">0.00</span>)
+	                       <span id="yebz" style="display:inline-block;"></span>
+	                    </label>
+	                     <input type="radio" name='bankna' id='leftm' />
+	                </div>-->
+		                <div>
+		                   <a  href="addCreditcard.html" id="adbank" style='width:100%' onclick="addBankCard()"><img src="image/icon_add.png" alt="" width='28'>添加银行卡</a>
+		                </div>
+					</div>
+				</div>
+			</div>
+	      <div id="paypassword" style="display: none;">
+				<div style=''>
+					<p><!--<img src="img/btn_list_expend.png" alt="" class="arrow " />-->请输入支付密码</p>
+					<div class="pwd-box" style='position:relative;'>
+						<div class="pwd-input" id="pwd-input"></div>
+						<div class="fake-box">
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+						</div>
+					</div>
+					<a href='forgetpassword.html' id="forgetpwd" style="color:#309bdf;text-align:right;padding:0.2rem 1rem 0.2rem 0">忘记密码？</a>
+					<table id='pswnum'>
+						<tbody>
+							<tr>
+								<td class='numb'>1</td>
+								<td class='numb'>2</td>
+								<td class='numb'>3</td>
+							</tr>
+							<tr>
+								<td class='numb'>4</td>
+								<td class='numb'>5</td>
+								<td class='numb'>6</td>
+							</tr>
+							<tr>
+								<td class='numb'>7</td>
+								<td class='numb'>8</td>
+								<td class='numb'>9</td>
+							</tr>
+							<tr>
+								<td class='empty'></td>
+								<td class='numb'>0</td>
+								<td class='delt'><img src="image/btn_del_code.png" alt="" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+            <!--<div class="choosecard">
+              <p class="aligncenter"><span class="abvt">取消</span>选择支付方式</p>
+              <div class="formbox">
+                   <div>
+                      <img src="image/bankicon/icon_bank_logo.png" alt="" width="28">
+                      <label for="999">
+                         <span>平安银行<span class="cardtype">(信用卡)</span></span>
+                         <span>尾号2333</span>
+                      </label>
+                     <input type="radio" value="233" name="2233">
+                </div>
+                <div>
+                <img src="image/bankicon/icon_bank_logo.png" width="28 alt=" "="">
+                <label for="3344">
+                   <span>平安银行<span class="cardtype">(信用卡)</span></span>
+                   <span>尾号2333</span>
+                </label>
+                 <input type="radio" value="22" name="2233">
+                </div>
+                  <div>
+                    <img src="image/bankicon/icon_bank_logo.png" alt="" width="28">
+                    <label for="2233">
+                       <span>中国银行<span class="cardtype">(储蓄卡)</span></span>
+                       <span>尾号5511</span>
+                    </label>
+                     <input type="radio" value="2233" name="2233">
+                </div>
+                  <div>
+                    <img src="image/icon_pay_yue.png" width="28" alt="">
+                    <label for="2233">
+                       <span>账户余额</span>
+                       (可用<span>￥5000.00</span>)
+                    </label>
+                     <input type="radio" value="2211" checked="" name="2233">
+                </div>
+                <div>
+                   <a href=""><img src="image/icon_add.png" alt="" width='28'>添加银行卡</a>
+                </div>
+             </div>
+           </div>
+        </div>-->
+      </div>
+		<script src='js/jquery-2.0.0.min.js'></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/security.js"></script>
+		<script>
+		mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+		
+		  	function backWin() {
+		  		plus.webview.currentWebview().close();
+		  	}	
+		$(document).ready(function(){
+			$('td').on('touchstart',function(){
+				 $(this).css('background','#b4e7ff')
+			});
+			$('td').on('touchend',function(){
+				 $(this).css('background','#fff')
+			});
+		})
+			var webview;
+			mui.plusReady(function() {
+				webview = plus.webview.currentWebview();
+				var repay = webview.REPAY_MONEY;
+		     	$("#REPAY_MONEY").text(repay)
+		     	$("#SERVICE_MONEY").text(webview.SERVICE_MONEY)
+		     	var params = {
+					"USER_ID": app.getStaffInfo().USER_ID
+				};
+		     	app.getData("/account/get_user_info.do", params, function(json){
+		  			if (json.RESULT_CODE == 0) {
+		  				var ye = json.RESULT_OBJECT.ACCOUT_MONEY;
+		  				if(repay > ye){
+		  					$('#leftm').attr("disabled","disabled");
+		  					$("#amount").text("￥"+ye);
+		  					$("#yebz").text("余额不足，剩余"+ye+"元"); 
+		  				}else{
+		  					$("#amount").text("￥"+ye);
+		  				}
+		  			}
+		  		});
+		     });
+			$(document).ready(function() {
+				$('.choosecard>p .abvt').on('touchend', function() {
+					$('.choosecard').slideUp(500);
+				});
+				$('.chooseCardbtn').on('touchend', function() {
+					var height2=$('.choosecard').height();
+					
+					if($(".choosecard").is(":visible")) {
+						$('.choosecard').slideToggle(500);
+						return false;
+					}
+					
+					var height1=$('.formbox').height();
+					
+					if(height1-height2>40){
+						    $('.choosecard .mui-scroll').css('bottom','initial')
+					     }
+					
+					var param = {
+						"USER_ID": app.getStaffInfo().USER_ID,
+						"CARD_TYPE":1,
+						"CHANNEL_TYPE":1,
+						"CHANNEL_ID" : webview.CHANNEL_ID
+					};
+					var html = [];
+					//$("#cardList").empty();
+					$("#cardList > .bank_card_item").remove();
+					plus.nativeUI.showWaiting();
+					app.getData("/account/get_pay_card_list.do", param, function(json) {
+						plus.nativeUI.closeWaiting();
+						var list = json.RESULT_OBJECT;
+						$.each(list, function() {
+							html.push("<div class='bank_card_item'>");
+							html.push("<img src='" + this.BANK_ICON + "' alt=\"\"  width=\"28\" />");
+							html.push("<label for=\"" + this.CARD_SN + "\">");
+							html.push("<span class=\"CARD_SN\" sn=\"" + this.CARD_SN + "\">" + this.BANK_NAME + "<span class=\"cardtype\">(" + this.CARD_TYPE_DESC + ")</span></span>");
+							html.push("<span>尾号" + this.CARD_NO_FOUR + "</span>");
+							html.push("</label>");
+							html.push("<input type=\"radio\" name=\"bankna\"  id=\"'" + this.CARD_SN + "'\" />");
+							html.push("</div>");
+						});
+						
+						var height2=$('.choosecard').height();
+						
+						$('#cardList').prepend(html.join("")); 
+						$('.choosecard').slideToggle(500);
+						
+						var height1=$('.formbox').height();
+			
+						if(height1-height2>0){
+							 $('.choosecard .mui-scroll').css('bottom','initial');
+						}
+					});
+				});
+
+
+				mui('body').on("tap", ".formbox>div:not(:last-child)", function() {
+					var src = $('input:radio:checked').siblings('img').attr('src');
+					var html = $('input:radio:checked').siblings('label').html();
+					$('.chooseCardbtn>div').find('img').attr('src', src).siblings('.choosedway').html(html);
+					$('.choosecard').slideUp(500);
+				});
+			})
+
+			$(document).on("click", ".newbtn", function() {
+				var cardSn = $(".choosedway span:eq(0)").attr("sn");
+				if(cardSn == "" || cardSn == undefined) {
+					app.alert("请选择支付方式");
+					return;
+				}
+				$('#paypassword').fadeIn(500);
+				
+			});
+			
+			function addBankCard(){
+				app.openWindow('addCreditcard.html', 'addCreditcard.html'); 
+			}
+			
+			//新增
+			function hidePaymentPassword() {
+				$('#paypassword').fadeOut(100);
+				$('.fake-box input').val('');
+				$('#pwd-input').text('');
+		    }
+			
+			$('#paypassword > div').on('touchend', function(e){
+			e.stopPropagation();
+		});
+			
+		$('#paypassword').on('touchend', function(e){
+			hidePaymentPassword();
+		});
+			
+			$("#forgetpwd").on('touchend', function(e) {
+			 app.openWindow("setupdatepaypassword.html","setupdatepaypassword.html");
+		   });
+		   
+		   $('#pswnum').on('touchend', '.numb', function(e) {
+			var _self = $(this);
+			var text = _self.text();
+			var passwordBox = $('#pwd-input');
+			if(passwordBox.text().trim().length < 6) {
+				passwordBox.html(passwordBox.html() + text);
+				for(var i = 0; i < passwordBox.text().trim().length; i++) {
+					$('.fake-box input').eq(i).val(i);
+				}
+				
+				if(passwordBox.text().trim().length == 6) {
+					var USER_ID = app.getStaffInfo().USER_ID;
+					var CARD_SN = webview.CARD_SN;
+					var PLAN_ID = webview.PLAN_ID;
+					//plus.device.vibrate(500); 
+					var CARD_SN = $(".choosedway span:eq(0)").attr("sn");
+					callPay(USER_ID, CARD_SN, PLAN_ID,passwordBox.html()); 
+					hidePaymentPassword();
+				}
+			}
+			e.stopPropagation();
+			return false;
+		});
+		 
+		 $('#pswnum').on('touchend', '.delt', function(e) {
+			var passwordBox = $('#pwd-input');
+			var tmp = passwordBox.text().trim();
+			passwordBox.html(tmp.substring(0, tmp.length - 1));
+			for(var i = 0; i < 6; i++) {
+				$('.fake-box input').eq(i).val(passwordBox.text().length > i ? "0" : "");
+			}
+		});
+		
+		function callPay(USER_ID, CARD_SN, PLAN_ID,PAY_PWD) {
+			var param = {
+					"USER_ID": USER_ID,
+					"CARD_SN": CARD_SN,
+					"PLAN_ID": PLAN_ID,
+					"PAY_PWD": RSAUtils.encryptedString(PAY_PWD)
+				};
+				plus.nativeUI.showWaiting();
+				    app.getData("/account/add_repayment_plan_pay.do", param, function(data) {
+					plus.nativeUI.closeWaiting();
+					if(data.RESULT_CODE == 0) {
+						app.openWindow('paySuccess.html', 'paySuccess.html', {
+							"START_DATE": data.RESULT_OBJECT.FIRST_REPAY_DATE
+						});
+					} else {
+						mui.toast('支付失败');
+					}
+				});
+		}
+		mui('.mui-scroll-wrapper').scroll();
+		if($('.formbox').height()-$('.choosecard').height()>20){
+			 $('.choosecard .mui-scroll').css('bottom','initial');
+		}
+		</script>
+	</body>
+
+</html>

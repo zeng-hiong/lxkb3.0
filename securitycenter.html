@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait"> 
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	       <h1 class="mui-title">安全中心</h1>
+	       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+     </header>
+     <div class="mui-content">
+		<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 0;">
+			<li class="mui-table-view-cell">
+				<a href="resetpassword.html" class="mui-navigate-right pwd">重置登录密码</a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a href="" class="mui-navigate-right pwd">重置支付密码</a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a href="" class="mui-navigate-right" id="logoff">帐号注销</a>
+			</li>
+		</ul>
+     </div>
+  	<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/security.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+  <script>
+	mui("body").on("tap", ".mui-icon-left-nav", back_window);
+	var new_url ="";//支付密码跳转url
+	$(function(){
+		verify_url();
+	})
+    
+    window.addEventListener("pageflowrefresh1", function(e){
+  		verify_url();
+	});
+	
+	window.addEventListener("securitycenter1", function(e){
+  		verify_url();
+	});
+
+	mui("body").on("tap", "#logoff", function() {
+		app.getData("/user/logoffCheck.do", {
+			"USER_ID": app.getStaffInfo().USER_ID,
+			"TOKEN": app.getStaffInfo().TOKEN
+		}, function(json) {
+			console.log(JSON.stringify(json));
+			if(0 == json.RESULT_CODE) {
+				if("success" == json.RESULT_MESSAGE) {
+			        mui.confirm('确认注销，账号将无法使用，请慎重执行此操作！' , '温馨提示', ['确定', '取消'], function(e) {
+			            if (e.index == 0) {
+			            	app.openWindow("logoff.html", "logoff.html");
+			            }
+			        });
+		
+					
+				} else {
+					mui.alert("对不起，您尚有未执行或执行中的还款计划，暂不支持注销！", '温馨提示');
+				}
+			} else {
+				 mui.toast(data.RESULT_MESSAGE);
+			}
+		});
+
+	});
+
+	mui("body").on("tap", "a.pwd", function() {
+		var url = this.getAttribute('href');
+		//mui.alert(url);
+		if(url == "" || url == "#") {
+			if(new_url) {
+				url = new_url;
+			} else {
+				url = "securitycenter.html";
+				verify_url();
+			}
+		}
+		app.openWindow(url, url);
+	});
+
+	
+	function verify_url() {
+		app.getData("/user/verify_Pay_Password.do", {
+			"USER_ID": app.getStaffInfo().USER_ID,
+        	"TOKEN": app.getStaffInfo().TOKEN
+       }, function(data) {
+          	if(data.RESULT_OBJECT.CODE == 1) {
+          		//设置支付密码
+            	new_url = "setpaypassword.html";
+          	} else {
+          		//重置支付密码
+          		new_url = "setupdatepaypassword.html";
+          	}
+        });
+	}
+	
+  </script>    
+
+</body>
+</html>

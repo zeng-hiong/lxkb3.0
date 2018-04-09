@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   	<link rel="stylesheet" href="css/mui.css" />
+   	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait" /> 
+   	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+   	<style type="text/css">
+   	    .flexbox{flex-flow: row wrap;}
+   	    .flexbox div{font-size: 0.3rem;color: #333;}
+   	    .flexbox p{font-size: 0.2rem;color: #666;}
+   	    .flexbox img{line-height: 0.7rem;max-width: 0.7rem;height: 0.7rem;}
+   		.flexbox li{width: 50%;}
+   	</style>
+</head>
+<body>
+   <header class="mui-bar mui-bar-nav">
+       <h1 class="mui-title">服务指南</h1>
+       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+       </button>
+   </header>
+   <div class="mui-content mui-scroll-wrapper" id="refreshContainer">
+   	<div class="mui-scroll">
+   	    <ul class=" marginbtm flexbox itemcenter" style="margin-top:0;padding:0.3rem;background: #fff;">
+   	    	<li class="paddinglf"  style="border-right: 1px solid #d1d1d1;padding-left:0">
+   	            <a href="onlineServer.html"  class="flexbox itemcenter spacear">
+   	                <img class="" src="image/icon_service_3.png">
+   	                <div style="padding-top: 0.2rem;">在线客服&nbsp;&nbsp;>
+   	                    <p>随时提问，提建议</p>
+   	                </div>
+   	            </a>
+   	        </li>
+   	        <li class="paddinglf"style='padding-right:0' >
+   	            <div class="flexbox itemcenter spacear" id='kefu'>
+   	                <img class="" src="image/icon_service_4.png">
+   	                <div style="padding-top: 0.2rem;">联系客服&nbsp;&nbsp;>
+   	                    <p id="serviceTime"></p>
+   	                    <input type="hidden" name="serviceTel" id="serviceTel" value="" />
+   	                </div>
+   	            </div>
+   	        </li>
+   	    
+   	    </ul>
+   	    <ul class="mui-table-view marginbtm" id="service">
+	         
+	         <!-- <li class="mui-table-view-cell mui-media">
+	              <a href="javascript:;" class="mui-navigate-right">
+	                
+	                  <div class="mui-media-body">
+	                      <p class="mui-ellipsis">常见问题</p>
+	                  </div>
+	              </a>
+	          </li>
+	          <li class="mui-table-view-cell mui-media">
+	              <a href="javascript:;" class="mui-navigate-right">
+	                
+	                  <div class="mui-media-body">
+	                      <p class="mui-ellipsis">还款计划说明</p>
+	                  </div>
+	              </a>
+	          </li>
+	          <li class="mui-table-view-cell mui-media">
+	              <a href="javascript:;" class="mui-navigate-right">
+	                
+	                  <div class="mui-media-body">
+	                      <p class="mui-ellipsis">收款使用说明</p>
+	                  </div>
+	              </a>
+	          </li>-->
+		</ul>
+   	</div>
+   	</div>
+   <script type="text/javascript" src="js/jquery-2.0.0.min.js" ></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/common.js"charset="utf-8"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+   <script type="text/javascript">
+   	
+   	mui.init({
+	      	pullRefresh:{
+	      	 	container:'#refreshContainer',
+	      	 	contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+			    contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+			    contentrefresh : "刷新成功~",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+	      	    down : {
+			      callback :refresh
+			    }
+	      	}
+        });
+    
+    	function refresh(){
+			initService();
+    		mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+//  		plus.nativeUI.closeWaiting();
+    	}
+    	
+   	mui("body").on("tap", "button.mui-action-back-mui-btn,.mui-btn-nav", backWin);
+   	
+  	function backWin() {
+  		plus.webview.currentWebview().close();
+  	}
+  	
+  	mui.plusReady(function(){
+  		var info = app.getAccountInfo();
+  		$("#serviceTime").text("工作日 9:00-18:00");
+  		$("#serviceTel").text(info.SERVICE_TEL);
+  		initService();
+  	});
+  	
+  	function initService(){
+  		app.getData("/common/menu/get_menu_list.do",{"PARENT_MENU_CODE" : "SERVICE_GUIDE_INIT"},function(data){
+  			var list = data.RESULT_OBJECT;
+			console.log(JSON.stringify(list));
+			var html = "";
+			for (var i = 0; i < list.length; i ++) {
+    				html += "<li class='mui-table-view-cell mui-media'>";
+    				html += "<a href='" + list[i].MENU_PATH + "' data='{\"MENU_ID\":" + list[i].MENU_ID + "}' class='mui-navigate-right'>";
+    				html += "<div class='mui-media-body'>";
+    				html += "<p  class='mui-ellipsis'>" + list[i].MENU_NAME +"</p></div></a></li>";
+    			}
+			$("#service").html(html);
+  		});
+  	}
+  	
+  	
+  	mui("body").on("tap", ".mui-scroll li a",function() {
+		var url = this.getAttribute('href');
+		if(url == "" || url == "#") {
+			plus.nativeUI.alert("项目建设中");
+			return false;
+		}
+		app.openWindow(url,url);
+	});
+	
+	function getMenuStatus(params) {
+		params = JSON.parse(params)
+		app.getData("/common/menu/get_menu_status.do", params, function(data){
+			var json = data.RESULT_OBJECT;
+			console.log(JSON.stringify(json));
+			if(json.STATUS == 'X') {
+				plus.nativeUI.alert(json.MENU_DESC);
+			} else if(json.STATUS == 'A') {
+				mui.openWindow(json.MENU_PATH);
+			}
+		});
+	}
+	
+	
+		mui("body").on("tap", "#kefu", function() {
+			
+			var btnArray = ['取消', '拨打'];
+	        var phonenum = $("#serviceTel").text();
+	        mui.confirm('您确定要拨打客服电话吗？\r\n ' + phonenum, '客服电话', btnArray, function(e) {
+	            if (e.index == 1) { 
+	                plus.device.dial(phonenum, false); 
+	            }
+	        });
+		});
+   </script>
+</body>
+</html>

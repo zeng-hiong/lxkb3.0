@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="stylesheet" href="css/common.css">
+	     <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+	     <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+    <header class="mui-bar mui-bar-nav">
+       <h1 class="mui-title">平安保险</h1>
+       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  <span class="mui-icon mui-icon-left-nav"></span>返回
+       </button>
+     </header>
+     <div class="mui-content mui-scroll-wrapper">
+         <div class="mui-scroll">
+         	 <ul class="mui-table-view mui-grid-view" style='margin-bottom: 10px;'>
+         	     <li class="mui-table-view-cell mui-media mui-col-xs-6">
+         	         <a href="#">
+         	             <img class="mui-media-object" src="image/touxiang.png" style="width: 3.5rem;">
+         	             <div class="mui-media-body alignleft paddinglf">个人银行卡盗刷保险</div>
+         	         </a>
+         	     </li>
+         	     <li class="mui-table-view-cell mui-media mui-col-xs-6">
+         	         <a href="#">
+         	             <img class="mui-media-object" src="image/ne02.png" style="width: 1.8rem;">
+         	         </a>
+         	     </li>
+         	 </ul>
+         	  <ul class="mui-table-view" >
+		           <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;">
+		                  
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">保障对象</p>
+		                      <span class="phonenum" class="rightspan">被保人名下所有银行卡</span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;">
+		                 
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">投保单号</p>
+		                      <span id="insurance_order1" class="rightspan"></span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;" >
+		                  
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">保单号</p>
+		                      <span id='insurance_order2' class="rightspan"></span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;" >
+		                  
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">被保险人</p>
+		                      <span id='insurance_name' class="rightspan"></span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;" >
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">保障开始时间</p>
+		                      <span id="insurance_start_date" class="rightspan"></span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;" >
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">保障结束时间</p>
+		                      <span id='insurance_end_date' class="rightspan"></span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;" >
+		                
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">保障金额</p>
+		                      <span id='insurance_name' class="rightspan"></span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;" >
+		             
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">保险费</p>
+		                      <span id='insurance_fee' class="rightspan"></span>
+		                  </div>
+		              </a>
+		          </li>
+		           <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;" >
+		                  <div class="mui-media-body">
+		                      <p class="mui-ellipsis">保险热线</p>
+		                      <span id='insurance_fee' class="rightspan">95511</span>
+		                  </div>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media">
+		          	<a href="oninsurance.html" onclick="oninsurance()" style='color:#309bdf'>《保险条款》</a>
+		          </li>
+		      </ul>
+         </div>
+     </div>
+		<script type="text/javascript" src="js/jquery-2.0.0.min.js" ></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script>
+			mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+		  	function backWin() {
+		  		plus.webview.currentWebview().close();
+		  	}
+			
+			mui.plusReady(function() {
+				var userinfo = app.getStaffInfo();
+				if(userinfo.INSURANCE_ORDER != null && userinfo.INSURANCE_ORDER != ''){
+					$("#tb").attr("src","image/ne02.png");
+					$("#insurance_order1").text(userinfo.INSURANCE_ORDER);
+					$("#insurance_order2").text(userinfo.INSURANCE_ORDER);
+					$("#insurance_name").text(userinfo.USER_NAME);
+					$("#insurance_start_date").text(userinfo.INSURANCE_START_DATE);
+					$("#insurance_end_date").text(userinfo.INSURANCE_END_DATE);
+					$("#insurance_amount").text("￥10000.00");
+					$("#insurance_fee").text("￥6.00");
+				}else{
+					$("#tb").attr("src","image/ne03.png");
+					$("#insurance_order1").text("投保中");
+					$("#insurance_order2").text("投保中");
+					$("#insurance_name").text("投保中");
+					$("#insurance_start_date").text("投保中");
+					$("#insurance_end_date").text("投保中");
+					$("#insurance_amount").text("投保中");
+					$("#insurance_fee").text("投保中");
+				}
+				
+			});
+			
+			function oninsurance() {
+				app.openWindow("insuranceText.html","insuranceText.html");
+			}
+		</script>
+	</body>
+
+</html>

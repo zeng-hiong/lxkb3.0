@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait"> 
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	.mui-input-group .mui-input-row:last-of-type:after {
+		height: 0px;
+        }
+        .rightspan{color:#333;font-size: 0.34rem;}
+        .bankname{font-size: 0.34rem;color:#333}
+        .mui-content{
+        		top: 0;
+				bottom: 0;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav" style='position: absolute;top:0'>
+	       <h1 class="mui-title">还款计划</h1>
+	       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+     </header>
+     <div class="mui-content">
+           <ul class="mui-table-view" style="margin:0 0 10px">
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="javascript:;">
+		                  <img class="mui-media-object mui-pull-left"  class="bankimg" id="bankimg">
+		                  <div class="mui-media-body">
+		                      <span class='bankname mui-ellipsis' id="BANK_NAME"></span>
+		                      <span class='rightspan' id="CARD_NO"></span>
+		                  </div>
+		              </a>
+		          </li>  
+		   </ul>
+		 <div class="mui-input-group marginbtm">
+	   	    <div class="mui-input-row">
+	       	   <label for="">账单日:</label>
+	       	   <input type="tel" maxlength="2" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste=\"this.value=this.value.replace(/\D/g,'')" placeholder="请输入账单日" id="BILL_DAY">
+	       	   <img src="image/icon_edit.png" class="abvt"  style="width:0.4rem;right: 15px;"  alt="" />
+	        </div>
+	        <div class="mui-input-row">
+	       	   <label for="">还款日:</label>
+	       	   <input type="tel" maxlength="2" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="请输入还款日" id="REPAY_DAY"> 
+	       	   	<img src="image/icon_edit.png" class="abvt"  style="width:0.4rem;right: 15px;"  alt="" />
+	        </div>
+	      
+	     </div>
+	     <div class="mui-input-group marginbtm">
+	   	    <div class="mui-input-row">
+	       	   <label for="">账单金额:</label>
+	       	   <input type="tel" id="REPAY_MONEY" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" placeholder="输入您想要还款的金额" >
+	       	   	<span>元</span> 
+	        </div>
+	     </div>
+	     <p style="color:#999;padding-left:0.35rem;margin:0.15rem 0">每日还款限额500元~100000元之间</p>
+	     <div class="mui-input-group ">
+	        <div class="mui-input-row ">
+	       	   <label for="">还款笔数:</label>
+	       	   <input type="tel" id="REPAY_NUM" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="请输入还款笔数" >
+               <span>笔</span>
+	        </div>
+	        <p style="color:red;padding-left:0.35rem;margin:0.15rem 0;font-size:0.24rem;display: none;" class='paytips'>根据您的账单情况,可输入<span class="showline">1-</span><span id='payNum'></span>笔</p>
+	        <!--<div class="mui-input-row ">
+	       	  <label for="">启动资金:</label>
+	       	  <input type="number" id="FIRST_AMOUNT" onkeyup="this.value=this.value.replace(/[^\d^\.]+/g,'')" onafterpaste="this.value=this.value.replace(/[^\d^\.]+/g,'')" placeholder="请输入启动资金" >
+               <span>元</span>
+	        </div>-->
+	       <p style="color:red;margin:0.15rem 0.35rem;padding-top:0.15rem;border-top:1px solid #c8c7cc;display: none;" class='moneytips'>根据您的还款笔数,最低启动资金为<span id='leastMoney'></span>元</p>
+	        <p style="color:red;margin:0.15rem 0.35rem;font-size:0.24rem;display: none;" class='moneytips' >注:为保证还款计划顺利进行,请务必保证您的信用卡余额大于[<span class="totalmoe">1000</span>元],其中[<span class='xfje'></span>元]是计划消费金额,
+	        	[<span class="sxf"></span>元]是还款手续费！
+	        </p>
+	     </div>
+	      <button class='newbtn' onclick="next()">确定</button>
+     </div>
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js" ></script>
+    <script type="text/javascript" src="js/mui.min.js" ></script>
+	<script src="js/app.js"></script>
+	<script src="js/security.js"></script>
+  <script>
+    mui("body").on("tap", ".mui-icon-left-nav", backWin);
+    mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+  	function backWin() {
+  		plus.webview.currentWebview().close();
+  	}
+  	
+   $('#schedule-box').bind('click',function(){
+       $('.currentDate').each(function(){
+        var title=$(this).attr('title')
+       if(title==date){
+            $(this).css('background','red')
+      }else if(title==dateBack){
+        $(this).css('background','orange')
+      }else if(title==datePay){
+        $(this).css('background','pink')
+      } 
+   })
+  })
+   $('#schedule-box').trigger('click');
+   $(document).ready(function(){
+   	  $('input').focus(function(){
+   	  	this.scrollIntoView()
+   	  })
+   })
+   
+   var webview;
+   mui.plusReady(function() {
+   	webview = plus.webview.currentWebview();
+     	$("#CARD_NO").text(webview.CARD_NO);
+     	$("#BANK_NAME").text(webview.BANK_NAME);
+     	$("#bankimg").attr("src",webview.BANK_ICON);
+     	if(webview.BILL_DAY != " " && webview.REPAY_DAY != " "){
+     		$("#BILL_DAY").val(webview.BILL_DAY);
+     	    $("#REPAY_DAY").val(webview.REPAY_DAY);
+     	}
+     
+});
+
+function next() {
+	var USER_ID = app.getStaffInfo().USER_ID;
+	var CARD_SN = webview.CARD_SN;
+	var CHANNEL_ID = webview.CHANNEL_ID;
+	var REPAY_MONEY = $("#REPAY_MONEY").val();	//账单金额
+	var REPAY_NUM = $("#REPAY_NUM").val();			//还款笔数
+	var FIRST_AMOUNT = $("#FIRST_AMOUNT").val();		//启动资金
+	var BILL_DAY = $("#BILL_DAY").val();				//账单日
+	var REPAY_DAY = $("#REPAY_DAY").val();				//还款日
+	var payNum = $("#payNum").text();					//最大还款笔数
+	var leastMoney = $("#leastMoney").text();			//最小启动资金
+	
+	if(BILL_DAY == "") {
+		app.alert("请输入账单日");
+		return;
+	}
+	
+	var exp2 = /^\d+$/;
+	if(!exp2.test(BILL_DAY)) {
+		alert('账单日输入有误');
+		return;
+	}
+	
+	
+	if(REPAY_DAY == "") {
+		app.alert("请输入还款日");
+		return;
+	}
+	
+	var exp3 = /^\d+$/;
+	if(!exp3.test(REPAY_DAY)) {
+		alert('还款日输入有误');
+		return;
+	}
+	
+	if(BILL_DAY < 1 || BILL_DAY > 31) {
+		app.alert("非法的账单日");
+		return;
+	}
+	if(REPAY_DAY < 1 || REPAY_DAY > 31) {
+		app.alert("非法的还款日");
+		return;
+	}
+	
+	if(BILL_DAY == REPAY_DAY) {
+		app.alert("账单日不能等于还款日");
+		return;
+	}
+	
+	if(REPAY_MONEY >100000){
+		app.alert("账单金额不能大于10万");
+		return;
+	}
+	
+   if(REPAY_MONEY == "") {
+		app.alert("请输入账单金额");
+		return;
+	}
+	if(REPAY_NUM == "") {
+		app.alert("请输入还款笔数");
+		return;
+	}
+	/*if(FIRST_AMOUNT == "") {
+		app.alert("请输入计划启动资金");
+		return;
+	}
+	
+	if(FIRST_AMOUNT - leastMoney < 0) {
+		app.alert("启动资金不能小于最低启动资金");
+		return;
+	}
+	* */
+	
+	if(REPAY_NUM - payNum > 0) {
+		app.alert("已超过最大还款笔数");
+		return;
+	}
+	
+	if(REPAY_MONEY/REPAY_NUM < 100){
+		app.alert("不是合理的还款计划，请重新制定！");
+		return;
+	}
+	
+	var param = {
+		USER_ID: USER_ID,
+		CARD_SN: CARD_SN, 
+		BILL_DAY: BILL_DAY, 
+		REPAY_DAY: REPAY_DAY, 
+		REPAY_TYPE: 1, 
+		REPAY_MONEY: REPAY_MONEY, 
+		CONSUME_NUM: REPAY_NUM,
+		FIRST_AMOUNT:FIRST_AMOUNT,
+		LEAST_AMOUNT :leastMoney,
+		ADVICE_NUM : payNum,
+		CHANNEL_ID:CHANNEL_ID
+	}
+	plus.nativeUI.showWaiting();
+	app.getData("/account/add_repayment_plan.do", param, function(data) {
+	plus.nativeUI.closeWaiting();
+		console.log(JSON.stringify(data));
+		if(data.RESULT_CODE == 0) {
+			var PLAN_ID = data.RESULT_OBJECT.PLAN_ID;
+			app.openWindow('repaymentDetailtwo.html', 'repaymentDetailtwo.html',{"PLAN_ID": PLAN_ID,"CHANNEL_ID":CHANNEL_ID}); 
+		}
+	});
+   } 
+    
+    function editBillDay(){
+    	$(".billday").replaceWith("<input type=\"text\" placeholder=\"请输入账单日\" id=\"BILL_DAY\">"); 
+    } 
+    
+    function editRepayDay(){ 
+    	$(".repayday").replaceWith("<input type=\"text\" placeholder=\"请输入还款日\" id=\"REPAY_DAY\">"); 
+    }
+  //新增   
+     function showtips(clsname){
+    	$('.'+clsname).removeClass('hide')
+    }
+    
+     function getCountDays() {
+        var curDate = new Date();
+        var curMonth = curDate.getMonth();
+        curDate.setMonth(curMonth + 1);
+        curDate.setDate(0);
+        return curDate.getDate();
+    }
+     
+   function getDaysInOneMonth(year, month){  
+      month = parseInt(month, 10);  
+      var d= new Date(year, month, 0);  
+      return d.getDate();  
+   }
+    
+    $('#REPAY_MONEY').blur(function(){
+
+    	if($(this).val()<500){
+    		app.alert('账单金额不能小于500元！');
+    		$('.paytips').hide();
+    	}else{
+    		changeday();
+    		firsmon();
+    	}
+    })
+//  $('#REPAY_MONEY').on('input',function(){
+//  	changeday();
+//  	firsmon();
+//  })
+
+   $('#REPAY_NUM').blur(function(){
+   	   montip();
+   	   firsmon();
+   })
+    $('#REPAY_NUM').on('input',function(){
+    	
+    	montip();
+   	   firsmon();
+    })
+   
+  /* $('#FIRST_AMOUNT').blur(function(){
+   	   firsmon();
+   })*/
+   
+   $('#BILL_DAY').blur(function(){
+   	//修改账单日
+   	    changeday();
+   })
+   
+   $('#REPAY_DAY').blur(function(){
+   	//修改还款日
+   	   changeday();
+   })
+   
+   function changeday(){
+   	    var Billday=$('#BILL_DAY').val();
+        var Repayday=$('#REPAY_DAY').val();
+        var billmon=$('#REPAY_MONEY').val();
+        var renum=$('#REPAY_NUM').val();
+        var maxnum=$('#payNum').html();
+        
+   	    if(Billday-1>=0 && Repayday-1>=0 && billmon-500>=0){
+   	    	numtip();
+   	    	montip();
+   	    }
+   }
+   
+   function numtip(){
+    	var Billday=$('#BILL_DAY').val();
+        var Repayday=$('#REPAY_DAY').val();
+        var startmon=parseInt($('#REPAY_MONEY').val()/100);
+        var today=new Date().getDate();
+        var monthDays=getCountDays();
+        var billmon=$('#REPAY_MONEY').val();
+        var leastmon=parseInt($('#leastMoney').text());
+        //var firstmon=$('#FIRST_AMOUNT').val();
+        var paynum = 0;  
+        var hour=new Date().getHours();
+        console.log(hour+'monthdats'+monthDays)
+    	if(Billday - Repayday < 0 ){
+    		console.log("账单日小于还款日");
+    	
+    		if(Billday-today>=0){
+    			console.log("账单日大于今日");
+    				if(startmon<=Repayday-Billday - 1){
+    				    paynum=startmon;
+	    			}else{
+	    				paynum=Repayday-Billday - 1;
+	    			}
+	    			
+	    			$('.paytips').show();
+	    			if(paynum<=1){
+		    	 		$(".showline").hide();
+		    	 	}else{
+		    	 		$(".showline").show();
+		    	 	}
+    	 		    $('#payNum').html(paynum);
+    			
+    		}else{
+    			console.log("账单日小于今日");
+    			if(Repayday-today<=0){
+    				console.log("还款日小于今日");
+    				 if(startmon<Repayday-Billday- 1){
+    				    paynum=startmon;
+	    			}else{    				
+		    	 	    paynum=Repayday-Billday- 1;
+	    			}
+    				
+    			}else{
+    				console.log("还款日大于今日");
+    				 if(startmon<Repayday-today-1){
+    				 
+    				    paynum=startmon;
+	    			}else{    	
+	    				if(hour>=20){
+    				 		paynum=Repayday-today-1;
+    				 	}else{
+    				 		paynum=Repayday-today;
+    				 	}
+		    	 	    
+	    			}
+		    	 	
+    			}
+    			$('.paytips').show();
+		    	 	if(paynum<=1){
+		    	 		$(".showline").hide();
+		    	 	}else{
+		    	 		$(".showline").show();
+		    	 	}
+		    	$('#payNum').html(paynum);
+    			
+    		}
+    	}else{
+    		console.log("账单日大于还款日");
+    		if(Billday-today>=0 ){
+    			console.log("账单日大于今日");
+    			if(Repayday-today>0){
+    					console.log("还款日大于今日");
+    				if(startmon<parseInt(Repayday)-today){
+    	 			    paynum = startmon ;
+	    	 		}else{
+	    	 			if(hour>=20){
+	    	 				paynum =parseInt(Repayday)-today-1;
+	    	 			}else{
+	    	 				paynum =parseInt(Repayday)-today;
+	    	 			}
+	    	 		}	 
+    			}else{
+                   console.log("还款日小于今日");
+                   console.log("11111");
+    				if(startmon<parseInt(monthDays-Billday)+ parseInt(Repayday) - 1){
+    					console.log('hello');
+    	 			    paynum = startmon ;
+    	 			    console.log(paynum)
+	    	 		}else{
+	    	 			paynum =parseInt(monthDays-Billday)+ parseInt(Repayday) - 1 ;
+	    	 			console.log('hellosdfsdfas');
+	    	 			   console.log(paynum)
+	    	 		}
+    			}
+    			
+    	 		
+    	 		$('.paytips').show();
+    	 		 if(paynum<=1){
+		    	 		$(".showline").hide();
+		    	 	}else{
+		    	 		$(".showline").show();
+		    	 	}
+    	 		$('#payNum').html(paynum);
+    		}else{
+    			console.log("账单日小于今日");
+    				if(startmon<parseInt(monthDays-today)+parseInt(Repayday)){
+    					console.log(1111);
+    				    paynum=startmon;
+	    			}else{
+	    				console.log(2222);
+	    				if(hour>=20){
+	    					console.log(monthDays);
+	    					paynum = parseInt(monthDays-today)+parseInt(Repayday)-1;
+	    				}else{
+	    					paynum = parseInt(monthDays-today)+parseInt(Repayday);
+	    				}
+	    			}
+    			
+	    	 	$('.paytips').show();
+	    	 	if(paynum<=1){
+		    	 		$(".showline").hide();
+		    	 	}else{
+		    	 		$(".showline").show();
+		    	 	}
+	    	 	$('#payNum').html(paynum);
+    		}
+    	}
+    	
+    	
+    	if(Billday-1<0){
+        	$('.paytips').hide();
+        	app.alert('请输入账单日！');
+        }
+        
+        if(Repayday-1<0){
+        	$('.paytips').hide();
+        	app.alert('请输入还款日！');
+        }
+        
+    /*    if(firstmon-leastmon <0){
+   	  
+   	  	$('#FIRST_AMOUNT').val('');
+   	  }*/
+        
+        
+    }
+   
+   function montip(){
+   		var CHANNEL_ID = webview.CHANNEL_ID;
+   	    var renum=$('#REPAY_NUM').val();
+        var billmon=$('#REPAY_MONEY').val();
+        var leastm = (billmon/renum+billmon*0.0079+renum*0.5).toFixed(2);
+        var xfje=(billmon/renum).toFixed(2);
+        var sxf=(billmon*0.0079+renum*0.5).toFixed(2);
+        var maxnum=$('#payNum').html();
+        //var firstmo=$('#FIRST_AMOUNT').val();
+        var leastmo=parseInt($('#leastMoney').text());
+        if(leastm < 100){
+        	leastm = 100;
+        	$('#REPAY_NUM').val('');
+        }
+    	 if(renum -maxnum <= 0 && renum-1>=0 ){
+    	 	console.log('renum'+renum+'maxnum'+maxnum)
+    	 	 $('#leastMoney').html(leastm);
+    	 	 $('.totalmoe').html(leastm);
+    	 	 $('.sxf').html(sxf);
+    	 	 $('.xfje').html(xfje);
+    	 	 if(CHANNEL_ID == '5'){
+    	 	 	$('.moneytips').show();
+    	 	 }
+    	 }else{
+    	 	
+    	 	$('#REPAY_NUM').val('');
+    	 
+    	     $('.moneytips').hide(); 
+    	 }
+    	 
+    	/* if(firstmo-leastmo<0){
+    	 	$('#FIRST_AMOUNT').val('');
+    	 }*/
+   }
+   
+   function firsmon(){
+ 
+   	 // var firstmo=$('#FIRST_AMOUNT').val();
+   	  var renum=$('#REPAY_NUM').val();
+      var billmon=$('#REPAY_MONEY').val();
+   	  var leastmo=parseInt($('#leastMoney').text());
+   	   
+   	   if(leastmo - 100 < 0){
+   	   	   leastmo=100
+   	   }
+   	  
+   	  /*if(firstmo-leastmo <0){
+   	  
+   	  	$('#FIRST_AMOUNT').val('');
+   	  }*/
+   	  
+   }
+   
+   plus.webview.currentWebview().setStyle({
+            softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+      });
+  </script>   
+</body>
+</html>

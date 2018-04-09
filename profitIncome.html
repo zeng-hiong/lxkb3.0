@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait"> 
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <style>
+         .flexbox{position: relative;}
+        .mui-content{padding:0.3rem;margin-top: 0.3rem;}
+       
+        .profitbox p{font-size: 0.26rem;}
+        .profitbox h3{font-size: 0.6rem;font-weight: 400;}
+        .profitbox h4{font-size: 0.4rem;font-weight: 400;}
+        .profitbox p,.profitbox h3,.profitbox h4{color:#28b5f7}
+    	.profitbox{position: relative;border-radius: 0.1rem;background: #fff;overflow: hidden;}
+    	/*.profitbox .flexbox:before{
+    		position: absolute;content: '';border-radius:50%;
+    		top:100%;left:0;transform: translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);
+    	    display: block;width: 0.4rem;background:#00ADFF;height: 0.4rem;z-index: 8;
+    	    }*/
+    	/*.profitbox .flexbox:after{position: absolute;content: '';top:100%;right:0;transform: translate(50%,-50%);-webkit-transform:translate(50%,-50%);
+    	z-index:8;display: block;border-radius:50%;width: 0.4rem;background:#00ADFF;height: 0.4rem;}*/
+    	.mui-input-group .mui-input-row{height: 1.4rem;line-height: 1.4rem;}
+    	.profitbox .mui-input-row label{height: 1.4rem;line-height: 1.4rem;}
+    	input[type=password], input[type=tel], input[type=text]{
+    		padding-top: 0.6rem;
+    	}
+    	.popover.abvt{width:85%;left:50%;-webkit-transform: translate(-50%,-50%);padding:0.3rem;border-radius:0.1rem;background:#fff;transform: translate(-50%,-50%);}
+    	.popover p{color: #333;font-weight: 700;margin-bottom: 0.3rem;}
+    	.popover p,.popover span,.popover div{font-size: 0.26rem;}
+    	.popover div{padding-left:0.3rem;line-height: 1.6em;margin-bottom: 0.4rem;}
+    	.popoverbox{
+    		position: absolute;
+    		top:0;
+    		bottom:0;
+    		right:0;
+    		left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 11;
+      	}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <h1 class="mui-title">分润收益</h1>
+	    <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	<span class="mui-icon mui-icon-left-nav">返回</span>
+	    </button>
+	    <button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right"><a href="#middlePopover" style='color:#fff'>提现说明</a></button>
+    </header>
+    <div class="mui-content">
+     	<div class="profitbox">
+	     	<div class='aligncenter' style="padding-top: 0.4rem;">
+		     	<p>可提现&nbsp;&nbsp;(元)</p>
+		     	<h3 id="AMOUNT">0.00</h3>
+	     	</div>
+	     	<div class="flexbox aligncenter spacear" style="padding:0.6rem 0 0.4rem;border-bottom: 1px solid #c8c7cc;">
+	     	  	<div style="flex:1;border-right: 1px solid #ccc;">
+	     	  	  	<p>累计分润&nbsp;&nbsp;(元)</p>
+	     	  	  	<h4 id="SHARESUM">0.00</h4>
+	     	    </div>
+	     	    <div style='flex:1'>
+	     	  	  	<p>已提现&nbsp;&nbsp;(元)</p>
+	     	  	  	<h4 id="DRAWALSSUM">0.00</h4>
+	     	    </div>
+	     	</div>
+	      	<div class="mui-input-group">
+		   	    <div class="mui-input-row">
+		       	  	<label for="">提现金额</label>
+		       	  	<input type="tel" placeholder="最低提现100元" id='cash_money' maxlength="15" />
+		       	  	<span class="abvt" style='right:15px;'>元</span>
+		        </div>
+		        <div class="mui-input-row">
+		       	  	<label for="">提现密码</label>
+		       	  	<input type="password" placeholder="请输入6位提现密码" id='tx_pass' maxlength="6" />
+		        </div>
+		        <div class="mui-input-row">
+		       	  	<label for="">结算卡</label>
+		       	  	<input type="text" placeholder="系统默认添加代理商时结算储蓄卡" id='BANK_NAME' value="" disabled/>
+		        </div>
+	   	   	</div>
+     	</div>
+     	<div class="popoverbox mui-hidden">
+     		<div class="popover abvt" id='middlePopover' style="background: #fff;">
+	     	    <p style='text-align: center;font-size: 0.34rem;color: #333;'>提现说明</p>
+	     	    <p style='color:#333'>1、提现时间&nbsp;&nbsp;(工作日)</p>
+	     	    <div>00:00~15:00提现T+0，预计当天18:00前到账<br /> 15:00~00:00提现T+1，预计次日18:00前到账</div>
+				<p style='color:#333'>2、提现费率</p>
+	     	      <div>提现金额的 5% 税点 </div>
+	     	      <!--<p style='color:#333'>3、结算卡</p>
+	     	      <div>结算卡为添加代理商时绑定储蓄卡</div>-->
+	     	      <!--<p style='font-weight: 400;'><span style='color:#f92121'>注：</span>提现后系统会及时处理，到账时间以银行到账为准！</p>-->     	   	
+			</div>
+     	</div>
+     	<button class="newbtn marginbtm" id='affirm_deposit' onclick='submitDeposit()'>确认提现</button>
+     	<ul class="flexbox" style="margin-top: 1.4rem;">
+     		<li style='flex: 1;text-align: right;padding-right: 0.36rem;border-right: 1px solid #6accfb;' >
+     			<a href="profitIncomedetail.html" style='color:#309bdf;font-size: 0.26rem;'>分润收益明细</a>
+     		</li>
+     		<li style='flex: 1;padding-left: 0.36rem;'>
+     			<a href="withdrawdetail.html" style="color:#309bdf;font-size: 0.26rem;">提现记录</a>
+     		</li>
+     	</ul>
+    </div>
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/security.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+    	mui.confirm('MUI是个好框架，确认？', 'Hello MUI', btnArray, function(e) {
+                    if (e.index == 1) {
+                        info.innerText = '你刚确认MUI是个好框架';
+                    } else {
+                        info.innerText = 'MUI没有得到你的认可，继续加油'
+                    }
+                })
+    	mui("body").on("tap", ".mui-icon-left-nav", back_window);
+		mui("body").on("tap", "button.mui-action-back-mui-btn", back_window);
+		
+        $('.mui-bar').on('tap','button.mui-btn',function(e){
+        	  $('.popoverbox').removeClass('mui-hidden');
+        	 e.stopPropagation();
+        })
+      	$('body').on('tap',function(){
+      	 	$('.popoverbox').addClass('mui-hidden')
+      	})
+      	
+      	mui("body").on("tap", "a", function() {
+	   		var url = this.getAttribute('href');
+			if(url == "" || url == "#") {
+				plus.nativeUI.alert("项目建设中~"); 
+				return false;
+			}
+			app.openWindow(url, url);
+		});
+      	
+      	var AMOUNT = 0;
+       	
+       	mui.plusReady(function() {
+	  		document.documentElement.style.fontSize = plus.screen.resolutionWidth/ 7.5 + 'px';
+	  		init();
+	  		
+	  	});
+       	
+       	/**
+	  	 * 初始化
+	  	 */
+	  	function init() {
+	  		var accountInfo = app.getAccountInfo();
+	  		var params = {"OEM_ID":accountInfo.OEM_ID,"ID_CARD":accountInfo.AGENT_ID_CARD};
+	  		app.getData("/order/getShareInfo.do", params, function(json){
+	  			console.log(JSON.stringify(json));
+	  			if (json.RESULT_CODE == 0) {
+	  				AMOUNT = json.RESULT_OBJECT.AMOUNT || 0.00;
+	  				$("#AMOUNT").text(AMOUNT);
+	  				$("#DRAWALSSUM").text(json.RESULT_OBJECT.DRAWALSSUM || 0.00);
+	  				$("#SHARESUM").text(json.RESULT_OBJECT.SHARESUM || 0.00);
+	  				var bankname = json.RESULT_OBJECT.O_BANK_NAME;
+	  				var bankcardno = json.RESULT_OBJECT.BANK_CARD_NO;
+	  				var TX_PASS = json.RESULT_OBJECT.TX_PASS;
+	  				bankcardno = bankcardno.substr(bankcardno.length-4,4);
+	  				bankname = bankname+" 尾号("+bankcardno+")";
+	  				$("#BANK_NAME").val(bankname);
+	  				if(parseFloat(AMOUNT)>0 && bankname && TX_PASS){
+	  					$('#affirm_deposit').removeAttr("disabled");
+	  				}else{
+	  					$('#affirm_deposit').attr('disabled',"true");
+	  				}
+	  			}
+	  		});
+	  	}
+      	
+      	function submitDeposit(){
+      		
+	     	var BANK_NAME = $("#BANK_NAME").val();
+	     	var cash_money = $("#cash_money").val();
+	     	var tx_pass = $("#tx_pass").val();
+	     	
+	     	if(BANK_NAME == "") {
+	          	app.alert("请到后台填写银行卡才能提现哟");
+	          	return;
+	        }
+	     	if(cash_money == "") {
+	          	app.alert("请输入提现金额");
+	          	return;
+	        }
+	     	if( 100 > cash_money ) {
+	          	app.alert("最低提现100元");
+	          	return;
+	        }
+	     	if( parseFloat(cash_money) > parseFloat(AMOUNT) ) {
+	          	app.alert("你已经超出可提现金额");
+	          	return;
+	        }
+	     	if(tx_pass == "") {
+	          	app.alert("请输入提现密码");
+	          	return;
+	        }
+	     	if(tx_pass.length != 6) {
+	          	app.alert("请输入6位提现密码");
+	          	return;
+	        }
+	     	
+	     	var btnArray = ['否', '是'];
+            mui.confirm('你确定要提现吗，确认？', '分润提现', btnArray, function(e) {
+                if (e.index == 1) {
+                    var accountInfo = app.getAccountInfo();
+			       	var params = {"OEM_ID":accountInfo.OEM_ID,"ID_CARD":accountInfo.AGENT_ID_CARD,"CASH_MONEY" : cash_money,"TX_PASS" : RSAUtils.encryptedString(tx_pass)};
+			     	app.getData("/order/addAgentDrawalsOrder.do",params,function(data){
+			     		if(data.RESULT_CODE == 0){
+			     			mui.toast("提现成功!");
+				  			$("#cash_money").val("");
+				  			init();
+			     		}else{
+			     			mui.toast("提现失败!");
+			     			mui.back();
+			     		}
+			     	})
+                }
+            })
+     	};
+     	
+     	plus.webview.currentWebview().setStyle({
+            softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+      });
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait"> 
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper.3.1.7.min.css"/>
+    <style>
+       .mui-table-view-cell img{width:75%}
+       .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{margin-top: 0;}
+       .mui-popover{
+       	width:80%;
+       	height:7rem;top:50%;left:50%;
+       	-webkit-transform: translate(-50%,-50%);
+       transform: translate(-50%,-50%);
+       background-color: #fff;
+       }
+       .mui-popover .mui-scroll-wrapper{margin:0;height:7rem;}
+       .mui-popover .mui-scroll-wrapper .mui-scroll>div{
+       	padding:0.2rem 0.2rem 0.8rem;margin-bottom: 0;}
+       .mui-popover button{width:100%;height:0.8rem;border-top:1px solid #ccc;display: block;
+		background: #fff;font-size: 0.3rem;color: #00ADFF;
+		text-align: center;
+		border-radius:0 0 0.1rem 0.1rem;
+		position: absolute;
+		bottom:0;
+		z-index:2;
+     }
+     .mui-popover h4{text-align: center;font-size: 0.32rem;margin:0 0 0.15rem;}
+	.mui-popover p{color: #333;margin-bottom: 0.1rem;}
+	.mui-popover p,.mui-popover span,.mui-popover div{font-size: 0.26rem;}
+	.mui-popover .mui-scroll div{margin-bottom: 0.2rem;}
+	.mui-popover img{max-width: 100%;}
+    </style>
+</head>
+<body>
+    <div class="mui-content mui-scroll-wrapper" id='refreshContainer'>
+    	 <div class="mui-scroll">
+    	 	 <div class="swiper-containerA marginbtm">
+    	 	 	<div class="swiper-wrapper" id="banner">
+    	 	 		<!--<div class="swiper-slide">
+    	 	 			<a href="">
+    	 	 				<img src="image/pic_banner.png" alt="" />
+    	 	 			</a>
+	    	 	 	</div>
+	    	 	 	<div class="swiper-slide">
+	    	 	 			<a href="">
+	    	 	 				<img src="image/pic_banner.png" alt="" />
+	    	 	 			</a>
+	    	 	 	</div> 
+	    	 	 	<div class="swiper-slide">
+	    	 	 			<a href="">
+	    	 	 				<img src="image/pic_banner.png" alt="" />
+	    	 	 			</a>
+	    	 	 	</div>-->
+    	 	 	</div>
+    	 	    <div class="swiper-pagination"></div>
+    	 	    <div class="letterbtn"><img src="image/home_icon_news.png" alt="" /><span id="redpoint"></span></div>
+    	 	    <div class="newslistbox  paddinglf itemcenter">
+	         	   <div style='margin-right: 5px;'><img src="image/home_icon_new_2.png" alt="" width='16'></div>
+	         	   <div class="newsUlbox">
+	         		   <ul class="newsUl" id="newsUl">
+		            	 <!--<li>1Hi,欢迎使用乐享卡包！</li>
+		            	 <li>2恭喜里里里，从此走上人生巅峰，赢取白富美！</li>
+		            	 <li>3恭喜里里里，从此走上人生巅峰，赢取白富美！</li>-->
+	                  </ul>
+	         	    </div>
+	                 <a href="" style='color:#fff;font-size:13px;' id="more">更多></a>
+	            </div>
+    	 	 </div>
+	        <div class="mui-card marginbtm">
+	        	<p class="paddingall parttit" style="padding-bottom: 0;">精选服务</p>
+	        	<ul class="mui-table-view mui-grid-view mui-grid-9" id="menu1">
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_1.png" alt="" /></span>
+	                        <div class="mui-media-body">智能还款</div>
+	                    </a>
+	                </li>
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_2.png" alt="" /></span>
+	                        <div class="mui-media-body">商户收款</div>
+	                    </a>
+	                </li>
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_3.png" alt="" /></span>
+	                        <div class="mui-media-body">我的保险</div>
+	                    </a>
+	                </li>
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_4.png" alt="" /></span>
+	                        <div class="mui-media-body">服务指南</div>
+	                    </a>
+	                </li>
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_5.png" alt="" /></span>
+	                        <div class="mui-media-body">违章缴费</div>
+	                    </a>
+	                </li>
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_6.png" alt="" /></span>
+	                        <div class="mui-media-body">话费充值</div>
+	                    </a>
+	                </li>
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_7.png" alt="" /></span>
+	                        <div class="mui-media-body">征信查询</div>
+	                    </a>
+	                </li>
+	                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+	                    <a href="#">
+	                        <span class="mui-icon"><img src="image/home_icon_8.png" alt="" /></span>
+	                        <div class="mui-media-body">VIP会员</div>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+	        <div class="paddingall" style='padding-bottom: 0.3rem;'>
+	        	<div class="swiper-containerB" style="box-shadow: 0 2px 0.2rem #cee8f4">
+    	 	 	  <div class="swiper-wrapper" id="adsBanner">
+    	 	 		<!--<div class="swiper-slide">
+    	 	 			<a href="">
+    	 	 				<img src="image/home_banner_2.png" alt="" />
+    	 	 			</a>
+	    	 	 	</div>
+	    	 	 	<div class="swiper-slide">
+    	 	 			<a href="">
+    	 	 				<img src="image/pic_banner.png" alt="" />
+    	 	 			</a>
+	    	 	 	</div>
+	    	 	 	<div class="swiper-slide">
+    	 	 			<a href="">
+    	 	 				<img src="image/home_banner_2.png" alt="" />
+    	 	 			</a>
+	    	 	 	</div>-->
+    	 	 	  </div>
+    	 	   </div>
+	        </div>
+	          <p class="paddingtb parttit" style='background: #fff;padding-top: 0;'>金融服务</p>
+	            <ul class="flexbox spacebt paddingall marginbtm" style='background: #fff;padding-top: 0;' id="menu2">
+	            	<!--<li class="flexbox itemcenter paddingall" style='background: #f5f5fb;flex:1;margin-right: 10px;' href="#">
+	            		 <img src="image/home_pic_s1.png" alt="" style="width: 1.3rem;" />
+	            		 <div>
+	            		       <p style="font-size: 0.3rem;font-weight: 700;margin-bottom: 5px;">信用卡申请</p>
+	            		       <p class="mui-ellipsis" style="font-size: 0.2rem;">方便快捷&nbsp;&nbsp;高额批卡</p>
+	            		 </div>
+	            	</li>
+	            	<li class="flexbox itemcenter paddingall spacear" style='background: #f5f5fb;flex:1;' href="#">
+	            		 <img src="image/home_pic_s2.png" alt="" style="width: 1.3rem;" />
+	            		 <div>
+	            		       <p style="font-size: 0.3rem;font-weight: 700;margin-bottom: 5px;">普惠好贷</p>
+	            		       <p class="mui-ellipsis" style="font-size: 0.2rem;">让借款更简单</p>
+	            		 </div>
+	            	</li>-->
+	            </ul>
+    	 </div> 
+    </div>
+
+    <div id="popover" class="mui-popover">
+		<div class="mui-scroll-wrapper" id='popwrapper'>
+			<div class="mui-scroll">
+				<div id="popout">
+					<!--弹出层-->
+					<!--<h4>宝元贷春节期间 充值公告</h4>
+			     	<p style='color:#333'>尊敬的宝元贷用户：</p>
+			     	<div>春节即将到来，宝元贷提前祝大家新年快乐！并感谢您长期以来的信任与支持。根据平台资金存管合作银行华兴银行的通知，做出以下充值、提现安排：</div>
+			     	<p style='color:#333'>2、提现</p>
+			     	<p style='color:#333'>尊敬的宝元贷用户：</p>
+			     	<div>春节即将到来，宝元贷提前祝大家新年快乐！并感谢您长期以来的信任与支持。根据平台资金存管合作银行华兴银行的通知，做出以下充值、提现安排：</div>
+			     	<p style='color:#333'>2、提现</p>
+			     	<p style='color:#333'>尊敬的宝元贷用户：</p>
+			     	<div>春节即将到来，宝元贷提前祝大家新年快乐！并感谢您长期以来的信任与支持。根据平台资金存管合作银行华兴银行的通知，做出以下充值、提现安排：</div>
+			     	<p style='color:#333'>2、提现</p>
+			     	<p style='color:#333'>尊敬的宝元贷用户：</p>
+			     	<div>春节即将到来，宝元贷提前祝大家新年快乐！并感谢您长期以来的信任与支持。根据平台资金存管合作银行华兴银行的通知，做出以下充值、提现安排：</div>
+			     	<p style='color:#333'>2、提现</p>
+			     	<div class="alignright">深圳市前海宝元贷客互联网金融服务有限公司<br />2018年2月7日 </div>
+			     	-->
+				</div>
+			</div>
+			<button>我知道了</button>
+		</div>
+    </div>
+    
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js" ></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/common.js"charset="utf-8"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript">
+    
+    	mui.plusReady(function() {
+    		initOfficalMessage();
+			initMenu();
+			initBanner();
+			initAdsBanner();
+			initletterbtn();
+    	});
+    	
+    	/**
+    	 * 初始化菜单
+    	 */
+    	function initMenu(){
+    		app.getData("/common/menu/get_menu_list.do", {"PARENT_MENU_CODE" : "BEST_SERVICE"}, function(data){
+    			var list = data.RESULT_OBJECT;
+    			console.log(JSON.stringify(list));
+    			var html = "";
+    			for (var i = 0; i < list.length; i ++) {
+    				html += "<li class='mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3'>";
+    				html += "<a href='" + list[i].MENU_PATH + "' data='{\"MENU_ID\":" + list[i].MENU_ID + "}'>";
+    				html += "<span class='mui-icon'>";
+    				html += "<img src='" + list[i].MENU_ICON +"' alt='' /></span>";
+    				html += "<div class='mui-media-body'>" + list[i].MENU_NAME + "</div></a></li>";
+    			}
+    			$("#menu1").html(html);
+    		});
+    		
+    		app.getData("/common/menu/get_menu_list.do", {"PARENT_MENU_CODE" : "FINANCIAL_SERVICE"}, function(data){
+    			var list = data.RESULT_OBJECT;
+    			console.log(JSON.stringify(list));
+    			var html = "";
+    			for (var i = 0; i < list.length; i ++) {
+					html += "<li class='paddingall' style='background: #f5f5fb;flex:1;margin-right: 10px;' href='" + list[i].MENU_PATH + "' data='{\"MENU_ID\":" + list[i].MENU_ID + "}'>"; 
+					html += "<a class='flexbox itemcenter'>"
+					html += "<img src='" + list[i].MENU_ICON +"' alt='' style='width: 1.3rem;'/><div>";
+					html += "<p style='font-size: 0.3rem;font-weight: 700;margin-bottom: 5px;'>" + list[i].MENU_NAME + "</p>";
+					html += "<p class='mui-ellipsis' style='font-size: 0.2rem;'>" + list[i].MENU_DESC + "</p></div></a></li>";
+    			}
+    			$("#menu2").html(html);
+    		});
+    	}
+    	
+    	/* 初始化系统banner */
+    	function initBanner(){
+    		app.getData("/common/banner/get_banner_list.do", {"TYPE":1}, function(data){
+    			var list = data.RESULT_OBJECT;
+    			console.log(JSON.stringify(list));
+    			var html = "";
+				$.each(list, function() {
+					html += "<div class='swiper-slide'>";
+					if(this.EXTERNAL_URL){
+						html += "<a href='" + this.EXTERNAL_URL + "' alt=''>";
+					}else{
+						html += "<a href='" + this.EXTERNAL_URL + "' alt='" + this.BANNER_ID + "'>";
+					}
+					html += "<img src='" + this.BANNER_URL + "' alt='' />";
+					html += "</a></div>";
+				});
+				$('#banner').html(html);
+				
+				var mySwiper=new Swiper('.swiper-containerA',{
+		    		  loop:true,
+		    		  autoplay:5000,
+		    		  pagination: '.swiper-pagination',
+		    		  observer:true,//修改swiper自己或子元素时，自动初始化swiper
+	                  observeParents:true,
+	                  onSlideChangeEnd: function(swiper){ 
+				　　　     swiper.update();  
+                     }
+    	       })
+    		});
+		}
+    	
+    	mui("body").on("tap", "#banner div a", function() {
+    		var url = this.getAttribute('href');
+    		var id = this.getAttribute('alt');
+    		if( url != "null" ){
+    			var  thethirdpage=plus.webview.getWebviewById('fourth.html');
+   		        var allpage=plus.webview.all();
+   		 
+		   		mui.fire(thethirdpage,'openThird',{
+		   			id:url,
+		   			title:'信用卡申请'
+		   		})
+		   		mui.openWindow({
+		   			id:'fourth.html',
+		   			url:'fourth.html'
+		   		});
+    			return false;
+    		}
+    		if(id){
+    			showBanner(id);
+    		}
+    	});
+    	/**
+    	 * 初始化广告banner
+    	 */
+    	function initAdsBanner(){
+    		app.getData("/common/banner/get_banner_list.do", {"TYPE":2}, function(data){
+    			var list = data.RESULT_OBJECT;
+    			console.log(JSON.stringify(list));
+    			var html = "";
+				$.each(list, function() {
+					html += "<div class='swiper-slide'>";
+					if(this.EXTERNAL_URL){
+						html += "<a href='" + this.EXTERNAL_URL + "' alt=''>";
+					}else{
+						html += "<a href='" + this.EXTERNAL_URL + "' alt='" + this.BANNER_ID + "'>";
+					}
+					html += "<img src='" + this.BANNER_URL + "' alt='' />";
+					html += "</a></div>";
+				});
+				$('#adsBanner').html(html);
+				
+				var mySwiper2=new Swiper('.swiper-containerB',{
+		    		 loop:true,
+		    		 effect : 'fade',
+		    		 fade:{crossFade: false},
+		    		 autoplay:3000,
+		    		 observer:true,//修改swiper自己或子元素时，自动初始化swiper
+	                 observeParents:true,//修改swiper的父元素时，自动初始化swiper
+	                 onSlideChangeEnd: function(swiper){ 
+				　　　   swiper.update();   
+                    }
+    	        });
+    		});
+		}
+    	mui("body").on("tap", "#adsBanner div a", function() {
+    		var url = this.getAttribute('href');
+    		var id = this.getAttribute('alt');
+    		if( url != "null" ){
+    			//plus.webview.create(url);
+    			//mui.openWindow(url);
+    			//var url=this.EXTERNAL_URL;
+   		        var  thethirdpage=plus.webview.getWebviewById('fourth.html');
+   		        var allpage=plus.webview.all();
+   		 
+		   		mui.fire(thethirdpage,'openThird',{
+		   			id:url,
+		   			title:'信用卡申请'
+		   		})
+		   		mui.openWindow({
+		   			id:'fourth.html',
+		   			url:'fourth.html'
+		   		});
+    			return false;
+    		}
+    		if(id){
+    			showBanner(id);
+    		}
+    	});
+    	//跳转
+    	function showBanner(id) {
+			app.openWindow('newsdetail.html', 'newsdetail.html', {
+				"BANNER_ID": id,
+				"TYPE": 1
+			});
+		}
+    	
+    	/**
+    	 * 判断消息中心状态
+    	 */
+    	function initletterbtn(){
+			var params = {
+					"USER_ID": app.getStaffInfo().USER_ID
+			};
+    		app.getData("/common/message/getPersonalMessageState.do", params, function(json){
+    			var data = json.RESULT_OBJECT;
+    			if(data.num==0){
+    				$('#redpoint').hide();  
+    			}else{
+    				$('#redpoint').show();
+    			}
+    		});
+		}
+    	/**
+    	 * 初始化滚动消息(显示最新五条)
+    	 */
+    	function initOfficalMessage(){
+    		var params={
+					"NUM": 5,
+					"TYPE":4
+			};;
+   			app.getData("/common/message/showOfficalMessage.do", params, function(data){
+    			var list = data.RESULT_OBJECT;
+    			//console.log(JSON.stringify(list));
+    			var html = "";
+    			var showpopout = 0;
+    			for (var i = 0; i < list.length; i ++) {
+    				if(list[i].POP_UP==1 && showpopout==0){
+    					mui('#popover').popover('show');
+    					var htmls = "";
+				    	 	htmls += "<h4>"+list[i].TITLE.substring(0,16)+"</h4>";
+					     	htmls += list[i].CONTENT;
+				     	$("#popout").html(htmls);
+				     	showpopout = 1;
+    				}
+					html += "<li onclick = \"showOfficalMessageDetail('" + list[i].BANNER_ID + "','" + list[i].TYPE + "')\">"+list[i].TITLE.substring(0,16)+"</li>";
+    			}
+    			$("#newsUl").html(html);
+    			mui('#popwrapper').scroll();
+    			window.scrollTo(0,1)
+    		});
+    	}  
+	    mui('body').on('tap','#newsUl li',function(){
+	     	this.click();
+	     });
+    	
+    	/**
+    	 * 获取菜单状态
+    	 */
+    	
+    	function getMenuStatus(params) {
+    		params = JSON.parse(params);
+    		console.log(params);
+    		app.getData("/common/menu/get_menu_status.do", params, function(data){
+    			var json = data.RESULT_OBJECT;
+    			console.log(JSON.stringify(json));
+    			if(json.STATUS == 'X') {
+    				plus.nativeUI.alert(json.MENU_DESC);
+    			} else if(json.STATUS == 'A') {
+    				if(json.MENU_CODE == 'MY_INSURANCE'){
+    					var userinfo = app.getStaffInfo();
+    					if(userinfo.INSURANCE_ORDER == null || userinfo.INSURANCE_ORDER == ''){
+    						plus.nativeUI.alert("投保中");
+    						return;
+    					}
+    				}else if(json.MENU_CODE == 'INTELLIGENT_REPAYMENT'){
+    					var url=json.MENU_PATH;
+    					var mainpage=plus.webview.getWebviewById('main.html');
+		   		        
+		   		        console.log(url);
+				   		 mui.fire(mainpage,'changeTab',{
+				   			url:url,
+				   		 })
+				   		 return;
+    				}else if(json.MENU_CODE == 'QUERY_CREDIT'){
+    					var url=json.MENU_PATH;
+		   		        var  thethirdpage=plus.webview.getWebviewById('fourth.html');
+		   		        var allpage=plus.webview.all();
+		   		        console.log(thethirdpage+'pagelen'+allpage.length);
+				   		mui.fire(thethirdpage,'openThird',{
+				   			id:url,
+				   			title:'征信查询'
+				   		})
+				   		mui.openWindow({
+				   			id:'fourth.html',
+				   			url:'fourth.html'
+				   		});
+				   		return;
+    				}else if(json.MENU_CODE == 'PRATT_LOAN'){
+    					var url=json.MENU_PATH;
+		   		        var  thethirdpage=plus.webview.getWebviewById('fourth.html');
+		   		        var allpage=plus.webview.all();
+		   		 
+				   		mui.fire(thethirdpage,'openThird',{
+				   			id:url,
+				   			title:'普惠好贷'
+				   		})
+				   		mui.openWindow({
+				   			id:'fourth.html',
+				   			url:'fourth.html'
+				   		});
+				   		return;
+    				}
+					var isValidCertFlag = isValidCert();
+			  		if(isValidCertFlag == 2) {
+			  			goActive();
+			  			return;
+			  		} else if(isValidCertFlag == 3) {
+			  			goCert();
+			  			return;
+			  		} else if(isValidCertFlag == 4) {
+			  			goSetPayPwd();
+			  			return;
+			  		}
+    				mui.openWindow(json.MENU_PATH);
+    			}
+    		});
+    	}
+    	
+        mui.init({
+	      	pullRefresh:{
+	      	 	container:'#refreshContainer',
+	      	    down : {
+	      	      auto:true,
+			      callback :refresh,
+			      color:'#309bdf',
+			      range:'100px',
+			      contentrefresh : "刷新成功~",
+			    }
+	      	},
+	      	preloadPages:[{
+				id:'thethird.html',
+				url:'thethird.html'
+			}]
+        });
+    
+    	function refresh(){
+            //ajax请求，需将如下代码放置在处理完ajax响应数据之后
+    		//没有更多内容了，endPulldown 传入true， 不再执行下拉刷新
+ 			//mui('#refreshContainer').pullRefresh().endPulldown();
+// 			plus.nativeUI.showWaiting();
+			initBanner();
+			initAdsBanner();
+			initMenu();
+			initBanner();
+			initOfficalMessage();
+			initletterbtn();
+    		mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+//  		plus.nativeUI.closeWaiting();
+    	}
+    
+    	//首页消息向上滚动
+      	function autoScroll(obj) {
+             $(obj).find("ul:first").animate({marginTop:"-16px"},1000,function(){$(this).css({'margin-top':"0"}).find("li:first").appendTo(this); });
+		}
+      	
+    	$(document).ready(function(){
+    	    setTimeout(function(){
+    	   	    var timer= setInterval(function(){
+    	  	          autoScroll('.newsUlbox')
+    	  		},4000)
+    	    },4000)
+        })
+    	
+    	/**
+    	 * 精选服务
+    	 */ 
+    	mui("body").on("tap", ".mui-card li a", function() {
+    		var url = this.getAttribute('href');
+    		if(url == "" || url == "#") {
+    			plus.nativeUI.alert("敬请期待~");
+    			return false;
+    		}
+    		var params = this.getAttribute('data');
+    		getMenuStatus(params);
+    	});
+    	
+    	/**
+    	 * 金融服务
+    	 */
+    	mui("body").on("tap", ".flexbox li", function() {
+    		var url = this.getAttribute('href');
+    		if(url == "" || url == "#") {
+    			plus.nativeUI.alert("敬请期待~");
+    			return false;
+    		}
+    		var params = this.getAttribute('data');
+    		getMenuStatus(params);
+    	});
+    	
+    	/**
+    	 * 官方公告
+    	 */
+    	mui("body").on("tap", "#more", function() {
+    		app.openWindow("officalAnnocument.html","officalAnnocument.html")
+    	});
+    	
+    	/**
+    	 * 消息中心
+    	 */
+    	mui("body").on("tap", ".letterbtn", function() {
+    		app.openWindow("newscenter.html","newscenter.html")
+    	});
+    	
+		function showOfficalMessageDetail(BANNER_ID, TYPE) {
+			app.openWindow('newsdetail.html', 'newsdetail.html', {
+				"BANNER_ID": BANNER_ID,
+				"TYPE": TYPE
+			});
+		} 
+		
+		var first = null;
+		mui.back = function() {
+			//首次按键，提示‘再按一次退出应用’
+			if(!first) {
+				first = new Date().getTime();
+				mui.toast('再按一次退出应用');
+				setTimeout(function() {
+					first = null;
+				}, 1000);
+			} else {
+				if(new Date().getTime() - first < 1000) {
+					plus.runtime.quit();
+				}
+			}
+		};	
+		
+		mui('body').on('tap','.mui-popover button',function(){
+			mui('#popover').popover('hide');
+		})
+		
+		/*mui.prompt('wwe','new','wew',['s','2'],function(e){
+			if(e.index==0){
+				if(e.value==''){
+					$('.mui-popup-input input').attr('placeholder','请输入您收到的验证码');
+					mui('.mui-popup-buttons').on('tap','.mui-popup-button',function(){
+						alert('h')
+						
+					})
+					return false;
+				}else{
+					
+				}
+			}
+		})*/
+		
+		mui.confirm('<input type="password" id="test" />', 'Hello MUI', null, function(event) {
+var index = event.index;
+if(index === 1) {
+var pwd = document.getElementById('test').value;
+// 验证失败返回false
+return false;
+}
+},'div');
+		
+		plus.nativeUI.showWaiting();
+		
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   	<link rel="stylesheet" href="css/mui.css" />
+   	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait" /> 
+   	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+</head>
+<body style='background: #Fff;'>
+   <header class="mui-bar mui-bar-nav">
+       <h1 class="mui-title">激活管理</h1>
+       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+       </button>
+   </header>
+   <div class="mui-content">
+   	     <div class="aligncenter paddingtb" style='width:3rem;margin:100px auto 0'>
+   	     	  <input type="text" placeholder="请输入激活码" id='code' class="aligncenter paddingtb"  style="border:none;border-bottom: 1px solid #C8C7CC;font-size: 0.34rem;" />
+   	     </div>
+       <button class="newbtn" id="activatBtn">确认激活</button>
+   </div>
+   <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+   	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/security.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+		
+		var main = null;
+	    mui.plusReady(function() {
+	        main = plus.webview.currentWebview().opener();
+	    });
+		
+		mui("body").on("tap", ".mui-icon-left-nav", backWin);
+	    mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+      	function backWin() {
+      		plus.webview.currentWebview().close();
+      	}
+      	
+		mui("body").on("tap", "#activatBtn", doActivation);
+		
+        function doActivation() {
+	        //检查激活是否已填写
+	        var code = $("#code").val();
+	        if(code == "") {
+	          plus.nativeUI.toast("请输入激活码");
+	          return;
+	        }
+	        if(code.length != 6 && code.length != 10) {
+	          plus.nativeUI.toast("请确认激活码格式正确");
+	          return;
+	        }
+	        
+	        var param = {
+	          "USER_ID": app.getStaffInfo().USER_ID,
+	          "TOKEN": app.getStaffInfo().TOKEN,
+	          "INVITATION_CODE": RSAUtils.encryptedString(code)
+	        };
+	        plus.nativeUI.showWaiting();
+	        app.getData("/account/add_invitation_code.do", param, function(json) {
+	        	if (json.RESULT_CODE == 0) {
+	        		var accountInfo = app.getAccountInfo();
+	        		    accountInfo.HAS_CODE=0;
+			        app.setAccountInfo(accountInfo);
+			        plus.nativeUI.closeWaiting();
+			        mui.fire(main, "pageflowrefresh1");
+			        plus.webview.currentWebview().close();
+			        plus.nativeUI.toast('恭喜，激活成功');
+			        mui.back();
+			    } else {
+			    	plus.nativeUI.closeWaiting();
+			        mui.fire(main, "pageflowrefresh1");
+			        plus.webview.currentWebview().close();
+			        plus.nativeUI.toast('激活失败');
+			        mui.back();
+			    }
+	        });
+        }
+      
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <meta name="x5-orientation" content="portrait">
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="screen-orientation" content="portrait" /> 
+	    <meta http-equiv="Cache-Control" content="no-cache" />
+	    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+	    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+	    <style type="text/css">
+	    	.mui-navigate-right:after, .mui-push-right:after{right:0}
+	    	.mui-table-view-cell > a:not(.mui-btn) span{font-size: 0.26rem;}
+	    	.mui-table-view .mui-media-object{margin-right: 0.2rem;line-height:0.4rem;max-width: 0.4rem;height: 0.4rem;}
+	    	.agentbg{margin-bottom: -0.015rem;}
+	    </style>
+	</head>
+<body>
+   <div class="mui-content mui-scroll-wrapper" id='refreshContainer'>
+	  <div class="mui-scroll">
+	   	 	<div class='accounttop'><!--若不是代理商，无agentbg这个class-->
+	              <div class='touxiang'>
+	                  <img src="image/pic_login_head_1.png"  alt="" />
+	              </div>
+	              <div class='userinfo'>
+	                  <p><label id="USER_NAME"></label><span class='notard' id="certStatus">已实名保护</span><span class="agent" style="display: none;" ><img src="image/icon_my_vip.png" class="abvt" />代理商</span></p>
+	                  <p id="PHONE_NO"></p>
+	              </div>
+		      </div>
+		      <div class="flexbox spacear paddingall marginbtm" style="display: none;" id="agentInfo">
+		      	  <div class="flexbox itemcenter agentInfo" href="profitIncome.html" style='flex:1;justify-content: center;position:relative;border-right: 1px solid #E4E4E4;'>
+		      	  	  <img src="image/icon_pre_left.png" style="width: 0.8rem;" />
+		      	  	  <div class="paddinglf">
+		      	  	  	  <p>分润收益(元)</p>
+		      	  	  	  <p style="color:#0b61fe;font-size: 0.35rem;" id="profitAmount">￥0</p>
+		      	  	  	  <span class='mui-icon mui-icon-arrowright abvt' style="right: 5px;"></span>
+		      	  	  </div>
+		      	  </div>
+		      	  <div class="flexbox itemcenter agentInfo" href="codedetail.html" style='flex:1;justify-content: center;position: relative;'>
+		      	  	    <img src="image/icon_pre_right.png" alt=""  style="width:0.8rem;" />
+		      	  	    <div class="paddinglf">
+		      	  	    	<p>激活码(个)</p>
+		      	  	    	<p style="color: #0b61fe;font-size: 0.35rem;" id="allotNum">0</p>
+		      	  	    	<span class='mui-icon mui-icon-arrowright abvt' style="right: 5px;"></span>
+		      	  	    </div>
+		      	  </div>
+		      </div>
+		      <ul class='mui-table-view marginbtm'>
+		          <li class="mui-table-view-cell mui-media" id="cert">
+		              <a href="#" id="certName" class="mui-navigate-right">
+		                   <img class="mui-media-object" src="image/icon_my_1.png">
+		                   <span>实名认证</span>
+		                   <span id="smrz" class="abvt versus" style='color:#fff;right:35px;font-size:0.2rem;padding:1px 4px;background: #3f9cf3;border-radius: 4px;'>认证成功</span>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media otherOpt">
+		              <a href="billDetail.html" class="mui-navigate-right">
+		                  <img class="mui-media-object" src="image/icon_my_2.png">
+		                  <span>交易账单</span>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media otherOpt">
+		              <a href="securitycenter.html" class="mui-navigate-right">
+		                  <img class="mui-media-object" src="image/icon_my_3.png">
+		                  <span>安全中心</span>
+		              </a>
+		          </li>
+		        </ul>
+		        <ul class="mui-table-view marginbtm">
+		          <li class="mui-table-view-cell mui-media otherOpt">
+		              <a href="resetphonenum.html" class="mui-navigate-right">
+		                  <img class="mui-media-object" src="image/icon_my_4.png">
+		                  <span>更换手机号</span>
+		              </a>
+		          </li>
+		        </ul>
+		        <ul class="mui-table-view marginbtm">
+		          <li class="mui-table-view-cell mui-media otherOpt">
+		              <a href="onlineServer.html" class="mui-navigate-right">
+		                  <img class="mui-media-object" src="image/icon_my_5.png">
+		                  <span>留言反馈</span>
+		              </a>
+		          </li>
+		          <li class="mui-table-view-cell mui-media" id="kefu">
+		              <a href=""  class="mui-navigate-right">
+		                  <img class="mui-media-object" src="image/icon_my_6.png">
+		                  <span>客服电话</span>
+		                  <span class='phonenum' id="serviceTime" style='right:15px'></span>
+		                  <input class='phonenum' type="hidden" name="serviceTel" id="serviceTel" value="" />
+		              </a>
+		          </li>
+		          <!-- 待用<li class="mui-table-view-cell mui-media otherOpt">
+		              <a href="javascript:;">
+		                  <img class="mui-media-object" src="image/icon_my_9.png">
+		                  <span>邀请好友</span>
+		                  <span class="rightspan">(已邀请<span class='inivitnum'>6</span>人,收入<span class="invitincome">300</span>元)</span>
+		              </a>
+		          </li>-->
+		          <li class="mui-table-view-cell mui-media">
+		              <a href="" id="checkUpdate">
+		                  <img class="mui-media-object" src="image/icon_my_7.png">
+		                  <span>版本信息</span>
+		                  <span class='visition'></span>
+		              </a>
+		          </li>
+		      </ul>
+		      <ul class='mui-table-view marginbtm'>
+		          <li class="mui-table-view-cell mui-media"  id="exit">
+		              <a href="javascript:;" >
+		                  <img class="mui-media-object" src="image/icon_my_8.png">
+		                  <span>安全退出</span>	
+		              </a>
+		          </li>
+		     </ul>
+	  </div>
+  </div>
+  
+ 	<script type="text/javascript" src="js/jquery-2.0.0.min.js" ></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/common.js"charset="utf-8"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+  	<script type="text/javascript">
+      
+   	     /*(function($){
+    			$(".mui-scroll-wrapper").scroll(); 
+		 })(mui);*/
+		
+		
+	  	mui.plusReady(function() {
+	  		document.documentElement.style.fontSize = plus.screen.resolutionWidth/ 7.5 + 'px';
+	  		plus.runtime.getProperty(plus.runtime.appid,function(inf){
+				var wgtVer = inf.version;
+				console.log("当前应用版本："+wgtVer);
+				$("span.visition").text("V" + wgtVer);
+			});
+	  		init();
+	  	});
+  
+	  	window.addEventListener("pageflowrefresh1", function(e){
+	  		init();
+		});
+		
+		
+		mui.init({
+	      	pullRefresh:{
+	      	 	container:'#refreshContainer',
+	      	    down : {
+			      callback :refresh,
+			      auto:true,
+			      contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+			      contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+			      contentrefresh : "刷新成功~",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+			    }
+	      	}
+        });
+    
+    	function refresh(){
+            //ajax请求，需将如下代码放置在处理完ajax响应数据之后
+    		//没有更多内容了，endPulldown 传入true， 不再执行下拉刷新
+ 			//mui('#refreshContainer').pullRefresh().endPulldown();
+// 			plus.nativeUI.showWaiting();
+			init();
+    		mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+//  		plus.nativeUI.closeWaiting();
+    	}
+    
+    
+	  	/**
+	  	 * 初始化
+	  	 */
+	  	function init() {
+	  		var staffInfo = app.getStaffInfo();
+	  		var params = {"USER_ID":staffInfo.USER_ID, "TOKEN":staffInfo.TOKEN};
+	  		app.getData("/account/get_user_info.do", params, function(json){
+	  			console.log(JSON.stringify(json));
+	  			if (json.RESULT_CODE == 0) {
+	  				app.setAccountInfo(json.RESULT_OBJECT);
+	  				$("#PHONE_NO").text(json.RESULT_OBJECT.PHONE_NO);
+	  				$("#USER_NAME").text(json.RESULT_OBJECT.NAME || "");
+	  				$("#serviceTel").text(json.RESULT_OBJECT.SERVICE_TEL || "");
+	  				$("#serviceTime").text("工作日 9:00-18:00");
+	  				if(json.RESULT_OBJECT.IS_REALNAME == 1) {
+				  		$("#USER_NAME").text(json.RESULT_OBJECT.NAME);
+						$("#smrz").text("认证成功");
+						$("#certStatus").attr("class", "notard");
+						$("#certStatus").text("已实名保护");
+					} else {
+						$("#smrz").text("去认证");
+						$("#certStatus").attr("class", "notyet");
+						$("#certStatus").text("未受实名保护");
+					}
+	  			}
+	  		});
+	  		
+	  		var accountInfo = app.getAccountInfo();
+	  		var isAgent = accountInfo.IS_AGENT;
+	  		console.log(accountInfo);
+	  		if(isAgent == 1) {
+	  			app.getData("/agent/get_agent_info.do", params, function(json){
+		  			console.log(JSON.stringify(json));
+		  			if (json.RESULT_CODE == 0) {
+		  				$('.accounttop').addClass('agentbg');
+		  				$("#allotNum").text(json.RESULT_OBJECT.INVITATION_ALLOT_NUM);
+		  				$("#profitAmount").text("￥" + json.RESULT_OBJECT.PROFIT_AMOUNT);
+		  				$(".agent").show();
+		  				$("#agentInfo").show();
+		  			}
+		  		});
+	  		}
+	  		
+	  	}
+	  	
+	  	function realName() {
+	  		var isValidCertFlag = isValidCert();
+	  		if(isValidCertFlag == 2) {
+	  			goActive();
+	  			return;
+	  		} else if(isValidCertFlag == 3) {
+	  			goCert();
+	  			return;
+	  		}
+	  		var IS_REALNAME = app.getAccountInfo().IS_REALNAME;
+			if(IS_REALNAME == 0) {
+				app.openWindow('realnameNo.html', 'realnameNo.html'); //未实名
+			} else {
+				plus.nativeUI.toast("您已完成实名认证，请勿重复认证"); 
+			}
+		}
+		
+		mui("body").on("tap", ".agentInfo", function() {
+			var isValidCertFlag = isValidCert();
+	  		if(isValidCertFlag == 2) {
+	  			goActive();
+	  			return;
+	  		} else if(isValidCertFlag == 3) {
+	  			goCert();
+	  			return;
+	  		} else if(isValidCertFlag == 4) {
+	  			if (url == 'balance.html' || url == 'billDetail.html') {
+	  				goSetPayPwd();
+	  				return;
+	  			}
+	  		}
+			var url = this.getAttribute('href');
+			if(url == "" || url == "#") {
+				plus.nativeUI.alert("项目建设中~"); 
+				return false;
+			}
+			app.openWindow(url, url);
+		});
+		
+	  	mui("body").on("tap", "#cert", function() {
+			realName();
+		});
+		
+	  	mui("body").on("tap", ".otherOpt a", function() {
+	   		var isValidCertFlag = isValidCert();
+	  		if(isValidCertFlag == 2) {
+	  			goActive();
+	  			return;
+	  		} else if(isValidCertFlag == 3) {
+	  			goCert();
+	  			return;
+	  		} else if(isValidCertFlag == 4) {
+	  			if (url == 'balance.html' || url == 'billDetail.html') {
+	  				goSetPayPwd();
+	  				return;
+	  			}
+	  		}
+	   		var url = this.getAttribute('href');
+			if(url == "" || url == "#") {
+				plus.nativeUI.alert("项目建设中~"); 
+				return false;
+			}
+			app.openWindow(url, url);
+		});
+
+		mui("body").on("tap", "#kefu", function() {
+			var btnArray = ['取消', '拨打'];
+	        var phonenum = $("input.phonenum").text();
+	        mui.confirm('您确定要拨打客服电话吗？\r\n ' + phonenum, '客服电话', btnArray, function(e) {
+	            if (e.index == 1) { 
+	                plus.device.dial(phonenum, false); 
+	            }
+	        });
+		});
+		
+		mui("body").on("tap", "#exit", function(){
+			var btnArray = ['取消', '退出'];
+	        mui.confirm('您确定要退出当前账户吗？' , '温馨提示', btnArray, function(e) {
+	            if (e.index == 1) {
+	            	var loginInfo = app.getLoginInfo();
+	            	loginInfo.USERNAME = "";
+	            	loginInfo.PASSWORD = "";
+					app.setLoginInfo(loginInfo);
+					plus.nativeUI.toast("已退出");
+					plus.webview.close("login.html");
+					plus.webview.close("main.html");
+					plus.webview.create("login.html", "login.html").show();
+	            }
+	        });
+		});
+	
+	
+	mui("body").on("tap", "#checkUpdate", function(){
+		checkUpdate();
+	})
+	// 检测更新
+		function checkUpdate(){
+			var TERMINAL_TYPE = "ANDROID_LXKB";
+			if(mui.os.ios)
+				TERMINAL_TYPE = "IOS_LXKB";
+			// 获取本地应用资源版本号
+			console.log("当前设备类型："+TERMINAL_TYPE);
+			plus.runtime.getProperty(plus.runtime.appid,function(inf){
+				var wgtVer = inf.version;
+				console.log("当前应用版本："+wgtVer);
+				app.getData("/common/system/version.do",{"TERMINAL_TYPE":TERMINAL_TYPE,"APP_VERSION":wgtVer},function(json){
+			    	console.log(JSON.stringify(json));
+			    	if(json.RESULT_OBJECT.HAS_UPDATE == 1){
+			    		/*var btnArray = ['下次再说', '立即更新'];//选择更新
+			    		mui.confirm('检测到有新版本' , '更新提示', btnArray, function(e) {
+				            if (e.index == 1) {
+				               downWgt(json.RESULT_OBJECT.UPDATE_URL);  // 下载升级包
+				            }
+				       });*/
+				      var btnArray = ['立即更新'];//强制更新
+			    		mui.confirm('检测到有新版本' , '更新提示', btnArray, function(e) {
+				           downWgt(json.RESULT_OBJECT.UPDATE_URL);  // 下载升级包
+				       });
+	               }else{
+	               		mui.alert('已是最新版本！');
+	               }
+			   });
+		   });
+		}
+		
+		// 下载wgt文件
+		function downWgt(wgtUrl){
+		    plus.nativeUI.showWaiting("下载更新资源包...");
+		    plus.downloader.createDownload( wgtUrl, {filename:"_doc/update/"}, function(d,status){
+		        if (status == 200) {
+		        	plus.nativeUI.closeWaiting();
+		        	plus.nativeUI.toast("下载完成");
+		            console.log("下载wgt成功："+d.filename);
+		            installWgt(d.filename); // 安装wgt包
+		        } else {
+		        	plus.nativeUI.closeWaiting();
+		            console.log("下载wgt失败！");
+		            plus.nativeUI.alert("下载更新资源包失败");
+		        }
+		    }).start();
+		}
+		
+		// 更新应用资源
+		function installWgt(path){
+		    plus.nativeUI.showWaiting("应用资源更新中...");
+		    plus.runtime.install(path,{},function(){
+		        plus.nativeUI.closeWaiting();
+		        console.log("安装wgt文件成功！");
+		        plus.nativeUI.toast("应用资源更新完成");
+		        plus.runtime.restart();
+		    },function(e){
+		        plus.nativeUI.closeWaiting();
+		        console.log("安装wgt文件失败["+e.code+"]："+e.message);
+		        plus.nativeUI.alert("应用资源更新失败["+e.code+"]:" + e.message);
+		    });
+		}
+		
+		mui.back = function() {
+				return false;
+			};
+   </script>
+</body>
+</html>

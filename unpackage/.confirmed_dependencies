@@ -1,0 +1,251 @@
+{
+  "start.html": {
+    "resources": [
+      "js/app.js",
+      "js/mui.min.js",
+      "img/icon_logo.png",
+      "js/security.js",
+      "js/jquery-2.0.0.min.js",
+      "image/icon_logo.png"
+    ],
+    "refer": [
+      "login.html",
+      "main.html",
+      "index.html"
+    ]
+  },
+  "login.html": {
+    "resources": [
+      "img/login_logo.png",
+      "js/common.js",
+      "css/common.css",
+      "image/login_bg.png",
+      "css/mui.css"
+    ],
+    "refer": [
+      "main.html",
+      "register.html",
+      "forgetpassword.html",
+      "newscenter.html",
+      "thethird.html"
+    ]
+  },
+  "accountCenter.html": {
+    "resources": [
+      "img/bg_pre_nav.png",
+      "img/icon_leftbar_6.png",
+      "img/icon_leftbar_3.png",
+      "img/icon_leftbar_2.png",
+      "img/btn_list_expend.png",
+      "img/bg_pre_sta.png",
+      "img/icon_leftbar_5.png",
+      "img/head_img.png",
+      "img/icon_leftbar_4.png",
+      "img/icon_leftbar_1.png",
+      "fonts/mui.ttf",
+      "img/icon_pre_left.png",
+      "img/icon_pre_right.png",
+      "image/icon_pre_right.png",
+      "image/icon_my_7.png",
+      "image/icon_my_6.png",
+      "image/icon_my_2.png",
+      "image/icon_my_8.png",
+      "image/pic_bg_my_2.png",
+      "image/icon_my_vip.png",
+      "image/icon_pre_left.png",
+      "image/icon_my_1.png",
+      "image/pic_login_head_1.png",
+      "image/icon_my_3.png",
+      "image/icon_my_5.png",
+      "image/icon_my_4.png"
+    ],
+    "refer": [
+      "login.html",
+      "profitIncome.html",
+      "onlineServer.html",
+      "billDetail.html",
+      "resetphonenum.html",
+      "securitycenter.html"
+    ]
+  },
+  "index.html": {
+    "resources": [
+      "img/icon_index_1.png",
+      "img/icon_index_news.png",
+      "img/icon_add.png",
+      "img/icon_index_3.png",
+      "img/icon_index_2.png",
+      "img/pic_index_banner.png",
+      "img/icon_index_4.png",
+      "css/mui.css",
+      "fonts/mui.ttf",
+      "img/touxiang.png",
+      "image/home_icon_new_2.png",
+      "image/home_icon_7.png",
+      "js/swiper.min.js",
+      "image/home_icon_3.png",
+      "image/home_icon_2.png",
+      "image/home_icon_1.png",
+      "image/pic_banner.png",
+      "image/home_icon_8.png",
+      "css/common.css",
+      "image/home_pic_s2.png",
+      "image/home_icon_4.png",
+      "image/home_banner_2.png",
+      "image/home_pic_s1.png",
+      "css/swiper.3.1.7.min.css",
+      "image/home_icon_5.png",
+      "image/home_icon_6.png",
+      "js/jquery-2.0.0.min.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "image/home_icon_news.png",
+      "js/app.js",
+      "thethird.html"
+    ],
+    "refer": [
+      "newscenter.html",
+      "wantgathering.html",
+      "officalAnnocument.html",
+      "newsdetail.html",
+      "creditcardapply.html",
+      "thethird.html",
+      "activation.html",
+      "fourth.html"
+    ]
+  },
+  "main.html": {
+    "resources": [
+      "index.html",
+      "css/common.css",
+      "img/tab_3_n.png",
+      "img/tab_2_n.png",
+      "img/tab_1_h.png",
+      "js/common.js",
+      "css/mui.css",
+      "fonts/mui.ttf",
+      "js/mui.min.js",
+      "js/jquery-2.0.0.min.js",
+      "image/tab_2_n.png",
+      "image/tab_1_h.png",
+      "image/tab_3_n.png",
+      "image/tab_2_h.png",
+      "image/tab_1_n.png",
+      "image/tab_3_h.png"
+    ],
+    "refer": [
+      "accountCenter.html",
+      "index.html",
+      "mycard.html",
+      "payPage.html",
+      "balance.html",
+      "thethird.html",
+      "fourth.html"
+    ]
+  },
+  "mycard.html": {
+    "resources": [
+      "img/icon_add.png",
+      "css/common.css",
+      "css/mui.css",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "addCreditcard.html",
+      "repaymentPlan.html",
+      "DebitcardDetail.html",
+      "creditcardDetail.html",
+      "repaymentDetail.html"
+    ]
+  },
+  "payPage.html": {
+    "resources": [
+      "img/icon_purse.png",
+      "img/btn_del_code.png"
+    ],
+    "refer": [
+      "addCreditcard.html"
+    ]
+  },
+  "newscenter.html": {
+    "resources": [
+      "js/common.js",
+      "js/mui.min.js",
+      "css/common.css",
+      "fonts/mui.ttf",
+      "image/icon_switch_g.png",
+      "css/mui.css",
+      "js/jquery-2.0.0.min.js",
+      "image/icon_switch_r.png"
+    ],
+    "refer": [
+      "newsdetail.html"
+    ]
+  },
+  "wantgathering.html": {
+    "resources": [
+      "image/icon_bank_pa.png",
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "css/common.css",
+      "image/btn_del_code.png",
+      "fonts/mui.ttf",
+      "js/security.js",
+      "css/mui.css",
+      "js/jquery-2.0.0.min.js",
+      "image/icon_add.png",
+      "image/btn_del_compute.png"
+    ],
+    "refer": [
+      "choosePassway.html",
+      "addCreditcard.html"
+    ]
+  },
+  "officalAnnocument.html": {
+    "resources": [
+      "css/mui.css",
+      "js/app.js",
+      "js/common.js",
+      "js/mui.min.js",
+      "css/common.css",
+      "fonts/mui.ttf",
+      "js/swiper.min.js",
+      "js/jquery-2.0.0.min.js"
+    ],
+    "refer": [
+      "newsdetail.html"
+    ]
+  },
+  "addCreditcard.html": {
+    "refer": [
+      "bankList.html"
+    ]
+  },
+  "creditcardapply.html": {
+    "refer": [
+      "thethird.html"
+    ]
+  },
+  "repaymentPlan.html": {
+    "refer": [
+      "repaymentDetailtwo.html"
+    ]
+  },
+  "repaymentDetailtwo.html": {
+    "refer": [
+      "payPage.html"
+    ]
+  },
+  "profitIncome.html": {
+    "refer": [
+      "profitIncomedetail.html",
+      "withdrawdetail.html"
+    ]
+  },
+  "billDetail.html": {
+    "refer": [
+      "repaymentDetail.html"
+    ]
+  }
+}

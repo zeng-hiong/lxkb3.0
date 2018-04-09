@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body {
+				background: #f3f7f9;
+			}
+			
+			.redpoint {
+				border-radius: 50%;
+				background: red;
+				width: 0.2rem;
+				height: 0.2rem;
+				right: 0
+			}
+			
+			.mui-table-view-cell {
+				position: relative;
+			}
+			
+			.mui-table-view-cell .abslt {
+				right: 0.4rem;
+				font-size: 0.24rem;
+				top: 0;
+				position: absolute;
+			}
+			
+			.mui-table-view-cell .abslt span {
+				padding-left: 5px;
+				color: #999;
+			}
+			
+			.newsbox div p {
+				font-size: 0.28rem;
+				color: #666;
+			}
+			
+			.newsbox div {
+				font-size: 0.3rem;
+				color: #444;
+				margin-bottom: 5px;
+			}
+			
+			.newsbox {
+				display: inline-block;
+			}
+			
+			input[type='checkbox'] {
+				width: 0.5rem;
+				height: 0.5rem;
+				background: url(image/icon_switch_g.png);
+				background-size: 100% 100%;
+				margin-right: 0.2rem;
+			}
+			
+			button {
+				outline: none;
+			}
+			
+			input[type='checkbox']:checked {
+				background: url(image/icon_switch_r.png);
+				background-size: 100% 100%;
+			}
+			
+			.mui-table-view-cell {
+				padding: 0.35rem 0.3rem 0.35rem
+			}
+			
+			.btmUl {
+				bottom: 0;
+				position: fixed;
+				left: 0;
+				right: 0;
+				z-index: 5;
+			}
+			
+			.btmUl div {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			.btmUl input[type=checkbox] {
+				vertical-align: middle;
+			}
+			
+			.btmUl span,
+			.btmUl label {
+				font-size: 0.3rem;
+				vertical-align: middle;
+			}
+			
+			.btmUl span {
+				padding-left: 0.3rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">消息中心</h1>
+			<button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+			<button class="mui-btn  mui-btn-link mui-pull-right manage">管理</button>
+		</header>
+		<div class="mui-content mui-scroll-wrapper" id='refreshContainer'>
+			<div class="mui-scroll">
+				<ul id="OA_task_2" class="mui-table-view">
+					<!--<li class="mui-table-view-cell mui-transitioning">
+						<div class="mui-slider-right">
+							<a class="mui-btn mui-btn-yellow">已读</a>
+							<a class="mui-btn mui-btn-red">删除</a>
+						</div>
+						<div class="mui-slider-handle">
+							<div class="mui-table-cell">
+								<input type="checkbox" class='mui-hidden' name='newsTIP' id='1' value="1" />
+								<label for="1">
+									<div>到账提醒</div>
+	         	 		            <p>您的借款申请已到账，请您前往银行卡进行查询</p>
+							    </label>
+							</div>
+							<span class="redpoint abvt"></span>
+							<p class="abslt"><span>06-26</span><span>14:20</span></p>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-transitioning">
+						<div class="mui-slider-right">
+							<a class="mui-btn mui-btn-yellow">已读</a>
+							<a class="mui-btn mui-btn-red">删除</a>
+						</div>
+						<div class="mui-slider-handle">
+							<input type="checkbox" class='mui-hidden' name='newsTIP' id='1' value="1" />
+							<div class="mui-table-cell">
+								
+								<label for="1" class="newsbox">
+								<div>到账提醒</div>
+         	 		            <p>您的借款申请已到账，请您前往银行卡进行查询</p>
+							</label>
+
+							</div>
+							<span class="redpoint abvt"></span>
+							<p class="abslt"><span>06-26</span><span>14:20</span></p>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-transitioning">
+						<div class="mui-slider-right">
+							<a class="mui-btn mui-btn-yellow">已读</a>
+							<a class="mui-btn mui-btn-red">删除</a>
+						</div>
+						<div class="mui-slider-handle">
+							<div class="mui-table-cell">
+								<input type="checkbox" class='mui-hidden' name='newsTIP' id='1' value="1" />
+								<label for="1">
+								<div>到账提醒</div>
+         	 		            <p>您的借款申请已到账，请您前往银行卡进行查询</p>
+							</label>
+
+							</div>
+							<p class="abslt"><span>06-26</span><span>14:20</span></p>
+						</div>
+					</li>-->
+				</ul>
+				<p class="aligncenter" style='margin-top: 0.3rem;color: #309bdf;font-size: 0.26rem;' id='loadmore'>上拉加载更多</p>
+			</div>
+			<ul class="mui-table-view btmUl mui-hidden">
+				<li class="mui-table-view-cell">
+					<input type="checkbox" name='newsTIP' id='allseled' value="4" />
+					<label for="allseled" class="chooall">全选</label>
+					<span id='delALL'>删除</span>
+					<span id='readall'>已读</span>
+					<!--暂时隐藏-->
+					<!--
+					<div style='padding-left: 0.3rem;'>
+						<span>消息推送</span>
+						<div class="mui-switch">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</div>
+					-->
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script>
+			mui("body").on("tap", ".mui-icon-left-nav", back_window);
+			
+	    	mui.plusReady(function() {
+    			init();
+	    	});
+	    	
+			var MAX_NUM = 10;
+			var MIN_NUM = 0;
+			var is_no = 0;
+
+			function init() {
+				var params = {
+					"USER_ID": app.getStaffInfo().USER_ID,
+					"MAX_NUM": MAX_NUM,
+					"MIN_NUM": MIN_NUM
+				};
+				
+				app.getData("/common/message/showPersonalMessageList.do", params, function(data) {
+					var list = data.RESULT_OBJECT;
+					console.log(JSON.stringify(list));
+					if(list.length > 0) {
+						var html = [];
+						if(10 > list.length) {
+							is_no = 1;
+							$('#loadmore').html("");
+						}
+						$.each(list, function(i, obj) {
+							html.push("<li class='mui-table-view-cell mui-transitioning'>");
+							html.push("<div class='mui-slider-right'>");
+							if(this.READ_STATE == 0) {
+								html.push("<a class='mui-btn mui-btn-yellow' data = '{\"MESSAGE_ID\":\"" + this.MESSAGE_ID + "\"}'>已读</a>");
+							}
+							html.push("<a class='mui-btn mui-btn-red'  data = '{\"MESSAGE_ID\":\"" + this.MESSAGE_ID + "\"}'>删除</a>");
+							html.push("</div>");
+							html.push("<div class='mui-slider-handle'>");
+							html.push("<div class='mui-table-cell'>");
+							html.push("<input type='checkbox' class='mui-hidden' name='newsTIP' id='" + i + "' value='" + this.MESSAGE_ID + "' />");
+							html.push("<div class='newsbox'   data = '{\"MESSAGE_ID\":\"" + this.MESSAGE_ID + "\"}' onclick = \"showPersonalMessageDetail('" + this.TITLE + "','" + this.CREATE_DATE + "','" + this.CONTENT + "','" + this.TYPE + "')\">");
+							html.push("<div>" + this.TITLE.substring(0, 12) + "</div>");
+							html.push("<p>" + this.CONTENT.substring(0, 21) + "</p>");
+							html.push("</div>");
+							html.push("</div>");
+							if(this.READ_STATE == 0) {
+								html.push("<span class='redpoint abvt'></span>");
+							}
+							html.push("<p class='abslt'>" + this.CREATE_DATE.substring(5) + "</p>");
+							html.push("</div>");
+							html.push("</li>");
+						});
+						$('#OA_task_2').append(html.join(""));
+						MAX_NUM = MAX_NUM + 10;
+						MIN_NUM = MIN_NUM + 10;
+					} else {
+						is_no = 1;
+						$('#loadmore').html("");
+					}
+				});
+			}
+
+			function showPersonalMessageDetail(TITLE, CREATE_DATE, CONTENT, TYPE) {
+				app.openWindow('newsdetail.html', 'newsdetail.html', {
+					"TITLE": TITLE,
+					"CREATE_DATE": CREATE_DATE,
+					"CONTENT": CONTENT,
+					"TYPE": TYPE
+				});
+			}
+          
+			mui('body').on('tap', '.newsbox', function() {
+				$(this).parentsUntil('ul').find('.redpoint').hide();
+				//$(this).parentsUntil('ul').find('.mui-btn-yellow').hide();
+				var params = JSON.parse(this.getAttribute('data'));
+				app.getData("/common/message/readPersonalMessage.do", {
+					"MESSAGE_ID": params.MESSAGE_ID
+				}, function(data) {});
+				console.log(flag)
+				if(flag){
+					this.click();
+				}else{
+					$(this).siblings('input').prop('checked',true)
+				}
+			})
+
+			mui.init({
+				pullRefresh: {
+					container: '#refreshContainer',
+					up: {
+						height: 50,
+						contentrefresh: '正在加载...',
+						contentnomore: '',
+						callback: addnewsList
+					}
+				}
+			});
+			//上拉加载函数
+			function addnewsList() {
+				if(is_no == 0) {
+					init();
+					this.endPullupToRefresh(false);
+	        	}else{
+	        		this.endPullupToRefresh(true);
+	        	}
+			}
+
+			var flag = true;
+			$('body').on('tap', '.manage', function() {
+				if(flag) {
+					$(this).text('关闭');
+					$('#OA_task_2 input[type=checkbox]').removeClass('mui-hidden');
+					$('.btmUl').removeClass('mui-hidden');
+					flag = !flag;
+					mui('#refreshContainer').pullRefresh().disablePullupToRefresh();				
+				} else {
+					$(this).text('管理');
+					$('#OA_task_2 input[type=checkbox]').addClass('mui-hidden')
+					$('.btmUl').addClass('mui-hidden');
+					flag = !flag;
+					mui('#refreshContainer').pullRefresh().enablePullupToRefresh();
+				}
+			
+				$('input').prop('checked',false)
+			})
+
+			$('#delALL').on('tap', function() {
+				var List = []
+				var delNum = $('#OA_task_2 input:checked');
+				for(i = 0; i < delNum.length; i++) {
+					if(delNum[i].checked) {
+						List.push(delNum[i].value);
+					}
+				}
+				if(delNum.length>0){
+					app.getData("/common/message/deletePersonalMessageList.do", {
+						"List": List
+					}, function(data) {});
+					$('#OA_task_2 input:checked').parentsUntil('ul').remove();
+					$('#OA_task_2 input[type=checkbox]').addClass('mui-hidden');
+					$('.manage').text('管理');
+					$('.btmUl').addClass('mui-hidden');
+				}
+				flag=!flag;
+			})
+
+			$('#readall').on('tap', function() {
+				var List = []
+				var delNum = $('#OA_task_2 input:checked');
+				for(i = 0; i < delNum.length; i++) {
+					if(delNum[i].checked) {
+						List.push(delNum[i].value);
+					}
+				}
+				if(delNum.length>0){
+					app.getData("/common/message/readPersonalMessageList.do", {
+						"List": List
+					}, function(data) {});
+					$('#OA_task_2 input:checked').parentsUntil('ul').find('.redpoint').hide();
+					//$('#OA_task_2 input:checked').parentsUntil('ul').find('.mui-btn-yellow').hide();
+					$('input').attr('checked',false);
+					$('#OA_task_2 input[type=checkbox]').addClass('mui-hidden');
+					$('.manage').text('管理');
+					$('.btmUl').addClass('mui-hidden');
+					flag=!flag;
+				}
+				
+			})
+
+			$('#OA_task_2').on('touchstart', 'li', function() {
+				$(this).css('background', '#edf4fb').children('div').css('background', '#EDF4Fb')
+			})
+
+			$('#OA_task_2').on('touchend', 'li', function() {
+				$(this).css('background', '#fff').children('div').css('background', '#fff')
+			})
+
+			$('#OA_task_2').on('tap', '.mui-btn', function(event) {
+				var elem = this;
+				if($(this).hasClass('mui-btn-red')) {
+					var li = elem.parentNode.parentNode;
+					li.parentNode.removeChild(li);
+					var params = this.getAttribute('data');
+					params = JSON.parse(params);
+					app.getData("/common/message/deletePersonalMessage.do", {
+						"MESSAGE_ID": params.MESSAGE_ID
+					}, function(data) {});
+
+				} else if($(this).hasClass('mui-btn-yellow')) {
+					var params = this.getAttribute('data');
+					params = JSON.parse(params);
+
+					$(this).parentsUntil('ul').find('.redpoint').hide();
+					//$(this).parentsUntil('ul').find('.mui-btn-yellow').hide();
+
+					app.getData("/common/message/readPersonalMessage.do", {
+						"MESSAGE_ID": params.MESSAGE_ID
+					}, function(data) {});
+				} else {
+					var status = '已读';
+				}
+			})
+
+			$('#allseled,.chooall').on('tap', function() {
+				var checked = $('#allseled').prop('checked')
+				if(checked) {
+					$('#OA_task_2 input[type=checkbox]').prop('checked', false);
+				} else {
+					$('#OA_task_2 input[type=checkbox]').prop('checked', true);
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

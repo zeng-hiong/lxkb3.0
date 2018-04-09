@@ -1,0 +1,1049 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "com.wdsj.lxkb",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "乐享卡包",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "3.0.0",/*应用版本名称*/
+		"code": "300"
+	},
+	"description": "",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "start.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": ""
+	},
+	"permissions": {
+		"Accelerometer": {
+			"description": "访问加速度感应器"
+		},
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Camera": {
+			"description": "访问摄像头"
+		},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+
+		"Device": {
+			"description": "访问设备信息"
+		},
+		"Downloader": {
+			"description": "文件下载管理"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {
+			"description": "访问本地文件系统"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+
+		"Invocation": {
+			"description": "使用Native.js能力"
+		},
+
+
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+
+		"Uploader": {
+			"description": "管理文件上传任务"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+
+		"Barcode": {
+			"description": "管理二维码扫描插件"
+		},
+
+
+		"Webview": {
+			"description": "窗口管理"
+		},
+		"NativeUI": {
+			"description": "原生UI控件"
+		},
+		"Navigator": {
+			"description": "浏览器信息"
+		},
+		"NativeObj": {
+			"description": "原生对象"
+		},
+		"Messaging": {},
+		"Geolocation": {}
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": false,
+			"delay": "0"
+		},
+		"launchwebview": {
+			"statusbar": {
+				/*"background": "#309bdf"*/
+				/*"immersed": true,*/
+				"background": " -webkit-linear-gradient(90deg, #00adff 0%, #009cff 100%);" 
+			}
+		},
+		"statusbar": {
+			"immersed": true
+		},
+		"popGesture": "none",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+		"runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {
+				"maps": {},
+				"push": {}
+			},
+			"apple": {
+				"appid": "com.doone.wgakh",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "unpackage/res/ProfileWangGeYingXiaoZhuanJia2017.mobileprovision",/*iOS应用打包配置文件*/
+				"password": "123456",/*iOS应用打包个人证书导入密码*/
+				"p12": "unpackage/res/doonepayroot.p12",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"UIReserveStatusbarOffset": true, 
+				"frameworks": [],
+				"plistcmds": [
+					"Add :NSAppTransportSecurity:NSAllowsArbitraryLoads bool true"
+				]
+			},
+			"google": {
+				"packagename": "com.hchl.jhb",/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "unpackage/res/H5.keystore",/*Android应用打包使用的密钥库文件*/
+				"password": "345678",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "H5",/*Android应用打包使用密钥库中证书的别名*/
+			    "ImmersedStatusbar": true,//*设置为沉浸栏模式*/
+				"permissions": [
+					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+					"<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+					"<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.CAMERA\"/>",
+					"<uses-permission android:name=\"android.permission.SEND_SMS\"/>",
+					"<uses-permission android:name=\"android.permission.INTERNET\"/>",
+					"<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+					"<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+					"<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+					"<uses-feature android:name=\"android.hardware.camera\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SMS\"/>",
+					"<uses-permission android:name=\"android.permission.READ_SMS\"/>"
+				]
+			},
+			"orientation": [
+				"portrait-primary",
+				"portrait-secondary"
+			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					/*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "unpackage/res/icons/57x57.png", /*iPhone3/3GS程序图标，分辨率：57x57*/
+						"retina": "unpackage/res/icons/114x114.png", /*iPhone4程序图标，分辨率：114x114*/
+						"retina7": "unpackage/res/icons/120x120.png", /*iPhone4S/5/6程序图标，分辨率：120x120*/
+						/*iPhone6 Plus程序图标，分辨率：180x180*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+						/*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone4设置页面程序图标，分辨率：29x29*/
+						/*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+
+						"spotlight@3x": "unpackage/res/icons/120x120.png",
+						"notification@2x": "unpackage/res/icons/40x40.png",
+						"notification@3x": "unpackage/res/icons/60x60.png",
+						"app@3x": "unpackage/res/icons/icon-60@3x.png",
+						"settings@3x": "unpackage/res/icons/87x87.png",
+						"settings@2x": "unpackage/res/icons/icon-29@2x-ipad.png",
+						"spotlight@2x": "unpackage/res/icons/icon-40@2x.png"
+					},
+					"ipad": {
+						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+						/*iPad iOS7程序图标，分辨率：76x76*/
+						/*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPad设置页面程序图标，分辨率：29x29*/
+
+						"proapp@2x": "unpackage/res/icons/icon-83.5@2x.png",
+						"notification": "unpackage/res/icons/20x20.png",
+						"notification@2x": "unpackage/res/icons/40x40.png",
+						"app": "unpackage/res/icons/icon-76.png",
+						"app@2x": "unpackage/res/icons/152x152.png",
+						"settings": "unpackage/res/icons/icon-29.png",
+						"settings@2x": "unpackage/res/icons/icon-29@2x.png",
+						"spotlight@2x": "unpackage/res/icons/icon-40@2x.png",
+						"spotlight": "unpackage/res/icons/40x40.png"
+					},
+					"appstore": "unpackage/res/icons/icon_logo.png"
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "unpackage/res/icons/launch_image.png", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "unpackage/res/icons/640x960.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "unpackage/res/icons/640x1136.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+						"retina47": "unpackage/res/icons/750x1334.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+						"retina55": "unpackage/res/icons/1242x2208.png",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+						"retina55l": "unpackage/res/icons/2208x1242.png"
+					},
+					"ipad": {
+						"portrait": "unpackage/res/icons/768x1004.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "unpackage/res/icons/1536x2008.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "unpackage/res/icons/1024x748.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "unpackage/res/icons/2048x1496.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "unpackage/res/icons/768x1024.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "unpackage/res/icons/1536x2048.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "unpackage/res/icons/1024x768.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "unpackage/res/icons/2048x1536.png"
+					}
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/launch_image.png", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "unpackage/res/icons/launch_image.png", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "unpackage/res/icons/480x762.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "unpackage/res/icons/720x1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "unpackage/res/icons/1080x1882.png"
+				}
+			},
+			"debug": true
+		},"ads":{"rp":false,"splash":false,"push":false,"spot":false},"adid":""
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/jquery.touchSlider.js",
+					"images/mv4.png",
+					"images/sylm_2.png",
+					"images/mv1_ad.png",
+					"images/syicon_3.png",
+					"images/gg.png",
+					"images/mv2.png",
+					"js/raphael-2.1.4.min.js",
+					"js/wzgd.js",
+					"js/mui.min.js",
+					"images/syicon_5.png",
+					"images/syicon_2.png",
+					"css/sell.css",
+					"js/jquery.event.drag-1.5.min.js",
+					"images/sylm_1.png",
+					"images/mv3.png",
+					"js/justgage-1.1.0.min.js",
+					"js/jquery-1.7.1.min.js",
+					"js/app.js",
+					"images/syicon_1.png",
+					"images/syicon_6.png",
+					"images/syicon_4.png",
+					"css/main_style.css",
+					"images/sylm_3.png",
+					"images/btn_main_img.png",
+					"images/pm.png",
+					"images/syicon_7.png",
+					"images/xx_ad.png",
+					"reverse_order.html",
+					"css/app.css",
+					"css/mui.min.css",
+					"/images/jylink_5.png",
+					"/images/jylink_1.png",
+					"/images/jylink_2.png",
+					"/images/jylink_7.png",
+					"/images/jhlink_2.png",
+					"/images/syicon_6.png",
+					"/images/jylink_9.png",
+					"/images/syicon_3.png",
+					"/images/syicon_5.png",
+					"/images/jylink_6.png",
+					"/images/syicon_1.png",
+					"/images/jhlink_1.png",
+					"/images/jylink_8.png",
+					"images/jylink_9.png",
+					"images/jylink_7.png",
+					"images/jylink_6.png",
+					"images/jhlink_1.png",
+					"images/jylink_2.png",
+					"images/jylink_8.png",
+					"images/jylink_1.png",
+					"images/jhlink_2.png",
+					"images/jylink_5.png",
+					"js/survey.js",
+					"images/left.png",
+					"images/ss.png",
+					"css/index.css",
+					"css/swiper.3.1.7.min.css",
+					"image/home_icon_new_2.png",
+					"image/pic_banner.png",
+					"css/common.css",
+					"image/home_banner_2.png",
+					"js/swiper.min.js",
+					"css/mui.css",
+					"image/home_icon_news.png"
+				],
+				"refer": [
+					"grid/login/notify/mynotify.html",
+					"1_wdjy.html",
+					"entity/mytask/task_type_list.html",
+					"entity/mychance/mywarn/warn_type_list.html",
+					"entity/contract/contract.html",
+					"setting.html",
+					"download.html",
+					"download/download.html",
+					"grid/wdjy/wdjy.html",
+					"11.html",
+					"entity/report/wdjy.html",
+					"entity/mypartner/partner.html",
+					"entity/mychance/mychance.html",
+					"entity/mychance/mytask/task_type_list.html",
+					"grid/login/notify/sys_notify.html",
+					"reverse/reverse_order.html",
+					"grid/wdkh/wdkh.html",
+					"grid/gtjl/gtjl.html",
+					"grid/zsk/zsk.html",
+					"entity/survey/question.html",
+					"addCreditcard.html",
+					"financeSupermarket.html",
+					"insurance.html",
+					"wantgathering.html",
+					"repaymentDetail.html",
+					"login.html"
+				],
+				"priority": 0
+			},
+			"login.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"images/b_logo.png",
+					"css/main_style.css",
+					"images/dx_bg.png",
+					"login.html",
+					"manifest.json",
+					null,
+					"js/security.js",
+					"js/mui.picker.min.js",
+					"js/jquery-2.1.1.min.js",
+					"images/logo.png",
+					"js/mui.locker.js",
+					"img/logo.png",
+					"img/usercode.png",
+					"img/pwd.png"
+				],
+				"refer": [
+					"index.html",
+					"jsqh.html",
+					"grid_index.html",
+					"shezhi/wjmm.html",
+					"zq_index.html",
+					"manager_index.html",
+					"shezhi/ssmm.html",
+					"gesture_password.html",
+					"shezhi/gesture_password.html",
+					"area_index.html",
+					"index/ly_index.html",
+					"ly_index.html",
+					"wgjl_index.html",
+					"znhk/register.html",
+					"znhk/tab-webview-main.html",
+					"register.html",
+					"main.html",
+					"forgetpassword.html"
+				],
+				"priority": 0
+			},
+			"shezhi/pwd_setting.html": {
+				"resources": [
+					"images/goback.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/main_style.css",
+					"images/go.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"shezhi/xgmm.html",
+					"shezhi/wjmm.html",
+					"shezhi/dd/new_file.html",
+					"shezhi/pwdsetting/new_file.html",
+					"shezhi/pwdsetting/xgmm.html",
+					"shezhi/pwdsetting/wjmm.html",
+					"shezhi/ssmm.html",
+					"shezhi/gesture_password.html"
+				],
+				"priority": 0
+			},
+			"setting.html": {
+				"resources": [
+					"images/goback.png",
+					"js/jquery-1.11.2.min.js",
+					"css/messagebox.css",
+					"js/messagebox.js",
+					"images/go.png",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/main_style.css",
+					"shezhi/xbbjc.html",
+					"shezhi/fx.html",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"manifest.json"
+				],
+				"refer": [
+					"shezhi/pwd_setting.html",
+					"login.html",
+					"jsqh.html",
+					"shezhi/xgmm.html",
+					"shezhi/zfmm.html"
+				],
+				"priority": 0
+			},
+			"shezhi/xgmm.html": {
+				"resources": [
+					"shezhi/xgmm.html",
+					"images/goback.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/main_style.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/security.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"shezhi/ssmm.html": {
+				"resources": [
+					"images/goback.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/H5lock.js",
+					"js/mui.min.js",
+					"css/main_style.css",
+					"js/security.js",
+					"js/mui.locker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"shezhi/wjmm.html": {
+				"resources": [
+					"images/goback.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/main_style.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"shezhi/xbbjc.html": {
+				"resources": [
+					"images/logo.png",
+					"images/dx_bg.png",
+					"images/goback.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/main_style.css",
+					"js/date.js",
+					"setting.html",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"manifest.json"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"shezhi/fx.html": {
+				"resources": [
+					"images/fx02.png",
+					"images/fx04.png",
+					"images/fx03.png",
+					"images/ewm.png",
+					"images/fx01.png",
+					"images/goback.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/main_style.css",
+					"setting.html",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"shezhi/gesture_password.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/security.js",
+					"js/mui.locker.js",
+					"js/jquery-2.1.1.min.js"
+				],
+				"refer": [
+					"grid_index.html",
+					"jsqh.html"
+				],
+				"priority": 0
+			},
+			"gesture_password.html": {
+				"resources": [
+					"images/goback.png",
+					"js/H5lock.js",
+					"js/jquery-1.7.1.min.js",
+					"css/mui.min.css",
+					"js/mui.locker.js",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js"
+				],
+				"refer": [
+					"grid_index.html",
+					"shezhi/gesture_password.html",
+					"login.html",
+					"ly_index.html",
+					"zq_index.html",
+					"manager_index.html",
+					"area_index.html",
+					"wgjl_index.html"
+				],
+				"priority": 0
+			},
+			"start.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"js/security.js",
+					"manifest.json",
+					"css/main_style.css",
+					"css/mui.min.css",
+					"img/start_bg.png",
+					"image/icon_logo.png",
+					"js/jquery-2.0.0.min.js"
+				],
+				"refer": [
+					"login.html",
+					"gesture_password.html",
+					"index.html",
+					"main.html"
+				],
+				"priority": 0
+			},
+			"znhk/register.html": {
+				"resources": [
+					"img/register2.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"img/register3.png",
+					"img/register1.png",
+					"img/register4.png",
+					"img/register5.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"js/security.js",
+					"css/main_style.css",
+					"img/radio2.png",
+					"img/radio3.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/tab-webview-main.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.min.js",
+					"css/mui.css",
+					"img/sye1.png",
+					"img/sye4.png",
+					"img/wdzh2.png",
+					"img/sye22.png",
+					"img/sye11.png",
+					"img/sye2.png",
+					"znhk/tab-subpage-index.html",
+					"znhk/tab-subpage-center.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/tab-subpage-index.html": {
+				"resources": [
+					"img/sye_menu3.png",
+					"css/app.css",
+					"img/sye_menu1.png",
+					"img/sye_ad.png",
+					"img/sye_menu2.png",
+					"js/app.js",
+					"js/mui.min.js",
+					"css/mui.css",
+					"img/sye_menu9.png",
+					"img/sye_menu4.png",
+					"img/sye_menu5.png",
+					"img/sye_menu8.png",
+					"img/sye_menu7.png",
+					"img/sye_menu6.png"
+				],
+				"refer": [
+					"znhk/repayment.html",
+					"znhk/charge.html"
+				],
+				"priority": 0
+			},
+			"znhk/tab-subpage-center.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/app.js",
+					"img/wdzh2.png",
+					"js/mui.min.js",
+					"css/app.css",
+					"img/wdzh1.png",
+					"img/wdzh7.png",
+					"img/wdzh5.png",
+					"img/wdzh6.png",
+					"img/wdzh4.png",
+					"img/wdzh3.png",
+					"img/rent.png",
+					"img/pro_left.png",
+					"js/jquery-1.11.2.min.js",
+					"js/security.js",
+					"znhk/tab-webview-main.html",
+					"css/mui.css"
+				],
+				"refer": [
+					"znhk/Activation.html",
+					"setting.html",
+					"znhk/balance.html",
+					"znhk/realnameNo.html",
+					"znhk/realname.html",
+					"znhk/myBank.html",
+					"znhk/margin.html",
+					"znhk/chargeLog.html"
+				],
+				"priority": 0
+			},
+			"znhk/myBank.html": {
+				"resources": [
+					"img/jiah.png",
+					"css/mui.min.css",
+					"img/icon_sale_bank.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"js/security.js",
+					"css/main_style.css"
+				],
+				"refer": [
+					"znhk/addBank.html"
+				],
+				"priority": 0
+			},
+			"znhk/balance.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css",
+					"img/ic_row.png",
+					"img/pro_right.png"
+				],
+				"refer": [
+					"znhk/txBank.html"
+				],
+				"priority": 0
+			},
+			"znhk/addBank.html": {
+				"resources": [
+					"js/IDCodeValid.js",
+					"img/ic_row.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css"
+				],
+				"refer": [
+					"znhk/bankType.html"
+				],
+				"priority": 0
+			},
+			"znhk/charge.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/IDCodeValid.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css",
+					"img/pro_right.png"
+				],
+				"refer": [
+					"znhk/historyCard.html"
+				],
+				"priority": 0
+			},
+			"znhk/repayment.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"img/icon_sale_bank.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css"
+				],
+				"refer": [
+					"znhk/addCredit.html",
+					"znhk/planInfo.html",
+					"znhk/addPlan.html"
+				],
+				"priority": 0
+			},
+			"znhk/addCredit.html": {
+				"resources": [
+					"js/IDCodeValid.js",
+					"img/ic_row.png"
+				],
+				"refer": [
+					"znhk/bankType.html"
+				],
+				"priority": 0
+			},
+			"znhk/addPlan.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css"
+				],
+				"refer": [
+					"znhk/kalendae.html",
+					"znhk/marginPay.html"
+				],
+				"priority": 0
+			},
+			"znhk/marginPay.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/main_style.css",
+					"img/dagou.png"
+				],
+				"refer": [
+					"znhk/planInfo.html"
+				],
+				"priority": 0
+			},
+			"znhk/bankType.html": {
+				"resources": [
+					"img/icon_sale_bank.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/txBank.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"img/icon_sale_bank.png",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/historyCard.html": {
+				"resources": [
+					"img/icon_sale_bank.png",
+					"fonts/mui.ttf",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/realname.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/main_style.css",
+					"img/smyz.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/margin.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css",
+					"img/pro_right.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/realnameNo.html": {
+				"resources": [
+					"js/IDCodeValid.js",
+					"css/mui.min.css",
+					"css/main_style.css",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"js/security.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/Activation.html": {
+				"resources": [
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/security.js",
+					"css/main_style.css",
+					"img/register4.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/kalendae.html": {
+				"resources": [
+					"js/kalendae.standalone.js",
+					"css/kalendae.css",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/main_style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"znhk/chargeLog.html": {
+				"resources": [
+					"css/mui.min.css",
+					"js/app.js",
+					"js/jquery-1.11.2.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/main_style.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"lxkb/main.html": {
+				"resources": [
+					"lxkb/index.html"
+				],
+				"refer": [
+					"lxkb/accountCenter.html",
+					"lxkb/mycard.html"
+				],
+				"priority": 0
+			},
+			"main.html": {
+				"resources": [
+					"index.html",
+					"image/tab_2_n.png",
+					"js/common.js",
+					"css/common.css",
+					"fonts/mui.ttf",
+					"image/tab_1_h.png",
+					"image/tab_3_n.png",
+					"image/tab_2_h.png",
+					"css/mui.css",
+					"image/tab_1_n.png",
+					"image/tab_3_h.png"
+				],
+				"refer": [
+					"accountCenter.html",
+					"mycard.html"
+				],
+				"priority": 0
+			},
+			"register.html": {
+				"resources": [],
+				"refer": [
+					"login.html"
+				],
+				"priority": 0
+			},
+			"wantgathering.html": {
+				"resources": [],
+				"refer": [
+					"resetpassword.html"
+				],
+				"priority": 0
+			},
+			"accountCenter.html": {
+				"resources": [
+					"image/icon_pre_right.png",
+					"image/icon_my_7.png",
+					"image/icon_my_6.png",
+					"image/icon_my_2.png",
+					"image/icon_my_8.png",
+					"image/pic_bg_my_2.png",
+					"image/icon_my_vip.png",
+					"image/icon_pre_left.png",
+					"image/icon_my_1.png",
+					"image/pic_login_head_1.png",
+					"image/icon_my_3.png",
+					"image/icon_my_5.png",
+					"image/icon_my_4.png"
+				],
+				"refer": [
+					"billDetail.html",
+					"balance.html",
+					"securitycenter.html",
+					"resetphonenum.html",
+					"realnameNo.html",
+					"activation.html"
+				],
+				"priority": 0
+			},
+			"mycard.html": {
+				"resources": [
+					"image/nonyebg.png",
+					"image/gongshangbg.png",
+					"image/zhaoshanbg.png",
+					"image/zhaoshan.png",
+					"image/fudonfazhang.png",
+					"image/gongshang.png",
+					"image/fudonfazhangbg.png",
+					"image/jiaotong.png",
+					"image/pinganbg.png",
+					"image/xingyebg.png",
+					"image/xingye.png",
+					"image/jiaotongbg.png",
+					"image/nonye.png",
+					"image/pingan.png"
+				],
+				"refer": [
+					"addCreditcard.html",
+					"repaymentPlan.html",
+					"addDebitcard.html",
+					"creditcardDetail.html",
+					"DebitcardDetail.html"
+				],
+				"priority": 0
+			},
+			"addCreditcard.html": {
+				"resources": [],
+				"refer": [
+					"billProgress.html"
+				],
+				"priority": 0
+			},
+			"securitycenter.html": {
+				"resources": [],
+				"refer": [
+					"resetpassword.html"
+				],
+				"priority": 0
+			},
+			"resetpassword.html": {
+				"resources": [],
+				"refer": [
+					"login.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"images/dpic_2.png",
+				"images/dpic_3.png"
+			]
+		}
+	},
+	"unpackage": [],
+	"fullscreen": false
+}

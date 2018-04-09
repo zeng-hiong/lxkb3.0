@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="image/launch_image.png" width="100%"  alt="" />
+	</body>
+	<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript" src="js/security.js"></script>
+	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script>
+		
+		if(window.plus){
+		    plusReady();
+		}else{
+		    document.addEventListener('plusready', plusReady, false);
+		}
+		
+				
+		function plusReady(){
+		    plus.navigator.setStatusBarBackground('#309BDF');
+		    checkUpdate();
+			init();
+		}
+		
+		function init() { 
+			var loginInfo = app.getLoginInfo();
+			console.log(JSON.stringify(loginInfo));
+			if(loginInfo) {
+				if(loginInfo.USERNAME && loginInfo.PASSWORD && loginInfo.USERNAME != "" && loginInfo.PASSWORD != "") {
+					aa(loginInfo);
+				} else {
+					var v = plus.webview.create("login.html", "login.html");
+					v.show();
+				}
+			} else {
+				var v = plus.webview.create("login.html", "login.html");
+				v.show();
+			}
+			
+		}
+		
+		function aa(loginInfo) {
+			var name = loginInfo.USERNAME;
+			var pwd = loginInfo.PASSWORD;
+			
+			plus.runtime.getProperty(plus.runtime.appid,function(inf){
+    			var oem_code = inf.appid;
+				var param = {
+					"PHONE_NO": name, 
+					"PASSWORD": RSAUtils.encryptedString(pwd),
+					"LOGIN_TYPE": "1",
+					"OEM_CODE" : oem_code
+				};
+	
+				app.getData("/user/login.do", param, function(json) {
+					var data = JSON.stringify(json);
+						app.setLoginInfo({
+						"LOGIN_TYPE": param.LOGIN_TYPE,
+						"USERNAME": name,
+						"PASSWORD": (pwd || "")
+						});
+						app.setStaffInfo(json.RESULT_OBJECT);
+						getAccount(json.RESULT_OBJECT.USER_ID);
+						app.openWindow("main.html", "main.html");
+				});
+			});
+		} 
+
+		function getAccount(obj) {
+			var param = {
+				"USER_ID": obj
+			};
+			app.getData("/account/get_user_info.do", param, function(json) {
+				console.log(JSON.stringify(json));
+				app.setAccountInfo(json.RESULT_OBJECT);
+				//app.openWindow("main.html", "main.html");
+				//main.show('slide-in-right', 300);
+			});
+		}
+	
+		// 检测更新
+		function checkUpdate(){
+			var TERMINAL_TYPE = "ANDROID_LXKB";
+			if(mui.os.ios)
+				TERMINAL_TYPE = "IOS_LXKB";
+			// 获取本地应用资源版本号
+			console.log("当前设备类型："+TERMINAL_TYPE);
+			plus.runtime.getProperty(plus.runtime.appid,function(inf){
+				var wgtVer = inf.version;
+				console.log("当前应用版本："+wgtVer);
+				app.getData("/common/system/version.do",{"TERMINAL_TYPE":TERMINAL_TYPE,"APP_VERSION":wgtVer},function(json){
+			    	console.log(JSON.stringify(json));
+			    	if(json.RESULT_OBJECT.HAS_UPDATE == 1){
+			    		/*var btnArray = ['下次再说', '立即更新'];//选择更新
+			    		mui.confirm('检测到有新版本' , '更新提示', btnArray, function(e) {
+				            if (e.index == 1) {
+				               downWgt(json.RESULT_OBJECT.UPDATE_URL);  // 下载升级包
+				            }
+				       });*/
+				      var btnArray = ['立即更新'];//强制更新
+			    		mui.confirm('检测到有新版本' , '更新提示', btnArray, function(e) {
+				           downWgt(json.RESULT_OBJECT.UPDATE_URL);  // 下载升级包
+				       });
+	               }
+			   });
+		   });
+		}
+		
+		// 下载wgt文件
+		function downWgt(wgtUrl){
+		    plus.nativeUI.showWaiting("下载更新资源包...");
+		    plus.downloader.createDownload( wgtUrl, {filename:"_doc/update/"}, function(d,status){
+		        if (status == 200) {
+		        	plus.nativeUI.closeWaiting();
+		        	plus.nativeUI.toast("下载完成");
+		            console.log("下载wgt成功："+d.filename);
+		            installWgt(d.filename); // 安装wgt包
+		        } else {
+		        	plus.nativeUI.closeWaiting();
+		            console.log("下载wgt失败！");
+		            plus.nativeUI.alert("下载更新资源包失败");
+		        }
+		    }).start();
+		}
+		
+		// 更新应用资源
+		function installWgt(path){
+		    plus.nativeUI.showWaiting("应用资源更新中...");
+		    plus.runtime.install(path,{},function(){
+		        plus.nativeUI.closeWaiting();
+		        console.log("安装wgt文件成功！");
+		        plus.nativeUI.toast("应用资源更新完成");
+		        plus.runtime.restart();
+		    },function(e){
+		        plus.nativeUI.closeWaiting();
+		        console.log("安装wgt文件失败["+e.code+"]："+e.message);
+		        plus.nativeUI.alert("应用资源更新失败["+e.code+"]:" + e.message);
+		    });
+		}
+		
+		mui.confirm('MUI是个好框架，确认？', 'Hello MUI', btnArray, function(e) {
+                    if (e.index == 1) {
+                        info.innerText = '你刚确认MUI是个好框架';
+                    } else {
+                        info.innerText = 'MUI没有得到你的认可，继续加油'
+                    }
+                })
+		
+	</script>
+</html>

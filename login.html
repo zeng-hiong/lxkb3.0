@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="css/common.css">
+	    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+	    <style type="text/css">
+	    	.mui-input-group{background: transparent;}
+	    	body{background-image: url('image/login_bg.png');background-repeat:no-repeat ;background-size:100% 100% ;}
+	    	.mui-content{
+				top: 0;
+				bottom: 0;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				overflow-y: scroll;
+				/* -webkit-overflow-scrolling: touch; */
+            
+	    	}
+	    	.mui-popup{
+	    		z-index: 100000000000000;
+	    	}
+	    	.ceng{
+	    		position:absolute;
+	    		bottom:0;
+	    		right:0;
+	    		left:0;
+	    		top:0;
+	    		background:rgba(0,0,0,0.4);
+	    		z-index:10
+	    	}
+	    </style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style='position: absolute;top:0'>
+		    <h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content aligncenter">
+		    <img src="image/icon_logo.png" alt="" style="margin:0.8rem 0 0.8rem;width:2.5rem;">
+		    <div class="mui-input-group" style="padding:10px 20px 0">
+		        <div class="mui-input-row" style='border:1px solid #309bdf;border-radius:5px;'>
+		            <label for="">
+		                用户名:
+		            </label>
+		            <input type="tel" placeholder="请输入登录手机号" id='USERNAME' value="">
+		        </div>
+		    </div>
+		    <div class="mui-input-group" style="padding:20px 20px 10px">
+		        <div class="mui-input-row" style='border:1px solid #309bdf;border-radius:5px;'>
+		            <label for="">
+		                密&nbsp;&nbsp;&nbsp;码:
+		            </label>
+		            <input type="password" placeholder="请输入密码" id='PASSWORD' value="">
+		        </div>
+		    </div>
+		    <input type='submit' class='newbtn' value="登录" onclick="return log_in()">
+		    <p class='forgetsign flexbox spacebt' style="width:75%;margin:15px auto 0">
+		        <a href="forgetpassword.html">
+		            忘记密码?
+		        </a>
+		        <a href="register.html">
+		            立即注册
+		        </a>
+		    </p>
+		   <!-- <div class="ceng"></div>-->
+		 <div class="newbtn see">he咯</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="js/security.js"></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" >
+			mui.plusReady(function(){
+				/*plus.nativeUI.showWaiting();*/
+				
+					mui.confirm('<input type="text" id="test" />', 'Hello MUI', null, function(event) {
+						var index = event.index;
+						var val=$('.mui-popup-text input').val()
+						if(index==0){
+							if(val==''){
+								/*return false;*/
+							}
+						
+						}else{
+							if(val==''){
+								console.log()
+								return false;
+							}
+							document.activeElement.blur();
+						}
+                  },'div');
+				 init();
+			 });
+			
+			mui("body").on("tap", "a", function() {
+	    		var url = this.getAttribute('href');
+	    		if(url == "" || url == "#") {
+	    			return false;
+	    		}
+	    		
+	    		mui.openWindow({
+					url: url,
+					show: {
+						aniShow: 'slide-in-right',
+						duration: 250,
+					},
+					waiting: {
+						autoShow: false,
+						title: '正在加载。。。'
+					}
+				});
+    		});
+    		
+    		function log_in() {
+    			plus.runtime.getProperty(plus.runtime.appid,function(inf){
+	    			var oem_code = inf.appid;
+	    			
+					var name = $("#USERNAME").val();
+					var pwd = $("#PASSWORD").val();
+					var check = $("#CHECKS").val();
+					if(name == "" || pwd == "") {
+						app.alert("请输入帐号或密码");
+						return;
+					}
+					var param = {
+						"PHONE_NO": name,
+						"PASSWORD": RSAUtils.encryptedString(pwd),
+						"LOGIN_TYPE": "1",
+						"OEM_CODE" : oem_code
+					};
+	
+					plus.nativeUI.showWaiting();
+					app.getData("/user/login.do", param, function(json) {
+						console.log(JSON.stringify(json));
+						app.setLoginInfo({
+							"LOGIN_TYPE": param.LOGIN_TYPE,
+							"USERNAME": name,
+							"PASSWORD": (pwd || "")
+						});
+						app.setStaffInfo(json.RESULT_OBJECT);
+						getAccount(json.RESULT_OBJECT.USER_ID);
+					});
+				});
+			}
+
+			function getAccount(obj) {
+				var param = {
+					"USER_ID": obj
+				};
+				app.getData("/account/get_user_info.do", param, function(json) {
+					console.log(JSON.stringify(json));
+					plus.nativeUI.closeWaiting();
+					app.setAccountInfo(json.RESULT_OBJECT);
+					app.openWindow("main.html", "main.html");
+					//main.show('slide-in-right', 300);
+				});
+			}
+			
+			var first = null;
+			mui.back = function() {
+				//首次按键，提示‘再按一次退出应用’
+				if(!first) {
+					first = new Date().getTime();
+					mui.toast('再按一次退出应用');
+					setTimeout(function() {
+						first = null;
+					}, 1000);
+				} else {
+					if(new Date().getTime() - first < 1000) {
+						plus.runtime.quit();
+					}
+				}
+			};
+			
+    		function init() {
+    			var loginInfo = app.getLoginInfo();
+    			if(loginInfo) {
+    				$("#USERNAME").val(loginInfo.USERNAME || "");
+    				$("#PASSWORD").val(loginInfo.PASSWORD || "");
+    				/*if($("#USERNAME").val() != "" && $("#PASSWORD").val() != "") {
+    					aa();
+    				}*/
+    			}
+    		}
+    		
+    plus.webview.currentWebview().setStyle({
+            softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+      });
+      
+      mui.prompt('wwe','new','wew',['s','2'],function(e){
+			if(e.index==0){
+				if(e.value==''){
+					$('.mui-popup-input input').attr('placeholder','请输入您收到的验证码')
+					return false
+				}else{
+					
+				}
+			}
+		})
+      mui('body').on('tap','.ceng',function(e){
+      	e.preventDefault()
+      })
+      mui('body').on('tap','.see',function(){
+      	alert('wehl')
+      })
+		</script>
+	</body>
+
+</html>

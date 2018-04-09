@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait"> 
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/mui.css" />
+    <style>
+    	.mui-bar-tab .mui-tab-item .mui-icon ~ .mui-tab-label{margin-top: 2px;}
+    </style>
+</head>
+<body>
+	<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="index.html" idx='1'>
+				<span class="mui-icon"><img src="image/tab_1_h.png" height="22" alt="" /></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="mycard.html" idx='2'>
+				<span class="mui-icon"><img src="image/tab_2_n.png" alt="" height="22" /></span>
+				<span class="mui-tab-label">卡包</span>
+			</a>
+			<a class="mui-tab-item" href="accountCenter.html" idx='3'>
+				<span class="mui-icon"><img src="image/tab_3_n.png" alt="" height="22" /></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+    <script type='text/javascript' src='js/jquery-2.0.0.min.js'></script>
+    <script type='text/javascript' src="js/mui.min.js"></script>
+    <script type='text/javascript' src='js/common.js'></script>
+    <script>
+    	var subpages=['index.html','mycard.html','accountCenter.html'];
+    	var subpageStyle={top:'0',bottom:'50px'};
+    	var activeTab=subpages[0];
+    	mui.plusReady(function(){
+    		var self=plus.webview.currentWebview();
+    		
+    		for(var i=0; i<subpages.length;i++){
+    			var sub=plus.webview.create(subpages[i],subpages[i],subpageStyle);//当前Webview的URL地址，id,样式
+    			sub.hide();
+    			self.append(sub);
+    		}
+    		
+    		plus.webview.show(subpages[0]);//默认显示主页
+    	});
+    	
+    	mui('.mui-bar-tab').on('tap','a',function(e){
+    		var tagPage=this.getAttribute('href');
+    		var index=$(this).index();
+    		var len = $('a').length;
+    		for(var i=0;i<len;i++){
+    			$('a').eq(i).find('img').attr('src','image/tab_'+ (i+1) +'_n.png')
+    		}
+    		$(this).find('img').attr('src','image/tab_'+ (index+1)+'_h.png')
+    		
+    		if(tagPage==activeTab){
+    			return;
+    		}
+    		plus.webview.show(tagPage,'fade-in',100)
+    		plus.webview.hide(activeTab);
+    		activeTab=tagPage;
+    	})
+    	
+    	
+    	window.addEventListener('changeTab',function(event){
+    		var url=event.detail.url;
+    		console.log(url);
+    		changetab(url)
+    		
+    	})
+    	
+    	function changetab(url){
+    		var len=subpages.length;
+    		var index;
+    		
+    		for(var i=0;i<len;i++){
+    			$('.mui-bar-tab a').removeClass('mui-active');
+    			$('.mui-bar-tab a').eq(i).find('img').attr('src','image/tab_'+ (i+1) +'_n.png');
+    			if(url==subpages[i]){
+    				index= i;
+    				plus.webview.show(url,'fade-in',100);
+    				plus.webview.hide(activeTab);
+    				activeTab=subpages[1]
+    			}
+    		}
+    		console.log(index)
+    		$('.mui-bar-tab a').eq(index).addClass('mui-active').find('img').attr('src','image/tab_'+ (index+1)+'_h.png')
+  
+    	}
+    
+    mui.init({
+    	preloadPages:[{
+    		id:'thethird.html',
+    		url:'thethird.html'
+    	},{
+    		url:'fourth.html',
+    	    id:'fourth.html'
+    	}]
+    })
+    	
+     mui.preload({
+    	url:'thethird.html',
+    	id:'thethird.html'
+    },{
+    	url:'fourth.html',
+    	id:'fourth.html'
+    })
+    	
+    </script>
+</body>
+</html>

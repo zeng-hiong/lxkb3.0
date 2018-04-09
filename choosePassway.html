@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+	</head>
+	<style>
+		.channelRadio {
+			border: 1px solid #e4e4e4;
+			border-radius: 50%;
+			width: 0.4rem;
+			height: 0.4rem;
+			vertical-align: top;
+		}
+		
+		.channelRadio:checked {
+			background: url(image/icon_switch_r.png);
+			background-size: 100% 100%;
+		}
+		
+		.outerbox .passwaybox {
+			align-items: flex-start;
+			position: relative;
+			padding: 15px 15px 20px;
+		}
+		
+		.passwaybox .tips {
+			
+			color: #ef1414;
+		}
+		 .passwaybox>img{
+		 	position: absolute;
+		 	right:0;
+		 	top: 0;
+		 	width:1rem;
+		 }
+		.passwaybox:first-of-type::after {
+			position: absolute;
+			right:0;
+			bottom: 0;
+			left: 0;
+			height: 1px;
+			content: '';
+			-webkit-transform: scaleY(.5);
+			transform: scaleY(.5);
+			background-color: #c8c7cc;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">选择通道</h1>
+			<button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>返回
+			</button>
+		</header>
+		<div class='mui-content'>
+			<!-- 支付银行  -->
+			<div class="mui-input-group marginbtm">
+				<div class="mui-input-row">
+					<label for="">支付银行</label>
+					<div id="bank_card" style='height: 50px;line-height: 50px;'>
+						<img src="image/icon_bank_pa.png" class="bankimg" alt="" />
+						<span>平安银行信用卡尾号9288</span>
+					</div>
+				</div>
+				<div class="mui-input-row">
+					<label for="">收款金额</label>
+					<div id="consumeAmount" style='color:#f66c06;font-size: 0.4rem;font-weight: 700;height: 50px;line-height: 50px;'>￥5000元</div>
+				</div>
+			</div>
+			
+			<!-- 通道列表  -->
+			<div class="outerbox" style="background: #fff;">
+				<p style="border-bottom:1px solid #d1d1d1;padding:10px 15px" class="paddingtb">选择支付通道</p>
+				
+				<!--<div class='passwaybox' style="overflow: hidden;">
+					<input type="radio" value="passA" id='passA' class="channelRadio" name='passWay' style="margin-right: 15px;margin-top: 2px;float: left;" />
+					<div style="float: left;">
+						<p style="font-size: 0.36rem;margin-bottom: 0.32rem;">快捷C-2</p>
+						<p style='font-size: 0.26rem;margin-bottom: 0.18rem;'>额度：100元-20000元/笔</p>
+						<p style="color: #28b5f7;font-size: 0.26rem;">费率：0.6%+2元/笔</p>
+						<p class="tips" style="font-size: 0.22rem;">提示:<span style="padding:0 5px;font-size: 0.22rem;">(交易时间)</span>08:00-21:00,支付成功后，银行系统自动结算</p>
+					</div>
+				</div>
+				
+				<div class='passwaybox' style="overflow: hidden;">
+					<input type="radio" value="passB" id='passB' class="channelRadio" name='passWay' style="margin-right: 15px;margin-top: 2px;float: left;" />
+					<div style="float: left">
+						<p style="font-size: 0.36rem;margin-bottom: 0.32rem;">快捷B-2</p>
+						<p style="font-size: 0.26rem;margin-bottom: 0.18rem;">额度：100元-20000元/笔</p>
+						<p style="color: #28b5f7;font-size: 0.26rem;">费率：0.6%+2元/笔</p>
+						<p class="tips" style="font-size: 0.22rem;">提示:<span style="padding:0 5px;font-size: 0.22rem;">(交易时间)</span>08:00-21:00,支付成功后，银行系统自动结算</p>
+					</div>
+				</div>-->
+			
+			</div>
+			
+			<button id="submit" class='newbtn'>确定</button>
+			<p class="aligncenter" style='margin-top: 0.6rem;font-size: 0.26rem;' id='supportbank'>查看支持银行限额列表<img src="image/icon_more_1.png" width="20" style="vertical-align:middle;margin-left: 0.2rem;" alt="" /></p>
+			<!-- 支付密码输入框 -->
+          	<div id="paypassword" style="display: none;">
+				<div style=''>
+					<p style='border:none'>输入短信验证密码</p>
+                    <p class="ts" style='font-size:0.24rem;color:#999;padding-top:0'>
+                    	<!--
+                    	到账银行卡：<span>平安银行储蓄卡</span><span style='padding:0 0.2rem'>(5683)</span>手续费2元/笔
+                    	-->
+                    </p>
+					<div class="pwd-box" style='position:relative;'>
+						<div class="pwd-input" id="pwd-input"></div>
+						<div class="fake-box">
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+						</div>
+					</div>
+					<!--
+					<a href='forgetpassword.html' id="forgetpwd" style="color:#309bdf;text-align:right;padding:0.2rem 1rem 0.2rem 0">忘记密码？</a>
+					-->
+					<table id='pswnum'>
+						<tbody>
+							<tr>
+								<td class='numb'>1</td>
+								<td class='numb'>2</td>
+								<td class='numb'>3</td>
+							</tr>
+							<tr>
+								<td class='numb'>4</td>
+								<td class='numb'>5</td>
+								<td class='numb'>6</td>
+							</tr>
+							<tr>
+								<td class='numb'>7</td>
+								<td class='numb'>8</td>
+								<td class='numb'>9</td>
+							</tr>
+							<tr>
+								<td class='empty'></td>
+								<td class='numb'>0</td>
+								<td class='delt'><img src="image/btn_del_code.png" alt="" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		   </div>
+		</div>
+		<script type='text/javascript' src='js/jquery-2.0.0.min.js'></script>
+		<script type='text/javascript' src='js/swiper.min.js'></script>
+		<script type='text/javascript' src="js/mui.min.js"></script>
+		<script type='text/javascript' src="js/app.js"></script>
+		<script type='text/javascript' src="js/common.js"></script>
+		<script type="text/javascript" src="js/security.js" ></script>
+		<script type="text/javascript">
+			mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+
+			function backWin() {
+				plus.webview.currentWebview().close();
+			}
+
+			var webview = null;
+			var amount = null;
+			var bankIcon = null;
+			var bankName = null;
+			var cardSN = null;
+			var channelId = null;
+			
+			var orderCode = null;
+			
+			
+			mui.plusReady(function() {
+				webview = plus.webview.currentWebview();
+				amount = webview.AMOUNT;
+				bankIcon = webview.BANK_ICON;
+				bankName = webview.BANK_NAME;
+				cardSN = webview.CARD_SN;
+				
+				if(amount == null || bankIcon == null || bankName == null) {
+					mui.toast("无效的参数");
+					window.setTimeout(backWin, 1000);
+					return false;
+				}
+
+				initData();
+				initChannel(cardSN);
+				initBank();
+				
+			});
+			
+			
+			function initBank() {
+				var html = [];
+				var para = {"CARD_TYPE" : 2,"CHANNEL_TYPE" : 2};
+				app.getData("/account/get_card_list.do", para, function(json) {
+					var list = json.RESULT_OBJECT;
+					$.each(list, function() {
+						html.push("到账银行卡：<span>" + this.BANK_NAME + "储蓄卡</span>");
+						html.push("<span style='padding:0 0.2rem'>(" + this.CARD_NO_FOUR + ")</span></br>");
+						html.push("手续费按" + this.RATE + "*提现金额 + " + this.SETTLE_AMOUNT + "元/笔收取" )
+					});
+				$('.ts').append(html.join(""));	
+				});
+			};
+			function initData() {
+				$("#consumeAmount").text("￥" + amount + "元");
+				$("#bank_card img").attr("src", bankIcon);
+				$("#bank_card span").html(bankName);
+			}
+			
+			function initChannel(cardSN) {
+				var para = {
+					"CARD_SN": cardSN,
+					"CHANNEL_TYPE" : 2
+				};
+				
+				app.getData("/channel/get_card_channel_list.do", para, function(data) {
+					//console.log(JSON.stringify(data));
+					var list = data.RESULT_OBJECT;
+					if(list && list.length > 0) {
+						var html = [];
+						for(var i = 0; i < list.length; i++) {
+							var channelMap = list[i];
+							html.push("<div class='passwaybox' style='overflow: hidden;'>");
+							html.push("  <input type='radio' class='channelRadio' value='" + channelMap.CHANNEL_ID + "' name='passWay' style='margin-right: 15px;margin-top: 2px;float: left;' />");
+							html.push("  <div style='float: left;'>");
+							html.push("    <p style='font-size: 0.36rem;margin-bottom: 0.32rem;'>" + channelMap.CHANNEL_NAME + "</p>");
+							html.push("    <p style='font-size: 0.26rem;margin-bottom: 0.18rem;'>额度：单笔最高20000元</p>");
+							html.push("    <p style='color: #28b5f7;font-size: 0.26rem;margin-bottom: 0.18rem;'>费率：0.6%+2元/笔</p>");
+							html.push("    <p class='tips' style='font-size: 0.22rem;'>提示:收款成功后实时到账</p>");
+							html.push("  </div>");
+							html.push("  <img src='image/icon_tuijain.png' alt='' />");
+							html.push("</div>");
+						}
+						
+						var container = $(".outerbox");
+						container.append(html.join(""));
+						
+						$(".passwaybox").on("touchend", function(e) {
+							$('.passwaybox').css('background', "#fff");
+							$("input[type=radio]").prop("checked", false);
+							$(this).css('background', '#edf4fb');
+							$("input[type=radio]", this).prop("checked", true);
+							channelId = $("input[type=radio]", this).val();
+						});
+					}
+				});
+			}
+			
+			$('#pswnum').on('touchend', '.delt', function(e) {
+			var passwordBox = $('#pwd-input');
+			var tmp = passwordBox.text().trim();
+			passwordBox.html(tmp.substring(0, tmp.length - 1));
+			for(var i = 0; i < 6; i++) {
+				$('.fake-box input').eq(i).val(passwordBox.text().length > i ? "0" : "");
+			}
+		});
+		
+		$('#pswnum').on('touchend', '.numb', function(e) {
+			var _self = $(this);
+			var text = _self.text();
+			var passwordBox = $('#pwd-input');
+			if(passwordBox.text().trim().length < 6) {
+				passwordBox.html(passwordBox.html() + text);
+				for(var i = 0; i < passwordBox.text().trim().length; i++) {
+					$('.fake-box input').eq(i).val(i);
+				}
+				
+				if(passwordBox.text().trim().length == 6) {
+					//plus.device.vibrate(500);
+					callPay(passwordBox.html());
+					hidePaymentPassword();
+				}
+			}
+			e.stopPropagation();
+			return false;
+		});
+		
+		function hidePaymentPassword() {
+			$('#paypassword').fadeOut(100);
+			$('.fake-box input').val('');
+			$('#pwd-input').text('');
+		}
+		
+		function callPay(payPwd) {
+			//alert(channelId + ":" + cardSN + ":" + payPwd + ":" + amount);
+			plus.nativeUI.showWaiting();
+			var para = {
+				ORDER_ID: orderCode,
+				CODE: payPwd};
+			app.getData("/account/confirmCollection.do", para, function(data) {
+				plus.nativeUI.closeWaiting();
+				if(data.RESULT_CODE == 0) {
+					plus.nativeUI.alert(data.RESULT_OBJECT.trade_state_desc, function(e) {
+						var opener = plus.webview.currentWebview().opener();
+						opener.close();
+						plus.webview.currentWebview().close();
+						
+					});
+				}else{
+					plus.nativeUI.alert(data.RESULT_MESSAGE, function(e) {
+						var opener = plus.webview.currentWebview().opener();
+						opener.close();
+						plus.webview.currentWebview().close();
+					});
+				}
+			});
+		}
+		
+		//$("#submit").on("touchend", function(e) {
+		document.getElementById("submit").addEventListener('tap', function(e) {
+			e.detail.gesture.preventDefault();
+			if(!channelId) {
+				mui.toast("请选择支付通道");
+						return false;
+			}
+					
+			if(channelId == 2) {
+				var para = {
+					CARD_SN: cardSN,
+					AMOUNT: amount
+				};
+				app.getData("/account/sendMsg.do", para, function(data) {
+					plus.nativeUI.closeWaiting();
+					if(data.RESULT_CODE == 0) {	
+						orderCode = data.RESULT_OBJECT.EXTERNAL_CODE;
+						$('#paypassword').slideToggle(500);  //调出密码键盘
+					}else{
+						mui.toast(data.RESULT_OBJECT.trade_state_desc);
+					}
+				});
+			} else if(channelId == 3) {
+				pay_b2_start();
+			}else if(channelId == 4){
+				kft_pay(e);
+			}else if(channelId == 6){
+				hlb_pay(e);
+			}
+					
+		});
+		
+		function pay_b2_start() {
+			plus.nativeUI.showWaiting("支付发起中...");
+			var para = {
+				CARD_SN: cardSN,
+				AMOUNT: amount
+			};
+			
+			console.log(JSON.stringify(para));
+			app.getData("/worthpay/pay_b2_start.do", para, function(data) {
+				plus.nativeUI.closeWaiting();
+				if(data.RESULT_CODE == 0) {
+					mui.openWindow({
+						id: "b2pay_main.html",
+						url: "b2pay_main.html",
+						show: {
+							aniShow: 'slide-in-right',
+							duration: 250,
+						},
+						waiting: {
+							autoShow: false,
+							title: '正在加载。。。'
+						},
+						extras: {
+							SYS_TRADE_NO: data.RESULT_OBJECT.SYS_TRADE_NO,
+							PAGE_CONTENT: data.RESULT_OBJECT.PAGE_CONTENT
+						}
+					});
+				}else{
+					mui.toast(data.RESULT_MESSAGE);
+				}
+			});
+		}
+		
+		function kft_pay(e){
+			var opener = plus.webview.currentWebview().opener();
+			//plus.nativeUI.showWaiting("支付发起中...");
+			var para = {
+				CARD_SN: cardSN,
+				AMOUNT: amount,
+				TYPE:"SK"
+			};
+			app.getData("/kftpay/check_pay.do",para,function(data){
+				if(data.RESULT_CODE == 0 ){
+					if("SIGN_APPLY" == data.RESULT_OBJECT.SIGN) {//卡对应的通道不存在，创建
+						plus.nativeUI.showWaiting("该卡暂未开通该通道收款，系统自动开通中...");
+						var orderNo = data.RESULT_OBJECT.orderNo;
+						var smsSeq = data.RESULT_OBJECT.smsSeq;
+						sendMessage(e,cardSN,orderNo,smsSeq);//确认代扣协议申请
+					}else if("SIGN_EXCUTE" == data.RESULT_OBJECT.SIGN){
+						plus.nativeUI.showWaiting("支付发起中...请稍后...");
+						app.getData("/kftpay/confirm_pay.do",para,function(data){
+							if(data.RESULT_CODE == 0){
+								mui.toast(data.RESULT_OBJECT.MSG);
+								plus.nativeUI.closeWaiting();
+								app.openWindow("index.html","index.html");
+								opener.close();
+								plus.webview.currentWebview().close();
+							}else{
+								mui.toast(data.RESULT_MESSAGE);
+							}
+						});
+						
+					}else if("SIGN_BAND" == data.RESULT_OBJECT.SIGN){
+						mui.toast(data.RESULT_OBJECT.MSG);
+						app.openWindow("addDebitcard.html","addDebitcard.html");
+					}
+				}else{
+					mui.toast(data.RESULT_MESSAGE);
+				}
+			});
+		}
+		
+		function sendMessage(e,cardSN,orderNo,smsSeq){
+			//plus.nativeUI.showWaiting("支付发起中...");
+			mui.prompt('请输入收到的短信验证码', '', '', ['确定'], function(e) {
+                if (e.index == 0) {
+                    var smsCode = e.value;
+                    var para = {
+						CARD_SN: cardSN,
+						ORDER_NO:orderNo,
+						SMS_SEQ:smsSeq,
+						SMS_CODE:smsCode
+					};
+					app.getData("/kftpay/confirmApply.do",para,function(data){
+						plus.nativeUI.showWaiting("代扣协议确认中...");
+						if(data.RESULT_CODE == 0){
+							mui.toast("代扣协议申请成功...");
+							plus.webview.currentWebview().close();
+							plus.nativeUI.closeWaiting();
+							app.openWindow("wantgathering.html","wantgathering.html");
+						}else{
+							plus.webview.currentWebview().close();
+							mui.toast(data.RESULT_MESSAGE);
+						}
+					});
+                }
+            });
+            
+        }
+		
+		function hlb_pay(e){
+			var opener = plus.webview.currentWebview().opener();
+			var para = {
+				CARD_SN: cardSN,
+				AMOUNT: amount,
+				TYPE:"SK"
+			};
+			app.getData("/hlbpay/check_pay.do",para,function(data){
+				if(data.RESULT_CODE == 0){
+					if("SEND_MSG" == data.RESULT_OBJECT.SIGN){//卡对应的通道不存在，创建
+						plus.nativeUI.showWaiting("该卡暂未开通该通道收款，系统自动开通中...");
+						var orderId = data.RESULT_OBJECT.ORDER_ID;
+						sendHlbMsg(orderId,cardSN);
+					}else if("FIRST_CONSUME" == data.RESULT_OBJECT.SIGN){//该卡是第一次收款，需要短信验证消费后，二次免验
+		                hlbFirstConsume(amount,cardSN);
+					}
+				}else{
+					mui.toast(data.RESULT_MESSAGE);
+				}
+			});
+		}
+		
+		function sendHlbMsg(orderId,cardSN){
+			mui.prompt('请输入收到的短信验证码', '', '', ['确定'], function(e) {
+                if (e.index == 0) {
+                    var smsCode = e.value;
+                    var para = {
+						CARD_SN: cardSN,
+						ORDER_NO:orderId,
+						SMS_CODE:smsCode
+					};
+					app.getData("/hlbpay/confirmApply.do",para,function(data){
+						plus.nativeUI.showWaiting("鉴权绑卡确认中...");
+						if(data.RESULT_CODE == 0){
+							mui.toast("鉴权绑卡成功...");
+							plus.webview.currentWebview().close();
+							plus.nativeUI.closeWaiting();
+							app.openWindow("wantgathering.html","wantgathering.html");
+						}else{
+							plus.webview.currentWebview().close();
+							mui.toast(data.RESULT_MESSAGE);
+						}
+					});
+                }
+            });
+		}
+		
+		
+		function hlbFirstConsume(amount,cardSN){
+			
+		}
+		
+		
+		mui('body').on('tap','#supportbank',function(){
+			mui.openWindow('supportbank.html','supportbank.html')
+		})
+		
+		</script>
+	</body>
+
+</html>

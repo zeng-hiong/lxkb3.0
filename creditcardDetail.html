@@ -1,0 +1,114 @@
+            
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait"> 
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+       <h1 class="mui-title">信用卡详情</h1>
+       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+       </button>
+   </header>
+    <div class='carddtl mui-content'>
+    	<div class="mui-input-group">
+	   	    <div class="mui-input-row">
+	       	   <label for="">信用卡号:</label>
+	       	    <span class="abvt"  id="CARD_NO" style="right: 15px;color:#b6b6b6">283928379283928</span>
+	        </div>
+	        <div class="mui-input-row">
+	       	  <label for="">发卡银行:</label>
+	       	  <span class="abvt"  style="right: 15px;color:#b6b6b6"  id="BANK_NAME"></span>
+	        </div>
+	   	</div>
+	   	<p id="pp" style='padding:10px 15px;background: #edf4f9;color: #309bdf;font-size: 0.3rem;'>账单信息</p>
+	   	<div class="mui-input-group marginbtm" id='day'>
+	   		 <div class="mui-input-row">
+	       	   <label for="">账单日:</label>
+	       	   <span class="abvt" id="BILL_DAY"></span>
+	       	   <span class="abvt" style="right:15px;">号</span>
+	        </div>
+	         <div class="mui-input-row">
+	       	   <label for="">还款日:</label>
+	       	   <span class="abvt" id="REPAY_DAY"></span>
+	       	   <span class="abvt" style="right:15px;">号</span>
+	        </div>
+	   	</div>
+        <button id="delete" style="display: block;font-size:0.3rem;width:100%;padding:10px;text-align: center;color: #ff6186;background: #fff;" >删除</button>   
+    </div>
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/security.js"></script>
+     <script>
+      function back_window() {
+		plus.webview.currentWebview().close();
+	  }
+    
+	mui("body").on("tap", ".mui-icon-left-nav", back_window);
+	mui("body").on("tap", "button.mui-action-back-mui-btn", back_window);
+    
+     mui.plusReady(function() {
+     	var view = plus.webview.currentWebview();
+     	$("#CARD_NO").text(view.CARD_NO);
+     	$("#BANK_NAME").text(view.BANK_NAME);
+     	var BILL_DAY = view.BILL_DAY;
+     	var REPAY_DAY = view.REPAY_DAY;
+     	
+     	if(BILL_DAY !=" " && REPAY_DAY != " "){
+     		
+     		$("#BILL_DAY").text(BILL_DAY);
+     		$("#REPAY_DAY").text(REPAY_DAY);
+     	}else{
+     		$("#billInfo").css('display','none');
+     		$("#day").css('display','none');
+     		$("#pp").css('display','none');
+     		$("#delete").css('margin-top','0.3rem');
+     	}
+     	
+     });
+     
+   	document.getElementById("delete").addEventListener('tap', function() {
+				var btnArray = ['否', '是'];
+				mui.confirm('确认删除该信用卡？？', '温馨提示', btnArray, function(e) {
+					if(e.index == 1) {
+						delCard();
+					}
+				})
+			});
+			
+	function delCard(){
+     	var CARD_SN = plus.webview.currentWebview().CARD_SN;
+     	var REAL_CARD_NO = plus.webview.currentWebview().REAL_CARD_NO;
+     	var param = {
+			"USER_ID": app.getStaffInfo().USER_ID,
+			"CARD_SN": CARD_SN,
+			"REAL_CARD_NO": REAL_CARD_NO
+		};
+		plus.nativeUI.showWaiting();
+		app.getData("/account/del_card.do", param, function(json) {
+			plus.nativeUI.closeWaiting();
+			var opener = plus.webview.currentWebview().opener();
+			mui.toast("删除成功");
+			mui.fire(opener, "getCreditCard");
+			back_window();
+		});
+     }
+	
+	plus.webview.currentWebview().setStyle({
+             softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+     });		
+    </script>   
+</body>
+</html>

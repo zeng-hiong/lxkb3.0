@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+        <script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+        <style type="text/css">
+        	.repayday span{padding-left:6px;color:#f72b2b}
+        	sub{font-size: 0.24rem;margin-top: -4px;}
+        	.repaydetail div>div:first-child{padding:0.1rem 0}
+        	.flexbox>div{flex: 1;}
+        	.flexbox>div:first-child{border-right: 1px solid #d4d4d4;}
+        </style>
+	</head>
+	<body>
+	<header class="mui-bar mui-bar-nav">
+	       <h1 class="mui-title">还款详情</h1>
+	       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+     </header>
+     <div class="mui-content">
+     	<div class="flexbox spacear aligncenter paddingall" style="padding:0.5rem 0">
+     		<div class="">
+				<div class="marginbtm"><span class='paddinglf' id="bill_amount" style="font-size: 0.48rem;"></span><sub class="">元</sub></div>
+				<p style="font-size: 0.24rem;">账单金额(含手续费<span class='poundage' >0.00</span>元)</p>
+			</div>
+			<div class="">
+				<div  class="marginbtm"><span class='paddinglf' id="repay_num" style="font-size: 0.48rem;">0</span><sub>笔</sub></div>
+				<p style="font-size: 0.24rem;">还款笔数</p>
+			</div>
+     	</div>
+     	<p class='paddingall' style='color: #666;font-size: 0.3rem;'>订单号：<span class='ordernumber' style='font-size: 0.3rem;'></span></p>
+     	<div class="formbox repaydetail" id="planDetail">
+<!--            <div class="">
+                <div>
+                    <span class="dateti">11月28日</span>
+                </div>
+                <div class="detiltop">
+                   <span class="first">还款<span>4243.00</span>元</span>
+                   <span>消费<span>442.50</span>元</span>
+                </div>
+             </div>
+                <div class="">
+                    <div class="spanbox">
+                      <span class="spendType">消费</span><span class="time">00:00</span><span class="money">446.50</span>元
+                    </div>
+                    <img src="image/icon_left_r_t.png" width="14" alt="">
+                </div>
+                <div>
+                    <div class="spanbox">
+                      <span class="repayType">还款</span><span class="time">21:00</span><span class="money">446.50</span>元
+                    </div>
+                    <img src="image/icon_left_r_r.png" width="14" alt="">
+                </div>
+          </div>-->
+        </div>
+     </div>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/app.js" ></script>
+		<script type="text/javascript" src="js/price.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.0.0.min.js" ></script>
+		<script>
+			mui("body").on("tap", ".mui-icon-left-nav", back_window);
+			function formatDate(date) {
+				return date.substr(5,2) + "月" + date.substr(8,2) + "日";
+			}
+			function formatRepayDay(date) {
+				return date.substr(5,2) + "/" + date.substr(8,2);
+			}
+			
+			var REPAY_MONEY;
+			var SERVICE_MONEY;
+			function getPlanDetail(planId) {
+				var param = {PLAN_ID : planId};
+				app.getData("/account/plan_detail.do", param, function(data) {
+					SERVICE_MONEY = parseFloat(data.RESULT_OBJECT.SERVICE_CHARGE) + parseFloat(data.RESULT_OBJECT.TRAN_FEE);
+					$("#bill_amount").html(formatPrice(parseFloat(data.RESULT_OBJECT.REPAY_MONEY) + SERVICE_MONEY));
+					$("#repay_num").html((data.RESULT_OBJECT.REPAY_NUM));
+					$(".ordernumber").html(data.RESULT_OBJECT.ORDER_CODE);
+					$(".poundage").html(formatPrice(SERVICE_MONEY));
+					var html = [];
+					var repaidList = data.RESULT_OBJECT.REPAID_LIST;
+					REPAY_MONEY = repaidList[0].ITEM_LIST[0].REPAY_MONEY;
+					console.log(repaidList.length);
+					for(var i = 0; i < repaidList.length; i++) {
+						var repaid = repaidList[i];
+						html.push("				<div class=''>");
+						html.push("					<div>");
+						html.push("						<img src='image/icon_left_calendar.png' alt='' width='15' />");
+						html.push("						<span class='dateti'>" + formatDate(repaid.REPAY_DATE) + "</span>");
+						html.push("					</div>");
+						html.push("					<div class='detiltop'>");
+						html.push("						<span class='first'>消费<span>" + formatPrice(repaid.CONSUME_AMOUNT) + "</span>元</span>");
+						html.push("						<span>还款<span>" + formatPrice(repaid.REPAY_AMOUNT) + "</span>元</span>");
+						html.push("					</div>");
+						html.push("				</div>");
+						var itemList = repaid.ITEM_LIST;
+						for(var j = 0; j < itemList.length; j++) {
+							//img:icon_left_r_t.png 表示未执行
+							//img:icon_left_r_r.png 表示已执行
+							//img:icon_left_r_f.png 表示执行失败
+							//img:icon_left_r_i.png 表示执行
+							//class:spendType 表示消费
+							//class:repayType 表示还款
+							var item = itemList[j];
+							var img = "icon_left_r_t.png"; //执行状态，默认待执行
+							if(item.REPAY_STATUS == "R"){
+								img = "icon_left_r_i.png";// 执行中
+							}else if(item.REPAY_STATUS == "F"){
+								img = "icon_left_r_f.png"; // 执行失败
+							}else if(item.REPAY_STATUS == "P"){
+								img = "icon_left_r_r.png"; // 执行成功
+							}
+							var cls = (item.PLAN_TYPE == "1" ? "repayType" : "spendType");
+							html.push("				<div class=''>");
+							html.push("					<div class='spanbox'>");
+							html.push("						<span class='" + cls +"'>" + item.PLAN_TYPE_DESC + "</span>");
+							html.push("                     <span class='time'>" + item.REPAY_TIME + "</span>");
+							html.push("					</div>");
+							html.push("                 <div>");
+							html.push("                     <span class='money'>"+formatPrice(item.REPAY_MONEY)+"</span>元");
+							html.push("					    <img src='image/" + img + "' width='14' alt='' style='margin-left:0.2rem' />");
+							html.push("                 </div>");
+							html.push("				</div>");
+						}
+						html.push("</div>");
+					}
+					$("#planDetail").append(html.join(""));
+				});
+			}
+			
+			mui.plusReady(function() {
+				var webview = plus.webview.currentWebview();
+				//alert(parsePrice(toThousands("1119000")));
+				getPlanDetail(webview.PLAN_ID);
+				//console.log(webview.PLAN_ID);
+			});
+			
+			function back_window() {
+				plus.webview.currentWebview().close();
+			}
+			mui("body").on("tap", "span.abslt", back_window);
+		</script>
+	</body>
+
+</html>

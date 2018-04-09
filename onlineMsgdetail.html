@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.newstime {
+				display: inline-block;
+				background: #CCCCCC;
+				border-radius: 5px;
+				padding: 2px 10px;
+				color: #fff;
+			}
+			
+			.hours {
+				margin-left: 6px;
+			}
+			
+			.newsbox {
+				padding: 0.6rem 0.3rem;
+			}
+			
+			.newsbox li h4 {
+				margin-bottom: 0.5rem;
+				font-size: 0.32rem;
+				font-weight: 500;
+			}
+			
+			.newsbox li>div {
+				font-size: 0.28rem;
+				background: #fff;
+				padding: 20px;
+				border-radius: 0.2rem;
+			}
+			
+			.newstime {
+				font-size: 0.24rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">留言详情</h1>
+			<button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="newsbox">
+					<li class="aligncenter marginbtm">
+						<p class="newstime marginbtm">留言时间:<span class="yearmo" id="create_date"></span></p>
+						<div class="alignleft">
+							<div>留言内容:
+								<p class='newstext' id="content"></p>
+							</div>
+						</div>
+					</li>
+					<li class="aligncenter marginbtm" style="display: none;" id="reply">
+						<p class="newstime marginbtm">回复时间:<span class="yearmo" id="reply_date"></span></p>
+						<div class="alignleft">
+							<div>回复内容:
+								<p class='newstext' id="reply_content"></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/common.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script>
+			mui("body").on("tap", ".mui-icon-left-nav", backWin);
+
+			function backWin() {
+				plus.webview.currentWebview().close();
+			}
+
+			mui.plusReady(function() {
+				$("#create_date").html(plus.webview.currentWebview().CREATE_DATE);
+				$("#content").html(plus.webview.currentWebview().CONTENT);
+				var status = plus.webview.currentWebview().STATUS;
+				var reply_date = plus.webview.currentWebview().REPLY_DATE;
+				var reply_content = plus.webview.currentWebview().REPLY_CONTENT;
+				if(status == 1){
+					$("#reply_date").html(reply_date);
+					$("#reply_content").html(reply_content);
+					$("#reply").show();
+				}
+			});
+		</script>
+	</body>
+
+</html>

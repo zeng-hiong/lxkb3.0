@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   	<link rel="stylesheet" href="css/mui.css" />
+   	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait" /> 
+   	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+   	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+   	<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+   	<style type="text/css">
+   		.spacear p,.spacear h3,.spacear h4{color:#28b5f7}
+   	</style>
+</head>
+<body>
+   <header class="mui-bar mui-bar-nav">
+       <h1 class="mui-title">我的奖励</h1>
+       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  <span class="mui-icon mui-icon-left-nav"></span>返回
+       </button>
+   </header>
+   <div class="mui-content">
+   	     <div class="flexbox aligncenter spacear marginbtm" style="padding:0.6rem 0 0.4rem;background: #fff;">
+	     	  	 <div style="flex:1;border-right: 1px solid #ccc;">
+	     	  	    <p>累计奖励&nbsp;&nbsp;(元)</p>
+	     	  	    <h4>7488.08</h4>
+	     	     </div>
+	     	     <div style='flex:1;border-right: 1px solid #ccc;'>
+	     	  	    <p>已提现&nbsp;&nbsp;(元)</p>
+	     	  	    <h4>38881.08</h4>
+	     	     </div>
+	     	     <div style='flex:1'>
+	     	  	    <p>可提现&nbsp;&nbsp;(元)</p>
+	     	  	    <h4>388</h4>
+	     	     </div>
+	     </div>
+	     <div class="mui-input-group marginbtm">
+	   	    <div class="mui-input-row">
+	       	   <label for="">提现金额:</label>
+	       	   <input type="tel" placeholder="请输入提现金额" value=""  />
+	       	   <span class="abvt" style="right: 0.3rem;color: #8=666;">全部提出</span>
+	        </div>
+	   	</div>
+	   	<div class="mui-input-group marginbtm">
+	      <div class="mui-input-row">
+	       	  <label for="">结算卡:</label>
+	       	  <input type="text" placeholder="请选择结算卡"  class="readon" readonly="" />
+	       	  <input type="hidden" id="bank_id" />
+	       	 <span class="mui-icon mui-icon-arrowright"></span>
+	        </div>
+	         <div class="mui-input-row">
+	       	   <label for="">提现密码:</label>
+	       	   <input type="password"  placeholder="请选择提现密码"  class="readon" readonly="" />
+	       	   <span class="mui-icon mui-icon-arrowright"></span>
+	        </div>
+	   	</div>
+	   	<a href="" style='width:75%;margin:0 auto;text-align: right;color: #309bdf;font-size: 0.26rem;'>忘记密码?</a>
+	   	<button class="newbtn">确认提现</button>
+	   	<ul class="flexbox" style="margin-top: 1.4rem;">
+     		<li style='flex: 1;text-align: right;padding-right: 0.36rem;border-right: 1px solid #6accfb;' ><a href="" style='color:#309bdf;font-size: 0.26rem;'>分润收益明细</a></li>
+     		<li style='flex: 1;padding-left: 0.36rem;'><a href="" style="color:#309bdf;font-size: 0.26rem;">提现记录</a></li>
+     	</ul>
+     	<div id="paypassword" style='display: none;'>
+				<div style=''>
+					<p style='border:none'>输入支付密码</p>
+                    <p style='font-size:0.24rem;color:#999;padding-top:0'>到账银行卡：<span>平安银行储蓄卡</span><span style='padding:0 0.2rem'>(5683)</span>手续费2元/笔</p>
+					<div class="pwd-box" style='position:relative;'>
+						<div class="pwd-input" id="pwd-input"></div>
+						<div class="fake-box">
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+							<input type="password" readonly="" value="" />
+						</div>
+					</div>
+					<a href='forgetpassword.html' id="forgetpwd" style="color:#309bdf;text-align:right;padding:0.2rem 1rem 0.2rem 0">忘记密码？</a>
+					<table id='pswnum'>
+						<tbody>
+							<tr>
+								<td class='numb'>1</td>
+								<td class='numb'>2</td>
+								<td class='numb'>3</td>
+							</tr>
+							<tr>
+								<td class='numb'>4</td>
+								<td class='numb'>5</td>
+								<td class='numb'>6</td>
+							</tr>
+							<tr>
+								<td class='numb'>7</td>
+								<td class='numb'>8</td>
+								<td class='numb'>9</td>
+							</tr>
+							<tr>
+								<td class='empty'></td>
+								<td class='numb'>0</td>
+								<td class='delt'><img src="image/btn_del_code.png" alt="" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		   </div>
+     	<div class="choosecard">
+              <p class="aligncenter"><span class="abvt">取消</span>选择结算卡</p>
+              <div class="formbox">
+                   <div>
+                      <img src="image/bankicon/icon_bank_logo.png" alt="" width="28">
+                      <label for="999">
+                         <span>平安银行<span class="cardtype">(信用卡)</span></span>
+                         <span>尾号2333</span>
+                      </label>
+                     <input type="radio" value="233" name="2233">
+                </div>
+                <div>
+                <img src="image/bankicon/icon_bank_logo.png" width="28 alt=" "="">
+                <label for="3344">
+                   <span>平安银行<span class="cardtype">(信用卡)</span></span>
+                   <span>尾号2333</span>
+                </label>
+                <input type="radio" value="22" name="2233">
+                </div>
+                <div>
+                    <img src="image/bankicon/icon_bank_logo.png" alt="" width="28">
+                    <label for="2233">
+                       <span>中国银行<span class="cardtype">(储蓄卡)</span></span>
+                       <span>尾号5511</span>
+                    </label>
+                     <input type="radio" value="2233" name="2233">
+                </div>
+                <div>
+                   <a href=""><img src="image/icon_add.png" alt="" width='28'>添加银行卡</a>
+                </div>
+             </div>
+           </div>
+        </div>
+   </div>
+   <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+</body>
+</html>

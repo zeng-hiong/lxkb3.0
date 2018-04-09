@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait" /> 
+   	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+   	<link rel="stylesheet" href="css/mui.css" />
+</head>
+<body style='background: #Fff;'>
+   <header class="mui-bar mui-bar-nav">
+       <h1 class="mui-title">baidu</h1>
+       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+       </button>
+   </header>
+   <div class="mui-content mui-scroll-wrapper" style='padding-bottom: 70px;'>
+   	     <div class="mui-scroll">
+   	     	
+   	     </div>
+   </div>
+   <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+   	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+		 mui.init();
+		 mui("body").on("tap", ".mui-icon-left-nav",backWin);
+		 mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+		var wv;
+		 function backWin() {
+		    wv.evalJS('document.activeElement.blur();');
+		 	mui.back();
+		 	
+      	}
+		
+		 window.addEventListener('openThird',function(event){
+		 	var url=event.detail.id;
+		 	var title=event.detail.title;
+		 	
+		 	console.log(url+'title'+title)
+		 	$('.mui-title').html(title);
+		    loadUrl(url);
+		 });
+		
+		 mui.plusReady(function(){
+		 	/*mui.trigger('openThird')*/
+		 	loadUrl()
+		 })
+		 $(document).ready(function(){
+		 	loadUrl()
+		 })
+       function loadUrl(url){
+        
+            wv = plus.webview.create(url,url,{top:'64px',bottom:0})
+        	
+        	/*wv.evalJS("plus.key.addEventListener('backbutton',function () { plus.webview.currentWebview().close(); })");*/
+           var self=plus.webview.currentWebview();
+            self.append(wv);
+            plus.key.addEventListener('backbutton',function(){
+            	window.history.back();
+            },false)
+        }
+       
+		(function($) {
+				$(".mui-scroll-wrapper").scroll();
+			})(mui);
+
+	function bluri(){
+		wv.evalJS('document.activeElement.blur();');
+	}
+	</script>
+</body>
+</html>

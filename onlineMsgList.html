@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.mui-table-view {
+				background: #f3f7f9;
+			}
+			
+			.mui-table-view li {
+				background: #fff;
+			}
+			
+			.mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.mui-table-view-cell p:first-child {
+				font-size: 0.34rem;
+				color: #444;
+				margin-bottom: 0.16rem;
+			}
+			
+			.mui-table-view-cell p {
+				font-size: 0.26rem;
+				color: #666;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.4rem;
+			}
+			
+			.mui-table-view-cell:last-child {
+				margin-bottom: 0
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">留言列表</h1>
+			<button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+		</header>
+		<div class="mui-content mui-scroll-wrapper" id='refreshContainer'>
+			<div class="mui-scroll">
+				<div class="mui-card">
+					<ul class="mui-table-view" id="leavemessage">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/common.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script>
+			mui("body").on("tap", ".mui-icon-left-nav", back_window);
+			mui.plusReady(function() {
+				initMsg();
+			});
+			function initMsg(){
+				app.getData("/common/leaveMessage/get_message_list.do",null,function(data){
+					var list = data.RESULT_OBJECT;
+					console.log(JSON.stringify(list));
+					var html = "";
+					$.each(list, function() {
+						html += "<li class='mui-table-view-cell marginbtm' data = '{\"CONTENT\":\"" + this.CONTENT + "\",\"STATUS\":\"" + this.STATUS + "\",\"CREATE_DATE\":\"" + this.CREATE_DATE +"\",\"REPLY_DATE\":\"" + this.REPLY_DATE + "\",\"REPLY_CONTENT\":\"" + this.REPLY_CONTENT + "\"}'>";
+						html += "<a class='mui-navigate-right'><p>" + this.CONTENT.substring(0,16) 
+						+ "</p><p>留言时间:<span>" + this.CREATE_DATE + "<span></p>";
+						if(this.REPLY_DATE != null && this.REPLY_DATE != ''){
+							html += "<p>回复时间:<span>" + this.REPLY_DATE + "<span></p>";
+						}
+						html += "</a></li>";
+					});
+					$("#leavemessage").html(html);
+				})
+			}
+			
+	    	mui("body").on("tap", ".mui-content li", function() {
+	    		var params = this.getAttribute('data');
+	    		params = JSON.parse(params);
+	    		showMessageDetail(params.CONTENT,params.STATUS,params.CREATE_DATE,params.REPLY_DATE,params.REPLY_CONTENT);
+	    	});
+    	
+			function showMessageDetail(CONTENT,STATUS,CREATE_DATE,REPLY_DATE,REPLY_CONTENT){
+				app.openWindow('onlineMsgdetail.html', 'onlineMsgdetail.html', {
+					"CONTENT": CONTENT,
+					"STATUS" : STATUS,
+					"CREATE_DATE": CREATE_DATE,
+					"REPLY_DATE": REPLY_DATE,
+					"REPLY_CONTENT": REPLY_CONTENT
+				});
+			}
+			
+			mui.init({
+		      	pullRefresh:{
+		      	 	container:'#refreshContainer',
+		      	 	contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+				    contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+				    contentrefresh : "刷新成功~",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+		      	    down : {
+				      callback :refresh
+				    }
+		      	}
+        	});
+        	function refresh(){
+				initMsg();
+	    		mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+	    	}
+
+		</script>
+	</body>
+
+</html>

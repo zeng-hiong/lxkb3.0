@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+	</head>
+	<style>
+		.channelRadio {
+			border: 1px solid #e4e4e4;
+			border-radius: 50%;
+			width: 0.4rem;
+			height: 0.4rem;
+			vertical-align: top;
+		}
+		
+		.channelRadio:checked {
+			background: url(image/icon_switch_r.png);
+			background-size: 100% 100%;
+		}
+		
+		.outerbox .passwaybox {
+			align-items: flex-start;
+			position: relative;
+			padding: 15px 15px 40px;
+		}
+		
+		.passwaybox .tips {
+			color: #ef1414;
+		}
+		
+		.passwaybox:not(:last-of-type)::after {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			height: 1px;
+			content: '';
+			-webkit-transform: scaleY(.5);
+			transform: scaleY(.5);
+			background-color: #c8c7cc;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">选择还款通道</h1>
+			<button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>返回
+			</button>
+		</header>
+		<div class='mui-content'>
+			
+			<!-- 通道列表  -->
+			<div class="outerbox" style="background: #fff;">
+				<p style="border-bottom:1px solid #d1d1d1;padding:10px 15px" class="paddingtb">选择还款通道</p>
+				
+			</div>
+			<button id="submit" class='newbtn'>确定</button>
+          	
+		</div>
+		<script type='text/javascript' src='js/jquery-2.0.0.min.js'></script>
+		<script type='text/javascript' src='js/swiper.min.js'></script>
+		<script type='text/javascript' src="js/mui.min.js"></script>
+		<script type='text/javascript' src="js/app.js"></script>
+		<script type='text/javascript' src="js/common.js"></script>
+		<script type="text/javascript" src="js/security.js" ></script>
+		<script type="text/javascript">
+			mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+
+			function backWin() {
+				plus.webview.currentWebview().close();
+			}
+
+			var webview = null;
+			var BILL_DAY = null;
+			var REPAY_DAY = null;
+			var BANK_NAME = null;
+			var CARD_NO = null;
+			var BANK_ICON = null;
+			var CARD_SN = null;
+			
+			mui.plusReady(function() {
+				webview = plus.webview.currentWebview();
+				BILL_DAY = webview.BILL_DAY;
+				REPAY_DAY = webview.REPAY_DAY;
+				BANK_NAME = webview.BANK_NAME;
+				CARD_NO = webview.CARD_NO;
+				BANK_ICON = webview.BANK_ICON;
+				CARD_SN = webview.CARD_SN;
+				initChannel(CARD_SN);
+			});
+			
+			function initChannel(cardSN) {
+				var para = {
+					"CARD_SN": cardSN,
+					"CHANNEL_TYPE" : 1
+				};
+				
+				app.getData("/channel/get_card_channel_list.do", para, function(data) {
+					//console.log(JSON.stringify(data));
+					var list = data.RESULT_OBJECT;
+					if(list && list.length > 0) {
+						var html = [];
+						for(var i = 0; i < list.length; i++) {
+							var channelMap = list[i];
+							html.push("<div class='passwaybox' style='overflow: hidden;'>");
+							html.push("  <input type='radio' class='channelRadio' value='" + channelMap.CHANNEL_ID + "' name='passWay' style='margin-right: 15px;margin-top: 2px;float: left;' />");
+							html.push("  <div style='float: left;'>");
+							html.push("    <p style='font-size: 0.36rem;margin-bottom: 0.32rem;'>" + channelMap.CHANNEL_NAME + "</p>");
+							html.push("    <p style='color: #28b5f7;font-size: 0.26rem;'>费率：0.79%+0.5元/笔</p>");
+							html.push("  </div>");
+							html.push("</div>");
+						}
+						
+						var container = $(".outerbox");
+						container.append(html.join(""));
+						
+						$(".passwaybox").on("touchend", function(e) {
+							$('.passwaybox').css('background', "#fff");
+							$("input[type=radio]").prop("checked", false);
+							$(this).css('background', '#edf4fb');
+							$("input[type=radio]", this).prop("checked", true);
+							channelId = $("input[type=radio]", this).val();
+						});
+					}
+				});
+			}
+		
+		document.getElementById("submit").addEventListener('tap', function(e) {
+			e.detail.gesture.preventDefault();
+			if(!channelId) {
+				mui.toast("请选择还款通道");
+						return false;
+			}
+					
+			if(channelId == 1) {
+				app.openWindow('repaymentPlan.html', 'repaymentPlan.html', { 
+					"CARD_SN": CARD_SN,
+					"BILL_DAY":BILL_DAY,
+					"REPAY_DAY":REPAY_DAY, 
+					"BANK_NAME":BANK_NAME,
+					"CARD_NO":CARD_NO,
+					"BANK_ICON":BANK_ICON,
+					"CHANNEL_ID":channelId
+				});
+			} else if(channelId == 5) {
+				var para = {
+					CARD_SN: CARD_SN,
+					AMOUNT:0,
+					TYPE:"HK"
+				};
+				var opener = plus.webview.currentWebview().opener();
+				app.getData("/kftpay/check_pay.do",para,function(data){
+					if(data.RESULT_CODE == 0 ){
+						if("SIGN_APPLY" == data.RESULT_OBJECT.SIGN) {//卡对应的通道不存在，创建
+							plus.nativeUI.showWaiting("该卡暂未开通该通道，系统自动开通中...");
+							var orderNo = data.RESULT_OBJECT.orderNo;
+							var smsSeq = data.RESULT_OBJECT.smsSeq;
+							sendMessage(e,CARD_SN,orderNo,smsSeq);//确认代扣协议申请
+						}else{
+							app.openWindow('repaymentPlan.html', 'repaymentPlan.html', { 
+								"CARD_SN": CARD_SN,
+								"BILL_DAY":BILL_DAY,
+								"REPAY_DAY":REPAY_DAY, 
+								"BANK_NAME":BANK_NAME,
+								"CARD_NO":CARD_NO,
+								"BANK_ICON":BANK_ICON,
+								"CHANNEL_ID":channelId
+							});
+						}
+					}else{
+						mui.toast(data.RESULT_MESSAGE);
+					}
+				});
+			}
+					
+		});
+		
+		function sendMessage(e,cardSN,orderNo,smsSeq){
+			//plus.nativeUI.showWaiting("支付发起中...");
+			mui.prompt('请输入收到的短信验证码', '', '', ['确定'], function(e) {
+                if (e.index == 0) {
+                    var smsCode = e.value;
+                    var para = {
+						CARD_SN: cardSN,
+						ORDER_NO:orderNo,
+						SMS_SEQ:smsSeq,
+						SMS_CODE:smsCode
+					};
+					app.getData("/kftpay/confirmApply.do",para,function(data){
+						plus.nativeUI.showWaiting("代扣协议确认中...");
+						if(data.RESULT_CODE == 0){
+							mui.toast("代扣协议申请成功...");
+							plus.webview.currentWebview().close();
+							plus.nativeUI.closeWaiting();
+							app.openWindow('repaymentPlan.html', 'repaymentPlan.html', { 
+								"CARD_SN": CARD_SN,
+								"BILL_DAY":BILL_DAY,
+								"REPAY_DAY":REPAY_DAY, 
+								"BANK_NAME":BANK_NAME,
+								"CARD_NO":CARD_NO,
+								"BANK_ICON":BANK_ICON,
+								CHANNEL_TYPE:"KFT"
+							});
+						}else{
+							plus.webview.currentWebview().close();
+							mui.toast(data.RESULT_MESSAGE);
+						}
+					});
+                }
+            });
+            
+        }
+		
+		</script>
+	</body>
+
+</html>

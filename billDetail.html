@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait"> 
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <style type="text/css">
+    .mui-segmented-control .mui-control-item{line-height:20px;}
+    .mui-segmented-control.mui-segmented-control-inverted .mui-control-item:first-child{border-right: 1px solid #666;}
+    .mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{color: #309bdf;}
+    .billdetailbox {
+	    width: 95%;
+	    margin: 0 auto;
+    }
+    .billdetailbox>div>div {
+	    margin-bottom: 0.3rem;
+	    background: #fff;
+    }
+    .billdetailbox>div>div>p {
+	    position: relative;
+	    padding: 0.15rem 0.25rem;
+	    border-bottom: 1px solid #edf4f9;
+    }
+     .billdetailbox p{
+     	overflow: hidden;
+     	text-overflow:ellipsis;
+	    white-space: nowrap;
+     }
+     
+    .billdetailbox>div>div>div {
+    	padding: 0.1rem 0.9rem;
+    	margin-bottom: -10px;
+	}
+	.billdetailbox a {
+	    position: relative;
+	    padding: 0.2rem;
+	    border-top: 1px solid #edf4f9;
+	}
+	.billdetailbox>div>div>p img {
+	    margin-right: 0.15rem;
+	}
+	.billdetailbox span.abvt {
+	    color: #fff;
+	    font-size: 0.2rem;
+	    padding: 0.04rem 0.1rem;
+	    border-radius: 0.1rem;
+	    right: 15px;
+	    color: #fff;
+	}
+	.billdetailbox ul li{
+		padding-bottom: 0;
+	}
+	.billdetailbox span.abvt.done {
+	    background-image: -webkit-linear-gradient(0deg,#fa3966 0%,#fb5078 54%,#fc678a 100%),-webkit-linear-gradient(#ff6186,#ff6186);
+	    background-image: linear-gradient(0deg,#fa3966 0%,#fb5078 54%,#fc678a 100%),linear-gradient(#ff6186,#ff6186);
+	
+	}
+	.billdetailbox span.abvt.going {
+	    background-image: -webkit-linear-gradient(0deg,#008aff 0%,#00b4ff 100%), -webkit-linear-gradient(#35aaf5,#35aaf5);
+	    background-image: linear-gradient(0deg,#008aff 0%,#00b4ff 100%), linear-gradient(#35aaf5,#35aaf5);
+	}
+	.billdetailbox>div>div>div p {
+	    height: 0.566rem;
+	    line-height: 0.566rem;
+	}
+	.billdetailbox>div>div .money {
+	    font-size: 0.36rem;
+	}
+	.billdetailbox>div>div>div .starttime {
+	    color: #309bdf;
+	}
+	.mui-slider .mui-slider-group .mui-slider-item img {
+	   width: 0.54rem;
+	   margin-right: 0.1rem
+	}
+	.mui-slider .mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-group .mui-slider-item {
+		border:none
+	}
+	.mui-content{
+				top: 0;
+				bottom: 0;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				overflow-y: scroll;
+				/* -webkit-overflow-scrolling: touch; */
+            
+	    	}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav" style='position: absolute;top:0'>
+       	<h1 class="mui-title">账单明细</h1>
+       	<button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  	<span class="mui-icon mui-icon-left-nav">返回</span>
+       	</button>
+   	</header>
+    <div class="mui-content">
+        <div class="mui-slider">
+            <div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="padding: 10px;margin-bottom: 10px;background: #fff;">
+                <a class="mui-control-item mui-active" href="#item1" id='hk_bill' style="font-size: 0.3rem;">还款账单(<span id="hk_bill_num">0</span>)</a>
+                <a class="mui-control-item" href="#item2" id="sk_bill" style="font-size: 0.3rem;">收款账单(<span id="sk_bill_num">0</span>)</a>
+            </div>
+            <div class="mui-slider-group">
+                <div id="item1" class="mui-slider-item mui-control-content mui-active">
+                    <div class="billdetailbox">
+				        <div class="repaymentbillbox">
+				        	
+				        </div>
+				    </div>
+                </div>
+                <div id="item2" class="mui-slider-item mui-control-content">
+                  	<div class="billdetailbox">
+                        <div class="gatheringbox">
+				            
+				        </div>
+				    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+	<script type='text/javascript' src='js/jquery-2.0.0.min.js'></script>
+  	<script type='text/javascript' src='js/swiper.min.js'></script>
+ 	<script type='text/javascript' src="js/mui.min.js"></script>
+  	<script type='text/javascript' src="js/app.js"></script>
+  	<script type='text/javascript' src="js/common.js"></script>
+  	
+  	<script type='text/javascript'>
+  		
+	  	document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+	     	bill_change();
+		});
+	  	document.querySelector('.mui-slider').addEventListener('tap', function(event) {
+	     	bill_change();
+		});
+		
+		var gallery = mui('.mui-slider');
+		gallery.slider({
+		    interval:0
+		});
+		
+		mui.plusReady(function() {
+	    	document.documentElement.style.fontSize = plus.screen.resolutionWidth/ 7.5 + 'px';
+	    	$('.billbox>div').on('touchstart',function(){
+		      	var index=$(this).index();
+		      	$(this).addClass('active').siblings('div').removeClass('active')
+		      	$('.billdetailbox').children().eq(index).show().siblings().hide();
+			});
+  			plus.nativeUI.showWaiting();
+			hkbill();
+			skbill();
+			plus.nativeUI.closeWaiting();
+	   	});
+  		
+  		/**
+  		 * 还款账单
+  		 */
+  		function hkbill() {
+  			var userinfo = app.getStaffInfo();
+	    	var params = {"USER_ID":userinfo.USER_ID, "TOKEN":userinfo.TOKEN,"CHANNEL_ID" : 1};
+    		app.getData("/account/get_plan_list.do", params, function(json){
+    			var hk_bill_num = 0;
+    			var html = "";
+    			console.log(JSON.stringify(json))
+    			var data = json.RESULT_OBJECT;
+    			if(data != null && data.length != 0) {
+    				hk_bill_num = data.length;
+    				$.each(data, function(index, obj) {
+    					var red="";
+    					if(obj.REPAY_STATUS_DESC=="已完成"){
+    						red="done";
+    					}else{
+    						red="going";
+    					}
+    					html = html +　"<div class='href' href='repaymentDetail.html'  data='{\"PLAN_ID\":"+ obj.PLAN_ID +"}'>" +
+				                "<p>" +
+				                    "<img src='"+ obj.BANK_ICON +"' alt='' class='bankimg'><span>"+ obj.BANK_NAME +"</span>(<span class='cardnum'>"+ obj.CARD_NO +"</span>)<span class='abvt "+red+"'>"+ obj.REPAY_STATUS_DESC +"</span>" +
+				                "</p>" +
+		                      	"<div>" +
+		                          	"<p>还款总金额(含手续费<span>"+ obj.SERVICE_CHARGE +"元</span>)</p>" +
+		                          	"<p class='money'>"+ obj.REPAY_MONEY +"<span>元</span></p>" +
+		                          	"<p>还款计划开始时间：<span class='starttime'>"+ obj.START_DATE +",共"+ obj.REPAY_NUM +"笔</span></p>" +
+		                          	"<p>支付银行："+ obj.PAY_BANK_NAME +"("+ obj.PAY_CARD_NO +")</p>" +
+		                      	"</div>" +
+				             	"<ul class='mui-table-view'>" +
+									"<li class='mui-table-view-cell'><a class='mui-navigate-right'>查看详情 </a></li>" +
+                            	"</ul>" +
+				            "</div>";
+    				});
+    			} 
+    			$("#hk_bill_num").text(hk_bill_num);
+    			$(".repaymentbillbox").html(html);
+    		});
+  		}
+  		
+  		/**
+  		 * 收款账单
+  		 */
+  		function skbill() {
+  			var userinfo = app.getStaffInfo();
+	    	var params = {"USER_ID":userinfo.USER_ID, "TOKEN":userinfo.TOKEN};
+    		app.getData("/account/get_recharge_list.do", params, function(json){
+    			var sk_bill_num = 0;
+    			var html = "";
+    			var data = json.RESULT_OBJECT;
+    			if(data != null && data.length != 0) {
+    				sk_bill_num = data.length;
+    				$.each(data, function(index, obj) {
+    					var red="";
+    					if(obj.REPAY_STATUS_DESC=="已完成"){
+    						red="done";
+    					}else{
+    						red="going";
+    					}
+    					html = html + "<div>" +
+    					            "<p>" +
+				                    "<img src='"+ obj.BANK_ICON +"' alt='' class='bankimg'><span>"+ obj.BANK_NAME +"</span>(<span class='cardnum'>"+ obj.CARD_NO +"</span>)<span class='abvt "+red+"'>"+ obj.REPAY_STATUS_DESC +"</span>" +
+				                    "</p>" +
+    								"<p style='border-bottom:none;margin-bottom:-10px;'>订单号：<span>"+ obj.ORDER_CODE +"</span></p>" +
+					                "<p>收款金额：<span class='money'>"+ obj.TRANS_AMOUNT +"<span>元</span></span><span>&nbsp;&nbsp;(含手续费"+ obj.SERVICE_AMOUNT +"元)</span></p>" +
+					                "<p>收款时间：<span>"+ obj.CREATE_DATE +"</span></p>" +
+					                "</div>";
+    				});
+    			}
+    			$("#sk_bill_num").text(sk_bill_num);
+    			$(".gatheringbox").html(html);
+    		});
+  		}
+  		
+	    function bill_render(id) {
+	    	if(id == 'hk_bill' || id == "") {
+	    		hkbill()
+	    	} else if(id == 'sk_bill') {
+	    		skbill();
+	    	}
+	    }
+	    
+		function bill_change() {
+	    	var userinfo = app.getStaffInfo();
+	    	var id = this.getAttribute('id');
+	    	plus.nativeUI.showWaiting();
+	    	bill_render(id);
+	    	plus.nativeUI.closeWaiting();
+	    }
+	    
+	    mui("body").on("tap", ".mui-icon-left-nav", back_window);
+		mui("body").on("tap", "button.mui-action-back-mui-btn", back_window);
+	    
+	    mui("body").on("tap", "#hk_bill", bill_change);
+	    mui("body").on("tap", "#sk_bill", bill_change);
+	    mui("body").on("tap", "div.href", function() {
+			var url = this.getAttribute('href');
+			var extras = JSON.parse(this.getAttribute("data"));
+			if(url == "" || url == "#") {
+				plus.nativeUI.alert("项目建设中~");
+				return false;
+			}
+			app.openWindow(url, url, extras);
+		});
+	    
+  </script>   
+</body>
+</html>

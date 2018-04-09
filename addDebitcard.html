@@ -1,0 +1,250 @@
+            
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait" /> 
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+</head>
+<body>
+ <header class="mui-bar mui-bar-nav">
+       <h1 class="mui-title">添加储蓄卡</h1>
+       <button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+       </button>
+   </header>
+    <div class="mui-content">
+          <div class="mui-input-group marginbtm">
+	   	    <!--<div class="mui-input-row">
+	       	   <label for="">姓名:</label>
+	       	   <input type="text" placeholder="请输入您的姓名" id='' maxlength="5">
+	        </div>-->
+	        <div class="mui-input-row">
+	       	   <label for="">储蓄卡号:</label>
+	       	   <input type="tel" placeholder="请输入本人正确的储蓄卡号" id='bank_no' maxlength="23">
+	        </div>
+	        <div class="mui-input-row">
+		       	 <label for="">发卡银行:</label>
+		       	 <input type="text"  placeholder="输入卡号后自动匹配发卡银行" id="bank_name" readonly="" class="readon" />
+		       	 <input type="hidden" id="bank_id" />
+	        </div>
+	        <div class="mui-input-row">
+	       	   <label for="">手机号码:</label>
+	       	   <input type="tel" placeholder="请输入银行卡预留手机号" maxlength="11" id="phone">
+	        </div>
+	         <div class="mui-input-row">
+	       	     <label for="">验证码:</label>
+	       	     <input type="tel" placeholder="请输入验证码" maxlength="6" id='code'>
+	       	     <div class='verfity'>
+					  <a id="xsx1" href="javascript:;" onclick="sendSms();">获取验证码</a>
+					  <a id="xsx2" style="display: none;">重新发送(<i id="mias">60</i>)</a>
+				  </div>
+	          </div>
+	   	</div>
+	   	<button class="newbtn" onclick="addDebitcard()" style="margin-top: 1rem;">确认添加</button>
+    </div>
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/security.js"></script>
+    <script type="text/javascript" src="js/common.js"></script> 
+    <script type="text/javascript">
+    	mui("body").on("tap", "button.mui-action-back-mui-btn", backWin);
+	  	function backWin() {
+	  		plus.webview.currentWebview().close();
+	  	}
+	  	
+	  	/**
+    	window.addEventListener("selectBank", function(e){
+  			if(e && e.detail) {
+  				$("#bank_name").val(e.detail.BANK_NAME);
+  				$("#bank_id").val(e.detail.BANK_ID);
+  			}
+  		});
+  		*/
+	    
+	    var main = null;
+		mui.plusReady(function(){
+			main = plus.webview.currentWebview().opener();
+		})
+	    
+	    /**
+	    mui("body").on("tap", "#bank_name", function() {
+			app.openWindow("bankList.html", "bankList.html");
+	  	});
+	  	*/
+  		
+	    mui("body").on("tap", "#addDebitcard", function() {
+	    	addDebitcard();
+	    });
+	    
+	    //按下
+	    $("#bank_no").on("keyup", function(e) {
+			var self = $(this);
+			var text = self.val();
+			//四个字符加一个空格
+			self.val(text.replace(/\s/g, "").replace(/(.{4})/g, "$1 "));
+			//优化语句：如果当前位置是空格字符，则自动清除掉
+			if(self.val().charAt(self.val().length - 1) == " ") {
+				self.val(self.val().substring(0, self.val().length - 1));
+			}
+			if(text.length==10){
+				identification_Card(text);
+			}else if (text.length<7){
+				$("#bank_name").val("");
+  				$("#bank_id").val("");
+			}
+		});
+		//离开
+		$("#bank_no").on("blur", function(e) {
+			var self = $(this);
+			var text = self.val();
+			if(text.length>15){
+				identification_Card(text);
+			}
+		});
+		
+		function identification_Card(text) {
+			//CARD_TYPE:1是信用卡，2是储蓄卡
+			var param = {
+		      "BIN_NO": text,
+		      "CARD_TYPE" : 2
+		    };
+			plus.nativeUI.showWaiting();
+			app.getData("/common/bank/get_identification_card.do", param,function(json){
+				var data = json.RESULT_OBJECT;
+				console.log(JSON.stringify(data));
+				if(data){
+					$("#bank_name").val(data.BANK_NAME);
+  					$("#bank_id").val(data.BANK_ID);
+				}else{
+					$("#bank_name").val("暂不支持该银行");
+				}
+				plus.nativeUI.closeWaiting();
+			});
+		}
+		
+	    /**
+	     * 添加银行卡（储蓄卡）
+	     */
+	    function addDebitcard() {
+	    	/*var real_name = $("#real_name").val();
+	    	if (real_name == "") {
+	    		mui.toast("请输入您的姓名");
+	    		return;
+	    	}*/
+	    	var bank_no = $("#bank_no").val().replace(/\s/g, "");
+	    	if (bank_no == "") {
+	    		plus.nativeUI.toast("请输入本人正确的储蓄卡号");
+	    		return;
+	    	}
+	    	var bank_name = $("#bank_name").val();
+	    	if(bank_name == "" || bank_name == "暂不支持该银行" ) {
+	    		plus.nativeUI.toast("发卡银行不能为空!");
+	    		return;
+	    	}
+	    	var bank_id = $("#bank_id").val();
+	    	var phone = $("#phone").val();
+	    	if (phone == "") {
+	    		plus.nativeUI.toast("请输入银行卡预留手机号");
+	    		return;
+	    	}
+	    	var reg = /^0?1[3|4|5|6|7|8|9][0-9]\d{8}$/;
+	    	if(phone.length != 11 || !reg.test(phone)) {
+		      	plus.nativeUI.toast("手机号码格式有误");
+		      	return;
+		    }
+	    	
+	    	var code = $("#code").val();
+	    	if (code == "") {
+	    		plus.nativeUI.toast("请输入验证码");
+	    		return;
+	    	}
+	    	var userinfo = app.getStaffInfo();
+	  		var params = {
+	  					  	"USER_ID":userinfo.USER_ID,
+	  					  	"TOKEN":userinfo.TOKEN,
+	  						"BANK_CARD_NO":RSAUtils.encryptedString(bank_no),
+	  						"BANK_ID":bank_id,
+	  						"PHONE_NO":RSAUtils.encryptedString(phone),
+	  						"SMS_CODE":RSAUtils.encryptedString(code)
+	  					};
+	  		plus.nativeUI.showWaiting();
+	  		app.getData("/account/add_bank_card.do", params, function(json){
+	  			if (json.RESULT_CODE == 0) {
+	  				plus.nativeUI.closeWaiting();
+	  				mui.fire(main, "getBankCard");
+	  				plus.webview.currentWebview().close();
+	  				plus.nativeUI.toast("银行卡添加成功！");
+	  				mui.back();
+	  			} else {
+	  				plus.nativeUI.closeWaiting();
+	  				mui.fire(main, "getBankCard" );
+	  				plus.webview.currentWebview().close();
+	  				plus.nativeUI.toast(json.RESULT_MESSAGE);
+	  				mui.back();
+	  			}
+	  			
+	  		});
+	    }
+	    var x = 60;
+	    function misx() {
+	        var a = document.getElementById("xsx1");
+	        var b = document.getElementById("xsx2");
+	        var s = document.getElementById("mias");
+	        a.style.display = "none";
+	        b.style.display = "block";
+	        s.innerHTML = x;
+	        x--;
+	        if(x == 0) {
+	          a.style.display = "block";
+	          b.style.display = "none";
+	          x = 60;
+	          return;
+	        }
+	        setTimeout("misx();", 1000);
+	    }
+
+      	function sendSms() {
+		    var phone = $("#phone").val();
+		    //检验手机号码填写是否合法
+		    $("#phone").blur();
+		    var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+		    if(phone == "") {
+		      plus.nativeUI.toast("请填写银行预留手机号码");
+		      return;
+		    }
+		    if(phone.length != 11 || !reg.test(phone)) {
+		      plus.nativeUI.toast("预留手机号码格式有误");
+		      return;
+		    }
+			plus.runtime.getProperty(plus.runtime.appid,function(inf){
+		    	var oem_code = inf.appid;
+			    app.getData("/user/send_sms.do", {
+			      "PHONE_NO": phone,
+			      "VERIFY_TYPE": 7,
+			      "OEM_CODE" : oem_code
+			    }, function(data) {
+			      if(data.RESULT_CODE == 0) {
+			        plus.nativeUI.toast("验证码已发送,请注意查收");
+			        misx();
+			      } else {
+			        plus.nativeUI.toast(data.RESULT_MESSAGE);
+			        $("#xsx1").show();
+			        $("#xsx2").hide();
+			        x = 60;
+			      }
+			    });
+			});
+		  }
+	    plus.webview.currentWebview().setStyle({
+             softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+      });
+    	
+    </script>
+</body>
+</html>

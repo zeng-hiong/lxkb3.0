@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.css"/>
+    <style type="text/css">
+        body{background: #fff;}
+ 
+       	.mui-slider-indicator{background: #fff;color: #00aaff;}
+       	.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{border:1px solid #00aaff;}
+    	.mui-control-item:first-child{
+	        border-radius: 0.2rem 0px 0px 0.2rem;
+    	}
+    	.mui-slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{background-color: #00aaff;color:#fff;border:1px solid #00aaff;}
+    	.mui-segmented-control.mui-segmented-control-inverted .mui-control-item:last-child{
+    		border-radius: 0px 0.2rem 0.2rem 0px;
+	        border-left: 0;
+    	}
+    	.mui-slider .mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-group .mui-slider-item{border:0}
+    	button.newbtn{
+			background-image: linear-gradient(90deg, #008aff 0%, #00b4ff 100%), linear-gradient( #309bdf, #309bdf);
+			background-image: -webkit-linear-gradient(90deg, #008aff 0%, #00b4ff 100%), -webkit-linear-gradient( #309bdf, #309bdf);
+			border-radius: 0.1rem;
+			display: block;
+			margin-top:0;
+			font-size: 0.32rem;
+			padding:0.22rem 0;
+    	}
+    	button.newbtn.marginbtm{margin-top:0.8rem}
+    	.mui-slider-item{padding-bottom:0.5rem}
+    	.cardbox{background: #fff;colo:#fff;padding:0.2rem;}
+    	.mui-slider .mui-slider-group .mui-slider-item .cardbox img{position: absolute;top:0.25rem;}
+    	.mui-slider .mui-slider-group .mui-slider-item .cardbox img.banklogo{width:0.9rem;left:0.3rem;}
+    	.mui-slider .mui-slider-group .mui-slider-item .cardbox img.banklogobg{width:1.7rem;right:-0.2rem;top:-0.2rem}
+        .cardbox>div{color:#fff;width:83%;margin:0 auto;border-radius: 0.2rem;margin-bottom:10px;padding:0.3rem;overflow: hidden;position: relative;}
+        .bg1{background-image: -webkit-linear-gradient(45deg,#d3b96b 0%,#e9c966 54%,#ffd860 100%),-webkit-linear-gradient(#f4c9c9,#f4c9c9);background-image: linear-gradient(45deg,#d3b96b 0%,#e9c966 54%,#ffd860 100%),linear-gradient(#f4c9c9,#f4c9c9);}
+        .bg2{background-image: -webkit-linear-gradient(45deg,#36a3c3 0%,#2eb5dc 54%,#25c7f5 100%),-webkit-linear-gradient(#f4c9c9,#f4c9c9);background-image: linear-gradient(45deg,#36a3c3 0%,#2eb5dc 54%,#25c7f5 100%),linear-gradient(#f4c9c9,#f4c9c9);}
+        .bg3{background-image: -webkit-linear-gradient(45deg,#c95050 0%,#df6060 54%,#f57070 100%),-webkit-linear-gradient(#f4c9c9,#f4c9c9);background-image: linear-gradient(45deg,#c95050 0%,#df6060 54%,#f57070 100%),linear-gradient(#f4c9c9,#f4c9c9);}
+        .bg4{background-image: -webkit-linear-gradient(45deg,#c950c5 0%,#de60dd 54%,#f370f5 100%),-webkit-linear-gradient(#f4c9c9,#f4c9c9);background-image: linear-gradient(45deg,#c950c5 0%,#de60dd 54%,#f370f5 100%),linear-gradient(#f4c9c9,#f4c9c9);}
+        .bg5{background-image: -webkit-linear-gradient(45deg,#434edd 0%, #5664ea 54%,#6879f7 100%),-webkit-linear-gradient(#f4c9c9,#f4c9c9);background-image: linear-gradient(45deg,#434edd 0%, #5664ea 54%,#6879f7 100%),linear-gradient(#f4c9c9,#f4c9c9);}
+        .bg6{background-image: -webkit-linear-gradient(45deg,#77bf1b 0%, #8cc853 54%,#9fd084 100%),-webkit-linear-gradient(#f4c9c9,#f4c9c9);background-image: linear-gradient(45deg,#77bf1b 0%, #8cc853 54%,#9fd084 100%),linear-gradient(#f4c9c9,#f4c9c9);}
+        .bg7{background-image: -webkit-linear-gradient(45deg,#ce5c1e 0%,#ff8529 100%),-webkit-linear-gradient(#f4c9c9,#f4c9c9);background-image: linear-gradient(45deg,#ce5c1e 0%,#ff8529 100%),linear-gradient(#f4c9c9,#f4c9c9);}
+        .cardbox>div:last-child{margin-bottom: 0;}
+        .flexbox{text-align: center;}
+        .detail>div{font-size: 0.22rem;}
+        .detail span{display:inline-block;color:#fff;font-size:0.24rem ;padding:1px 0.26rem;border:1px solid #f8fadb;border-radius:5px;padding:1px 0.2rem;margin-top: 0.15rem;}
+        .detail p{font-size: 0.3rem;}
+        .detail p:last-of-type{margin-top: 0.15rem;}
+        .detail.alignright{margin-top:0.5rem}
+        h3{font-size: 0.32rem;font-weight: 500;margin:0 0 0.24rem 0}
+        .cardnum{font-size: 0.3rem;}
+        .toppart{padding-left: 1.3rem;position: relative;}
+        .toppart span{position: absolute;right:0;top:0;border:1px solid #f8fadb;border-radius:5px;padding:1px 0.2rem}
+         body:before{display:block;content:'';background:#00aaff;position: fixed;top:0;right:0;left:0;z-index: 9;width:100%;height:22px;} 
+    </style>
+</head>
+<body>
+    <div class="mui-content mui-scroll-wrapper" id="refreshContainer">
+    	<div class="mui-scroll">
+          	<div class="mui-slider">
+              	<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted " style="padding:30px 15px 0px">
+                  	<a class="mui-control-item mui-active" href="#itemA">我的信用卡(<span id="xyk">0</span>)</a>
+                  	<a class="mui-control-item" href="#itemB">我的储蓄卡(<span id="cxk">0</span>)</a>
+              	</div>
+              	<div class="mui-slider-group">
+              		<div id="itemA" class="mui-slider-item mui-control-content mui-active">
+                      	<div class="cardbox" id="creditCard">
+			              	
+			          	</div>
+                     	<button class="newbtn mui-icon " onclick="addCreditCard()"><img src="image/icon_add_2.png" style='width:0.4rem' />&nbsp;&nbsp;添加信用卡</button>
+                  	</div>
+                  	<div id="itemB" class="mui-slider-item mui-control-content" >
+				        <div class="cardbox" id="bankCard">
+				        	
+				        </div>
+				        <button class='newbtn mui-icon' id="aligncenter" href="addDebitcard.html"><img src="image/icon_add_2.png" style='width:0.4rem' />&nbsp;&nbsp;添加储蓄卡</button>
+                  	</div>
+              	</div>
+          	</div>
+        </div>  
+    </div>
+	<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript" src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/security.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+  	<script type="text/javascript">
+    	
+    
+   		document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+     	
+		});
+	  	document.querySelector('.mui-slider').addEventListener('tap', function(event) {
+	  		
+	  	});
+    	
+		var gallery = mui('.mui-slider');
+	   	gallery.slider({
+	    	interval:0
+		});
+		
+		function plusReady() {
+			document.documentElement.style.fontSize = plus.screen.resolutionWidth / 7.5 + 'px';
+			plus.webview.currentWebview().setStyle({softinputMode: "adjustResize"  });// 弹出软键盘时自动改变webview的高度，弹出键盘的页面还要加这个
+		}
+		
+		function activeTab(index) {
+			$(".mycardbox>div").eq(index).addClass('active').siblings('div').removeClass('active');
+			$('.cardbox').children().eq(index).show().siblings().hide();
+			if(index == 0) {
+				getCreditCard();
+			} else {
+				getBankCard();
+			}
+		}
+		
+		/*window.addEventListener("switchTab", function() {
+			console.log("switchTab");
+			activeTab(0);
+		});*/
+		
+		/*$(document).ready(function() {
+			$('.mycardbox>div').on('touchstart', function() {
+				var index = $(this).index();
+				activeTab(index);
+			});
+		});*/
+	
+	
+		mui.plusReady(function() {
+			$('.mycardbox>div').on('touchstart',function(){
+		      var index=$(this).index();
+		      activeTab(index);
+			});
+			plusReady();
+			getCreditCard();
+			getBankCard();
+			refresh();
+		});
+
+		function getCreditCard() {
+			var param = {
+				"USER_ID": app.getStaffInfo().USER_ID,
+				"CARD_TYPE": 1,
+				"CHANNEL_TYPE" : 1
+			};
+			var html = [];
+			app.getData("/account/get_card_list.do", param, function(json) {
+				var list = json.RESULT_OBJECT;
+				$("#xyk").text(list.length);
+				 $("#creditCard").empty(); 
+				$.each(list, function() {
+					var bg = Math.ceil(Math.random()*7);
+					if(bg==1){
+						html.push("<div class=\"bg1\">");
+					}else if(bg==2){
+						html.push("<div class=\"bg2\">");
+					}else if(bg==3){
+						html.push("<div class=\"bg3\">");
+					}else if(bg==4){
+						html.push("<div class=\"bg4\">");
+					}else if(bg==5){
+						html.push("<div class=\"bg5\">");
+					}else if(bg==6){
+						html.push("<div class=\"bg6\">");
+					}else if(bg==7){
+						html.push("<div class=\"bg7\">");
+					}else{
+						html.push("<div class=\"bg1\">");
+					}
+	                html.push("<img src='"+this.BANK_ICON+"' class='banklogo' />");
+	                html.push("<img src='"+this.BANK_WATERMARK+"' class='banklogobg' />");
+	                html.push("<div class='toppart marginbtm'>");
+	                html.push("<h3>"+this.BANK_NAME+"</h3>");
+	                html.push("<p class='cardnum'>"+this.CARD_NO+"</p>");//CARD_NO_FOUR
+	                if(this.PLAN_IS_EXECUTING == 0){
+	                 	html.push("<span onclick = \"creditCardDetail("+this.CARD_SN+",'"+this.BILL_DAY +"','"+this.REPAY_DAY+"','"+this.BANK_NAME+"','"+this.REAL_CARD_NO+"','"+this.CARD_NO+"' )\">管理</span>");
+	                }
+	                html.push("</div>");
+	                html.push("<div class=\"detail flexbox spacear\">");
+	                if(this.BILL_DAY != " " && this.REPAY_DAY != " "){
+						html.push("<div>账单日<p>"+this.BILL_DAY+"日</p></div>");
+	                	html.push("<div>还款日<p>"+this.REPAY_DAY+"日</p></div>");
+					}else{
+						html.push("<div>账单日<p>--</p></div>");
+	                	html.push("<div>还款日<p>--</p></div>");
+					}
+	                html.push("<div>");
+	                html.push("还款计划<br>");
+	                if(this.PLAN_IS_EXECUTING == 0){
+	                	html.push("<span onclick = \"chooseRepaymentWay("+this.CARD_SN+",'"+this.BILL_DAY + "','"+this.REPAY_DAY + "','"+this.BANK_NAME + "','"+this.CARD_NO+ "','"+ this.BANK_ICON +"')\">制定计划</a>");
+	                }else{
+	                	html.push("<span onclick = \"repaymentPlanDetail("+this.PLAN_ID+")\">还款详情</span>");
+	                }
+	                html.push("</div>");
+	                html.push("</div>");
+	              	html.push("</div>");
+				});
+				$('#creditCard').append(html.join(""));
+				
+				if($('#creditCard>div').length==0){
+					$('.muiactive button.newbtn').addClass('marginbtm')
+				}
+			});
+		}
+		
+		function getBankCard() {
+			var param = {
+				"USER_ID": app.getStaffInfo().USER_ID,
+				"CARD_TYPE": 2,
+				"CHANNEL_TYPE" : 2
+			};
+			var html1 = [];
+			app.getData("/account/get_card_list.do", param, function(json) {
+				var list = json.RESULT_OBJECT;
+				$("#cxk").text(list.length);
+				if(list.length>0){
+					$("#aligncenter").hide();
+					$("#aligncenter").html("添加储蓄卡");
+				}else{
+					$("#aligncenter").show();
+				}
+				$("#bankCard").empty(); 
+				$.each(list, function() {
+					var bg = Math.ceil(Math.random()*7);
+					if(bg==1){
+						html1.push("<div class=\"bg1\">");
+					}else if(bg==2){
+						html1.push("<div class=\"bg2\">");
+					}else if(bg==3){
+						html1.push("<div class=\"bg3\">");
+					}else if(bg==4){
+						html1.push("<div class=\"bg4\">");
+					}else if(bg==5){
+						html1.push("<div class=\"bg5\">");
+					}else if(bg==6){
+						html1.push("<div class=\"bg6\">");
+					}else if(bg==7){
+						html1.push("<div class=\"bg7\">");
+					}else{
+						html1.push("<div class=\"bg1\">");
+					}
+					html1.push("<input type='hidden' value='"+this.CARD_SN+"' id='CARD_SN' />");
+					html1.push("<input type='hidden' value='"+this.CHANNEL_ID+"' id='CHANNEL_ID' />");
+		            html1.push("<img src='"+this.BANK_ICON+"' class='banklogo' />");
+		            html1.push("<img src='"+this.BANK_WATERMARK+"' class='banklogobg' />");
+		            html1.push("<div class='toppart marginbtm' style='position: relative;'>");
+		            html1.push("<h3>"+this.BANK_NAME+"</h3>");
+		            html1.push("<p class='cardnum'>"+this.CARD_NO+"</p>");//CARD_NO_FOUR
+		            html1.push("<span onclick = \"debitCardDetail("+this.CARD_SN+",'"+this.BANK_NAME+"','"+this.REAL_CARD_NO+"','"+this.CARD_NO+"')\">管理</span>");
+		            html1.push("</div>");
+		            html1.push("<div class='alignright detail'>");
+		            html1.push("<span >默认结算卡</span>");
+		            html1.push("</div>");
+		            html1.push("</div>");
+				});
+				$('#bankCard').append(html1.join(""));
+				if($('#creditCard>div').length==0){
+					$('.muiactive button.newbtn').addClass('marginbtm')
+				}
+			});
+		}
+		
+		function addCreditCard() {
+			var isValidCertFlag = isValidCert();
+	  		if(isValidCertFlag == 2) {
+	  			goActive();
+	  			return;
+	  		} else if(isValidCertFlag == 3) {
+	  			goCert();
+	  			return;
+	  		} else if(isValidCertFlag == 4) {
+	  			goSetPayPwd();
+	  			return;
+	  		}
+			app.openWindow('addCreditcard.html', 'addCreditcard.html');
+		}
+		
+		mui("body").on("tap", "#aligncenter", function() {
+			var isValidCertFlag = isValidCert();
+	  		if(isValidCertFlag == 2) {
+	  			goActive();
+	  			return;
+	  		} else if(isValidCertFlag == 3) {
+	  			goCert();
+	  			return;
+	  		} else if(isValidCertFlag == 4) {
+	  			goSetPayPwd();
+	  			return;
+	  		}
+			var url = this.getAttribute('href');
+    		if(url == "" || url == "#") {
+    			plus.nativeUI.alert("项目建设中~");
+    			return false;
+    		}
+    		var CARD_SN = $("#CARD_SN").val();
+    		var CHANNEL_ID = $("#CHANNEL_ID").val();
+    		
+    		mui.openWindow({
+				url: url,
+				show: {
+					aniShow: 'slide-in-right',
+					duration: 250,
+				},
+				waiting: {
+					autoShow: false,
+					title: '正在加载。。。'
+				},
+				extras: {
+					CARD_SN : CARD_SN,
+					CHANNEL_ID : CHANNEL_ID
+				}
+			});
+		});
+		
+		
+		function addDebitCard() {
+			var isValidCertFlag = isValidCert();
+	  		if(isValidCertFlag == 2) {
+	  			goActive();
+	  			return;
+	  		} else if(isValidCertFlag == 3) {
+	  			goCert();
+	  			return;
+	  		} else if(isValidCertFlag == 4) {
+	  			goSetPayPwd();
+	  			return;
+	  		}
+			app.openWindow('addDebitcard.html', 'addDebitcard.html');
+		}
+		
+		$("div").on('tap','span',function(){
+			this.click();
+		});
+		function creditCardDetail(CARD_SN,BILL_DAY,REPAY_DAY,BANK_NAME,REAL_CARD_NO,CARD_NO) {
+			app.openWindow('creditcardDetail.html', 'creditcardDetail.html', {
+					"CARD_SN": CARD_SN,
+					"BILL_DAY":BILL_DAY,
+					"REPAY_DAY":REPAY_DAY, 
+					"BANK_NAME":BANK_NAME,
+					"REAL_CARD_NO":REAL_CARD_NO,
+					"CARD_NO":CARD_NO
+			}); 
+		}
+		
+		function debitCardDetail(CARD_SN,BANK_NAME,REAL_CARD_NO,CARD_NO) { 
+			app.openWindow('DebitcardDetail.html', 'DebitcardDetail.html', {
+					"CARD_SN": CARD_SN,
+					"BANK_NAME":BANK_NAME,
+					"CARD_NO":CARD_NO,
+					"REAL_CARD_NO":REAL_CARD_NO
+			}); 
+		}
+		
+		function chooseRepaymentWay(CARD_SN,BILL_DAY,REPAY_DAY,BANK_NAME,CARD_NO,BANK_ICON){
+			app.openWindow("chooseRepaymentway.html","chooseRepaymentway.html",{
+				"CARD_SN": CARD_SN,
+				"BILL_DAY":BILL_DAY,
+				"REPAY_DAY":REPAY_DAY, 
+				"BANK_NAME":BANK_NAME,
+				"CARD_NO":CARD_NO,
+				"BANK_ICON":BANK_ICON
+			});
+		}
+		
+		/*function repaymentPlan(CARD_SN,BILL_DAY,REPAY_DAY,BANK_NAME,CARD_NO,BANK_ICON) {
+			app.openWindow('repaymentPlan.html', 'repaymentPlan.html', { 
+					"CARD_SN": CARD_SN,
+					"BILL_DAY":BILL_DAY,
+					"REPAY_DAY":REPAY_DAY, 
+					"BANK_NAME":BANK_NAME,
+					"CARD_NO":CARD_NO,
+					"BANK_ICON":BANK_ICON
+			}); 
+		}
+		*/
+		$("body").on("tap", "div.detail.aligncenter", function() {
+			$(this).find("a").click();
+		});
+		
+		$("body").on("tap", "p.manager", function() {
+			$(this).find("span > a").click();
+		});
+		
+		/*$("body").on("tap", "div.chuxuka", function() {
+			$(this).find("a").click();
+		});*/
+		
+		function repaymentPlanDetail(PLAN_ID) {
+			app.openWindow('repaymentDetail.html', 'repaymentDetail.html', {"PLAN_ID": PLAN_ID}); 
+		} 
+		
+		window.addEventListener("getCreditCard", function(e) {
+			activeTab(0);
+		});
+		
+		window.addEventListener("getBankCard", function(e) {
+			activeTab(1);
+		});
+		
+		window.addEventListener("pageflowrefresh1", function() {
+      		activeTab(1);
+      		activeTab(0);
+    	});
+    	mui.init({
+	      	pullRefresh:{
+	      	 	container:'#refreshContainer',
+	      	    down : {
+	      	      auto:true,
+			      callback :refresh,
+			      contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+				  contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+				  contentrefresh : "刷新成功~",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+			    }
+	      	}
+        });
+    	function refresh(){
+            //ajax请求，需将如下代码放置在处理完ajax响应数据之后
+    		//没有更多内容了，endPulldown 传入true， 不再执行下拉刷新
+ 			//mui('#refreshContainer').pullRefresh().endPulldown();
+ 			getCreditCard();
+			getBankCard();
+    		mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+    	}
+    	
+    	mui.back = function() {
+				return false;
+			};
+  	</script>
+</body>
+</html>

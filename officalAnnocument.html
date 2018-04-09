@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.baoyuandai.com/front/account/redpacketCoupons -->
+<html lang="zh-cmn-Hans" class="">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="x5-orientation" content="portrait">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="screen-orientation" content="portrait">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.mui-table-view {
+				background: #f3f7f9;
+			}
+			
+			.mui-table-view li {
+				background: #fff;
+			}
+			
+			.mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.mui-table-view-cell p:first-child {
+				font-size: 0.34rem;
+				color: #444;
+				margin-bottom: 0.16rem;
+			}
+			
+			.mui-table-view-cell > a:not(.mui-btn) p:last-child{
+				color:#999;
+				font-size: 0.24rem;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.4rem;
+			}
+			
+			.mui-table-view-cell:last-child {
+				margin-bottom: 0
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">官方公告</h1>
+			<button class="mui-action-back-mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+	       	  <span class="mui-icon mui-icon-left-nav">返回</span>
+	       </button>
+		</header>
+		<div class="mui-content mui-scroll-wrapper" id='refreshContainer'>
+			<div class="mui-scroll">
+				<div class="mui-card">
+					<ul class="mui-table-view" id="OfficalMessageBox">
+						<!--<li class="mui-table-view-cell marginbtm" onclick="showOfficalMessageDetail('1','2','3','4')">
+							<a class="mui-navigate-right">
+								<p>乐享卡包v2.0.0全新上线</p>
+								<p>发布时间：<span>2018-01-11 </span><span>08:00</span></p>
+							</a>
+						</li>
+						<li class="mui-table-view-cell marginbtm">
+							<a class="mui-navigate-right">
+								<p>乐享卡包v2.0.0全新上线</p>
+								<p>发布时间：<span>2018-01-11 </span><span>08:00</span></p>
+							</a>
+						</li>
+						<li class="mui-table-view-cell marginbtm">
+							<a class="mui-navigate-right">
+								<p>乐享卡包v2.0.0全新上线</p>
+								<p>发布时间：<span>2018-01-11 </span><span>08:00</span></p>
+							</a>
+						</li>
+						<li class="mui-table-view-cell marginbtm">
+							<a class="mui-navigate-right">
+								<p>乐享卡包v2.0.0全新上线</p>
+								<p>发布时间：<span>2018-01-11 </span><span>08:00</span></p>
+							</a>
+						</li>-->
+					</ul>
+				</div>
+				<p class="aligncenter" style='margin-top: 0.3rem;color: #309bdf;font-size: 0.26rem;' id='loadmore'>上拉加载更多>></p>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/common.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script>
+			mui("body").on("tap", ".mui-icon-left-nav", back_window);
+			var MAX_NUM = 10;
+			var MIN_NUM = 0;
+			var is_no = 0;
+	    	mui.plusReady(function() {
+//  			init();
+    			$('#loadmore').html("");
+	    	});
+			mui.init({
+				pullRefresh: {
+					container: '#refreshContainer',
+					up: {
+						height: 50,
+						auto:true,
+						contentrefresh: '正在加载...',
+						contentnomore: '没有更多数据了',
+						callback: addnewsList
+					}
+				}
+			});
+			//上拉加载函数
+			function addnewsList() {
+				if(is_no == 0) {
+					init();
+				}
+				this.endPullupToRefresh(false);
+			}
+
+			function init() {
+				var params = {
+					"MAX_NUM": MAX_NUM,
+					"MIN_NUM": MIN_NUM,
+					"TYPE":4
+				};
+				app.getData("/common/message/showOfficalMessageList.do", params, function(data) {
+					//console.log(JSON.stringify(list));
+					var html = [];
+					var list = data.RESULT_OBJECT;
+					if(list.length > 0) {
+						if(10 > list.length) {
+							is_no = 1;
+							$('#loadmore').html("");
+						} else {
+							$('#loadmore').html("上拉加载更多");
+						}
+						$.each(list, function() {
+							html.push("<li class='mui-table-view-cell marginbtm' onclick = \"showOfficalMessageDetail('" + this.BANNER_ID + "','" + this.TYPE + "')\">");
+							html.push("<a class='mui-navigate-right'>");
+							html.push("<p>" + this.TITLE.substring(0, 16) + "</p>");
+							html.push("<p>发布时间：<span>" + this.CREATE_DATE + "</span></p>");
+							html.push("</a>");
+							html.push("</li>");
+						});
+						$('#OfficalMessageBox').append(html.join(""));
+						MAX_NUM = MAX_NUM + 10;
+						MIN_NUM = MIN_NUM + 10;
+					} else {
+						is_no = 1;
+						$('#loadmore').html("");
+					}
+				});
+			}
+     
+     
+		     mui('body').on('tap','#OfficalMessageBox li',function(){
+		     	this.click();
+		     });
+
+			function showOfficalMessageDetail(BANNER_ID,TYPE) {
+				app.openWindow('newsdetail.html', 'newsdetail.html', {
+						"BANNER_ID": BANNER_ID,
+						"TYPE": TYPE
+				});
+			}
+
+			//			mui.init();
+			//			(function($) {
+			//				var btnArray = ['确认', '取消'];
+			//				$('#OA_task_2').on('tap', '.mui-btn-red', function(event) {
+			//					var elem = this;
+			//					var li = elem.parentNode.parentNode;
+			//					mui.confirm('确认删除该条记录？', 'Hello MUI', btnArray, function(e) {
+			//						if(e.index == 0) {
+			//							li.parentNode.removeChild(li);
+			//						} else {
+			//							setTimeout(function() {
+			//								$.swipeoutClose(li);
+			//							}, 0);
+			//						}
+			//					});
+			//				});
+			//
+			//			})(mui);
+		</script>
+	</body>
+
+</html>
